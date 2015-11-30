@@ -1,4 +1,4 @@
-package src;
+package org.htl.chess.model;
 
 public class Laeufer 
 {
@@ -23,7 +23,7 @@ public class Laeufer
 			{
 				if(bewegenX>0 && bewegenY>0)
 				{
-					//für vorwerts bewegen
+					//fï¿½r vorwerts bewegen
 					if((von.getX()+bewegenX) ==nach.getX() && (von.getY()+bewegenY==nach.getY()))
 					{
 						return true;
@@ -35,7 +35,7 @@ public class Laeufer
 				}
 				else
 				{
-					//für rückwerts bewegen
+					//fï¿½r rï¿½ckwerts bewegen
 					if((von.getX()-bewegenX) ==nach.getX() && (von.getY()-bewegenY==nach.getY()))
 					{
 						return true;

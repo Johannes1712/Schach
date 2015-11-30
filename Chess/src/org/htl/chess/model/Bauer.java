@@ -1,4 +1,4 @@
-package src;
+package org.htl.chess.model;
 
 public class Bauer extends Figur 
 {
@@ -37,10 +37,10 @@ public class Bauer extends Figur
 					eigener = false;
 				}
 
-				// Für den 1.Spielzug
+				// Fï¿½r den 1.Spielzug
 				if (ersterSpielzug && (von.getY() + 2 == nach.getY() || von.getY() + 1 == nach.getY())) 
 				{
-					// Für die anderen Spielzüge
+					// Fï¿½r die anderen Spielzï¿½ge
 					if (ersterSpielzug && (von.getY() + 2 == nach.getY())||(von.getY()+1==nach.getY())) 
 					{
 						return true;
