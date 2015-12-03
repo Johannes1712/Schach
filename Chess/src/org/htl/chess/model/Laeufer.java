@@ -23,7 +23,7 @@ public class Laeufer
 			{
 				if(bewegenX>0 && bewegenY>0)
 				{
-					//f�r vorwerts bewegen
+					//fuer vorwerts bewegen
 					if((von.getX()+bewegenX) ==nach.getX() && (von.getY()+bewegenY==nach.getY()))
 					{
 						return true;
@@ -35,7 +35,7 @@ public class Laeufer
 				}
 				else
 				{
-					//f�r r�ckwerts bewegen
+					//fuer rueckwerts bewegen
 					if((von.getX()-bewegenX) ==nach.getX() && (von.getY()-bewegenY==nach.getY()))
 					{
 						return true;

@@ -37,10 +37,10 @@ public class Bauer extends Figur
 					eigener = false;
 				}
 
-				// F�r den 1.Spielzug
+				// Fuer den 1.Spielzug
 				if (ersterSpielzug && (von.getY() + 2 == nach.getY() || von.getY() + 1 == nach.getY())) 
 				{
-					// F�r die anderen Spielz�ge
+					// Fuer die anderen Spielzuege
 					if (ersterSpielzug && (von.getY() + 2 == nach.getY())||(von.getY()+1==nach.getY())) 
 					{
 						return true;
