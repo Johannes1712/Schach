@@ -22,11 +22,18 @@ public class Spielfeld
 	
 	public void spielzug(String zug)
 	{
-	
+		if(Integer.parseInt(zug)/2==0)
+		{
+			werAmZug=true;
+		}
+		else
+		{
+			werAmZug=false;
+		}
 	}
 	
 	public Position schach2koordinate(String schach)
 	{
-		return null;
+		return new Position();
 	}
 }
