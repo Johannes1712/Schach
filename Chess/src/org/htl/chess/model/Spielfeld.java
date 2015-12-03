@@ -4,6 +4,8 @@ public class Spielfeld
 {
 	private Feld[][] mat=new Feld[10][10];
 	private boolean werAmZug;
+	 
+	private int zahl;
 	
 	public void ausgabe()
 	{
