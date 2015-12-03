@@ -12,7 +12,14 @@ public class Spielfeld
 	
 	public boolean schach()
 	{
-		return false;
+		if()
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	public boolean schachMatt()
