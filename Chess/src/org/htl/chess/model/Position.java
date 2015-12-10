@@ -22,6 +22,6 @@ public class Position
 	
 	public byte getY()
 	{
-		return x;
+		return y;
 	}
 }

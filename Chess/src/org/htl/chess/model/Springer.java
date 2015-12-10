@@ -6,7 +6,7 @@ public class Springer extends Figur{
 	
 	public boolean spielZug(Spielfeld sp, Position von, Position nach){
 		
-		spielfeld= sp.getmat();
+		spielfeld= sp.getMat();
 		
 		if(this.spielzugMoeglich(sp,von,nach)){
 			
@@ -37,6 +37,8 @@ public class Springer extends Figur{
 				return true;
 			}
 		}
+		
+		return false;
 		
 	}
 

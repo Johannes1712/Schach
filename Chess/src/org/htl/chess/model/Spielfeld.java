@@ -43,4 +43,8 @@ public class Spielfeld
 	{
 		return new Position();
 	}
+	
+	public Feld[][] getMat(){
+		return mat;
+	}
 }
