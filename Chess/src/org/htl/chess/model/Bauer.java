@@ -15,6 +15,7 @@ public class Bauer extends Figur
 	{
 		boolean ersterSpielzug;
 		boolean eigener;
+		
 		if((sp.mat[von.getX()][von.getY()].farbeWeiss != sp.mat[nach.getX()][nach.getY()].farbeWeiss)||sp.mat[von.getX()][von.getY()]==null)
 		{
 			if((Figur)sp.[von.getX()][von.getY()] instanceof Bauer)
@@ -37,10 +38,10 @@ public class Bauer extends Figur
 					eigener = false;
 				}
 
-				// Fuer den 1.Spielzug
+				// Figur den 1.Spielzug
 				if (ersterSpielzug && (von.getY() + 2 == nach.getY() || von.getY() + 1 == nach.getY())) 
 				{
-					// Fuer die anderen Spielzuege
+					// Figur die anderen Spielzuege
 					if (ersterSpielzug && (von.getY() + 2 == nach.getY())||(von.getY()+1==nach.getY())) 
 					{
 						return true;
