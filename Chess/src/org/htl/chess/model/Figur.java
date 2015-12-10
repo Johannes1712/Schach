@@ -21,5 +21,13 @@ public class Figur extends Feld{
 	public boolean getFarbeWeiss(){
 		return farbeWeiss;
 	}
+	
+	public void setBewegt(boolean bewegt){
+		this.bewegt=bewegt;
+	}
+	
+	public boolean getBewegt(){
+		return bewegt;
+	}
 
 }
