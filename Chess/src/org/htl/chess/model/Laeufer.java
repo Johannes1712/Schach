@@ -4,7 +4,7 @@ public class Laeufer
 {
 	public boolean spielZug(Spielfeld sp, Positions von, Position nach)
 	{
-			return spielZugMoeglich();
+			return spielZugMoeglich(sp, von, nach);
 	}
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
