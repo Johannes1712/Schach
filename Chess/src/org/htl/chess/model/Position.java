@@ -2,16 +2,16 @@ package org.htl.chess.model;
 
 public class Position
 {
-	private byte x;
-	private byte y;
+	private int x;
+	private int y;
 	
 	
-	public void setX(byte x)
+	public void setX(int x)
 	{
 		this.x=x;
 	}
 	
-	public void setY(byte y)
+	public void setY(int y)
 	{
 		this.y=y;
 	}
