@@ -21,7 +21,7 @@ public class Turm extends Figur{
 			rueckgabewert=false;
 			System.out.println("falsch");
 		}
-		
+		Feld figur=Spielfeld[nach.getX()][nach.getY()];
 		if(sp[nach.getX()][nach.getY()] instanceof Turm)
 		{
 			if(sp[nach.getX()][nach.getY()].matt[nach.getX()][nach.getY()]!=sp.mat[von.getX()][von.getY()])
