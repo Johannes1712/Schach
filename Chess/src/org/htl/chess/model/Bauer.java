@@ -34,43 +34,36 @@ public class Bauer extends Figur
 			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
 			if(istGleichesTeam)return false;
 		}
-		else
+		//Abfrage ob erste Spielzug oder nicht
+		if ((von.getY() + 1 == nach.getY()) || (von.getY() + 2 == nach.getY())) 
 		{
-			//Abfrage ob erste Spielzug oder nicht
-			if ((von.getY() + 1 == nach.getY()) || (von.getY() + 2 == nach.getY())) 
+			if (von.getY() == 1) 
 			{
-				if (von.getY() == 1) 
-				{
-					ersterSpielzug = true;
+				ersterSpielzug = true;
 
-				}
-				else 
-				{
-					ersterSpielzug = false;
-				}
 			}
 			else 
 			{
-				eigener = false;
+				ersterSpielzug = false;
 			}
+		}
 
-			// Figur den 1.Spielzug
-			if (ersterSpielzug && (von.getY() + 2 == nach.getY() || von.getY() + 1 == nach.getY())) 
+		// Figur den 1.Spielzug
+		if (ersterSpielzug && (von.getY() + 2 == nach.getY() || von.getY() + 1 == nach.getY())) 
+		{
+			// Figur die anderen Spielzuege
+			if (ersterSpielzug && (von.getY() + 2 == nach.getY())||(von.getY()+1==nach.getY())) 
 			{
-				// Figur die anderen Spielzuege
-				if (ersterSpielzug && (von.getY() + 2 == nach.getY())||(von.getY()+1==nach.getY())) 
+				return true;
+			}
+			else
+			{
+				if((von.getX()+1==nach.getX()||von.getX()-1==nach.getX())&&von.getY()+1==nach.getY())
 				{
 					return true;
 				}
-				else
-				{
-					if((von.getX()+1==nach.getX()||von.getX()-1==nach.getX())&&von.getY()+1==nach.getY())
-					{
-						return true;
-					}
-				}						
-			}	
-		}
+			}						
+		}	
 		return false;
 	}
 }

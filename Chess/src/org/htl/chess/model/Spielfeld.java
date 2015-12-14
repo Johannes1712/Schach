@@ -44,7 +44,19 @@ public class Spielfeld
 		return new Position();
 	}
 	
-	public Feld[][] getMat(){
+	public void spielfeldVeraendern(){
+		
+	}
+	
+	public Feld [][] getMat(){
 		return mat;
+	}
+
+	public void spielzugAusfuehren(Position von, Position nach, Figur figur) {
+		
+		Feld feld = new Feld();;
+		mat[von.getX()][von.getY()]= feld;
+		
+		mat[nach.getX()][nach.getY()]= figur;
 	}
 }

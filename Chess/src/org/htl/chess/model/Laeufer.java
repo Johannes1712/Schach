@@ -1,10 +1,13 @@
 package org.htl.chess.model;
 
-public class Laeufer extends Figur
+public class Laeufer 
 {
+
 	private Feld[ ] [ ] spielfeld;
+
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
+
 			spielfeld=sp.getMat();
 			
 			if(this.spielZugMoeglich(sp, von, nach))
@@ -18,7 +21,7 @@ public class Laeufer extends Figur
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
 	{
-		Figur figur =(Figur) spielfeld [von.getX()][von.getY()];
+		Feld figur= spielfeld [nach.getX()][nach.getY()];
 		int bewegenX=nach.getX()-von.getX();
 		int bewegenY=nach.getY()-von.getY();
 		
@@ -30,42 +33,25 @@ public class Laeufer extends Figur
 			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
 			if(istGleichesTeam)return false;
 		}
+		
+		//Abfragen ob die Figur ein Laeufer ist oder nicht
+		if(bewegenX>0 && bewegenY>0)
+		{
+			//fuer vorwerts bewegen
+			if((von.getX()+bewegenX) ==nach.getX() && (von.getY()+bewegenY==nach.getY()))
+			{
+				return true;
+			}
+		}
 		else
 		{
-			//Abfragen ob die Figur ein Laeufer ist oder nicht
-			if(figur instanceof Laeufer)
+			//fuer rueckwerts bewegen
+			if((von.getX()-bewegenX) ==nach.getX() && (von.getY()-bewegenY==nach.getY()))
 			{
-				if(bewegenX>0 && bewegenY>0)
-				{
-					//fuer vorwerts bewegen
-					if((von.getX()+bewegenX) ==nach.getX() && (von.getY()+bewegenY==nach.getY()))
-					{
-						return true;
-					}
-					else
-					{
-						return false;
-					}
-				}
-				else
-				{
-					//fuer rueckwerts bewegen
-					if((von.getX()-bewegenX) ==nach.getX() && (von.getY()-bewegenY==nach.getY()))
-					{
-						return true;
-					}
-					else
-					{
-						return false;
-					}
-				}
+				return true;
 			}
-			else
-			{
-				return false;
-			}
-	
-		}
+
+		}	
 		return false;
 	}
 }
