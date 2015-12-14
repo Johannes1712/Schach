@@ -23,6 +23,8 @@ public class Turm extends Figur{
 		}
 		else rueckgabewert=false;
 		
+		if(super.spielzugMoeglich(sp, von, nach)==false)rueckgabewert=false;
+		
 		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
 		{
 			return true;

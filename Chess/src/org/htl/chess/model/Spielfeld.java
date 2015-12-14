@@ -10,7 +10,7 @@ public class Spielfeld
 		
 	}
 	
-	/*public boolean schach()
+	public boolean schach()
 	{
 		if()
 		{
@@ -20,7 +20,7 @@ public class Spielfeld
 		{
 			return false;
 		}
-	}*/
+	}
 	
 	public boolean schachMatt()
 	{
