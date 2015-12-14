@@ -5,8 +5,18 @@ public class Figur extends Feld{
 	private boolean farbeWeiss;
 	private boolean bewegt;
 	
+	protected Feld[ ] [ ] spielfeld;
+	
 	public boolean spielZug(Spielfeld sp, Position von, Position nach){
-		if(this.spielzugMoeglich(sp, von, nach)) return true;
+		
+		spielfeld= sp.getMat();
+		
+		if(this.spielzugMoeglich(sp,von,nach)){
+			
+			sp.spielzugAusfuehren(von, nach, this );
+			return true;
+		}
+		
 		return false;
 	}
 	

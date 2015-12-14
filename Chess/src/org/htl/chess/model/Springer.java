@@ -2,19 +2,10 @@ package org.htl.chess.model;
 
 public class Springer extends Figur{
 	
-	private Feld[ ] [ ] spielfeld;
-	
+
 	public boolean spielZug(Spielfeld sp, Position von, Position nach){
 		
-		spielfeld= sp.getMat();
-		
-		if(this.spielzugMoeglich(sp,von,nach)){
-			
-			sp.spielzugAusfuehren(von, nach, this );
-			return true;
-		}
-		
-		return false;
+		return super.spielZug(sp, von, nach);
 	}
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach){

@@ -10,7 +10,7 @@ public class Koenig extends Figur
 		
 		if(this.spielzugMoeglich(sp,von,nach)){
 			
-			sp.spielzugAusführen(von, nach, this );
+			sp.spielzugAusfuehren(von, nach, this );
 			return true;
 		}
 		
@@ -97,14 +97,21 @@ public class Koenig extends Figur
 			rw = true;
 		}
 		
-		
 		//Verhindern, dass sich Koenig selbst ins Schach setzt:
 		
-		sp.spielzugAusführen(von, nach, this );
+		sp.spielzugAusfuehren(von, nach, this );
+		Figur spFigur = null;
+		
+		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
+		{
+			spFigur = (Figur) spielfeld[nach.getX()][nach.getY()];
+		}
+		
 		if(sp.schach())
 		{
 			rw = false;
-			sp.spielzugAusführen(nach, von, this );
+			sp.spielzugAusfuehren(nach, von, this );
+			spielfeld[nach.getX()][nach.getY()] = spFigur;
 		}
 		
 		return rw;		
