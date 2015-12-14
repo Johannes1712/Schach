@@ -1,19 +1,10 @@
 package org.htl.chess.model;
 
-public class Laeufer extends Figur
+public class Laeufer 
 {
-	public boolean spielZug(Spielfeld sp, Position von, Position nach)
+	public boolean spielZug(Spielfeld sp, Positions von, Position nach)
 	{
-			if(spielZugMoeglich(sp, von, nach))
-			{
-				von.setX(0);
-				von.setY(0);
-				return spielZugMoeglich(sp, von, nach);
-			}
-			else
-			{
-				return spielZugMoeglich(sp, von, nach);
-			}
+			return spielZugMoeglich();
 	}
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
