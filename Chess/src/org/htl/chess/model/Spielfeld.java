@@ -52,7 +52,7 @@ public class Spielfeld
 		return mat;
 	}
 
-	public void spielzugAusführen(Position von, Position nach, Figur figur) {
+	public void spielzugAusfuehren(Position von, Position nach, Figur figur) {
 		
 		Feld feld = new Feld();;
 		mat[von.getX()][von.getY()]= feld;
