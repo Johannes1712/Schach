@@ -18,7 +18,6 @@ public class Bauer extends Figur {
 		
 		//abfragen ob es dieselbe Figur ist 
 		if (figur instanceof Figur) {
-
 			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
 			if (istGleichesTeam)
 				return false;
