@@ -1,3 +1,4 @@
+
 package org.htl.chess.model;
 
 public class Dame {
@@ -56,5 +57,6 @@ public class Dame {
 		return rueckgabewert;
 		
 	}
+
 
 }
