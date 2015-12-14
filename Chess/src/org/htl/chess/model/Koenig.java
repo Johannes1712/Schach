@@ -2,29 +2,16 @@ package org.htl.chess.model;
 
 public class Koenig extends Figur
 {
-	private Feld [ ] [ ] spielfeld;
 
 	public boolean spielzug(Spielfeld sp,Position von,Position nach)
 	{
-		spielfeld= sp.getMat();
-		
-		if(this.spielzugMoeglich(sp,von,nach)){
-			
-			sp.spielzugAusfuehren(von, nach, this );
-			return true;
-		}
-		
-		return false;
+		return super.spielZug(sp, von, nach);
 	}
 	
 	public boolean spielzugMoeglich(Spielfeld sp,Position von,Position nach)
 	{
 		
 		boolean rw = true;										//Rueckgabewert
-		
-		spielfeld = sp.getMat();
-		
-		
 		
 		if  ((von.getX() > nach.getX() +1)						//Koenig darf nicht mehr als 1 Feld in X-Richtung gehen						
 				|| (von.getX() < nach.getX() - 1))						
