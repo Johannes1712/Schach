@@ -10,16 +10,7 @@ public class Bauer extends Figur
 		
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
-
-		spielfeld=sp.getMat();
-		
-		if(this.spielZugMoeglich(sp, von, nach))
-		{
-			sp.spielZugAusfuehren(von, nach, this);
-			return true;
-		}
-		
-		return false;
+		return super.spielZug(sp, von, nach);
 	}
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 

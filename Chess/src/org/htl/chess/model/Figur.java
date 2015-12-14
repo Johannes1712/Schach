@@ -21,7 +21,7 @@ public class Figur extends Feld{
 	}
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach){
-		return true;
+		if()
 	}
 	
 	public void setFarbeWeiss(boolean farbeWeiss){
