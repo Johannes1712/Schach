@@ -12,7 +12,9 @@ public class Laeufer extends Figur {
 		Feld figur = spielfeld[nach.getX()][nach.getY()];
 		int bewegenX = nach.getX() - von.getX();
 		int bewegenY = nach.getY() - von.getY();
-
+		
+		if(!super.spielzugMoeglich(sp, von, nach))return false;
+		
 		// abfragen ob die Figur die eigene ist 
 		if (figur instanceof Figur) {
 			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
