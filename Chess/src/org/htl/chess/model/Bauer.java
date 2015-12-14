@@ -6,9 +6,17 @@ public class Bauer extends Figur
 	// Zeilen sind Zahlen
 	// 0/0  ist links unten auf a1
 	// somit die linkeste Spalte 0 und die unterste Zeile 0
-	public boolean spielZug(Spielfeld sp, Positions von, Position nach) 
+	public boolean spielZug(Spielfeld sp, Position von, Position nach) 
 	{
-		return (spielZugMoeglich(sp, von, nach));
+		if(spielZugMoeglich(sp, von, nach))
+		{
+			
+			return (spielZugMoeglich(sp, von, nach));
+		}
+		else
+		{
+			return (spielZugMoeglich(sp, von, nach));
+		}
 	}
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 

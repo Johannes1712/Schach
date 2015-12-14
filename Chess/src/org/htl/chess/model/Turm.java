@@ -1,39 +1,41 @@
-
+package org.htl.chess.model;
 public class Turm extends Figur{
 	boolean rueckgabewert;
+	private Feld[ ] [ ] spielfeld;
+	
 	public boolean spielzug(Spielfeld sp, Position von, Position nach)
 	{
-		if(rueckgabewert==true)
+		spielfeld= sp.getMat();
+		if(spielzugmoeglich(sp,von,nach))
 		{
-			//sp.spielzug();
-			rueckgabewert=true;
+			//sp.spielzugAusführen(Paramter);
 		}
 		return rueckgabewert;
 	}
 	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
 	{
+		
+		Feld figur=spielfeld[nach.getX()][nach.getY()];
 		if((nach.getX()<=8)&&(nach.getY()<=8))
 		{
 			rueckgabewert=true;
 		}
-		else
-		{
-			rueckgabewert=false;
-			System.out.println("falsch");
-		}
+		else rueckgabewert=false;
 		
-		if(sp[nach.getX()][nach.getY()] instanceof Turm)
+		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
 		{
-			if(sp[nach.getX()][nach.getY()].matt[nach.getX()][nach.getY()]!=sp.mat[von.getX()][von.getY()])
-			{
-				rueckgabewert=true;
-			}
-			
+			return true;
 		}
 		else rueckgabewert=false;
 		
+		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
+		{
+			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
+			if(istGleichesTeam)return false;
+		}
 		
-		for(int i=0;i<=7;i++)
+		
+		/*for(int i=0;i<=7;i++)
 		{
 			if(sp.mat[von.getX()+i][von.getY()]==sp.mat[nach.getX()][von.getY()])
 			{
@@ -48,7 +50,7 @@ public class Turm extends Figur{
 				rueckgabewert=true;
 			}
 			else rueckgabewert=false;
-		}
+		}*/
 		
 		return rueckgabewert;
 		
