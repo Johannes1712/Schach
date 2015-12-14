@@ -13,6 +13,8 @@ public class Koenig extends Figur
 		
 		boolean rw = true;										//Rueckgabewert
 		
+		if(!super.spielzugMoeglich(sp, von, nach))rw = false;
+		
 		if  ((von.getX() > nach.getX() +1)						//Koenig darf nicht mehr als 1 Feld in X-Richtung gehen						
 				|| (von.getX() < nach.getX() - 1))						
 		{
