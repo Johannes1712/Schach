@@ -15,12 +15,12 @@ public class Position
 	{
 		this.y=y;
 	}
-	public byte getX()
+	public int getX()
 	{
 		return x;
 	}
 	
-	public byte getY()
+	public int getY()
 	{
 		return y;
 	}
