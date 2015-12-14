@@ -1,4 +1,4 @@
-
+package org.htl.chess.model;
 
 public class Dame extends Figur{
 	

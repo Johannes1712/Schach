@@ -1,4 +1,4 @@
-
+package org.htl.chess.model;
 public class Turm extends Figur{
 	boolean rueckgabewert;
 	public boolean spielzug(Spielfeld sp, Position von, Position nach)
