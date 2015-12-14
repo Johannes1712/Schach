@@ -1,5 +1,4 @@
 
-
 public class Dame extends Spielfigur{
 	
 	boolean rueckgabewert;

@@ -2,33 +2,38 @@ package org.htl.chess.model;
 
 public class Laeufer extends Figur
 {
+	private Feld[ ] [ ] spielfeld;
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
-			if(spielZugMoeglich(sp, von, nach))
+			spielfeld=sp.getMat();
+			
+			if(this.spielZugMoeglich(sp, von, nach))
 			{
-				von.setX(0);
-				von.setY(0);
-				return spielZugMoeglich(sp, von, nach);
+				sp.spielZugAusfuehren(von, nach, this);
+				return true;
 			}
-			else
-			{
-				return spielZugMoeglich(sp, von, nach);
-			}
+			
+			return false;
 	}
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
 	{
+		Figur figur =(Figur) spielfeld [von.getX()][von.getY()];
 		int bewegenX=nach.getX()-von.getX();
 		int bewegenY=nach.getY()-von.getY();
+		
+		
 		//abfragen ob die Figur die eigene ist oder wo die Figur hingesetzt wird
-		if (sp.mat[von.getX()][von.getY()].farbeWeiss == sp.mat[nach.getX()][nach.getY()].farbeWeiss) 
+		if(figur instanceof Figur)
 		{
-			return false;
+			
+			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
+			if(istGleichesTeam)return false;
 		}
 		else
 		{
 			//Abfragen ob die Figur ein Laeufer ist oder nicht
-			if((Figur)sp.[von.getX()][von.getY()] instanceof Laeufer)
+			if(figur instanceof Laeufer)
 			{
 				if(bewegenX>0 && bewegenY>0)
 				{
@@ -61,5 +66,6 @@ public class Laeufer extends Figur
 			}
 	
 		}
+		return false;
 	}
 }
