@@ -25,6 +25,7 @@ public class Bauer extends Figur
 			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
 			if(istGleichesTeam)return false;
 		}
+		
 		//Abfrage ob erste Spielzug oder nicht
 		if ((von.getY() + 1 == nach.getY()) || (von.getY() + 2 == nach.getY())) 
 		{
