@@ -9,8 +9,7 @@ public class Dame extends Figur{
 		spielfeld= sp.getMat();
 		if(spielzugmoeglich(sp,von,nach))
 		{
-			//sp.spielzug();
-			rueckgabewert=true;
+			//sp.spielzugAusführen(Paramter);
 		}
 		return rueckgabewert;
 	}
@@ -21,23 +20,23 @@ public class Dame extends Figur{
 		{
 			rueckgabewert=true;
 		}
-		else
+		else rueckgabewert=false;
+		
+		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
 		{
-			rueckgabewert=false;
-			System.out.println("falsch");
+			return true;
 		}
+		else rueckgabewert=false;
+
 		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
 		{
 			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
-			if(istGleichesTeam)return false;
-		}
-		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
-		{
-			rueckgabewert=true;
-		}
-		else rueckgabewert=false;
-		
-		for(int i=0;i<=7;i++)
+			if(istGleichesTeam)
+			{
+				rueckgabewert=false;
+			}
+		}		
+		/*for(int i=0;i<=7;i++)
 		{
 			if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
 			{
@@ -48,12 +47,12 @@ public class Dame extends Figur{
 		//if(spielfeld[(nach.getX()+i][nach.getY()]== spielfeld[von.getX()][von.getY()])
 		for(int i=0;i<=7;i++)
 		{
-			if((nach.getY()== von.getX()+i)||(nach.getY()== von.getY()-i))
+			if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
 			{
 				rueckgabewert=true;
 			}	
 			
-		}
+		}*/
 			
 		
 	
