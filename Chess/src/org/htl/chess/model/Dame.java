@@ -1,6 +1,6 @@
 package org.htl.chess.model;
 
-public class Turm extends Figur{
+public class Dame {
 	boolean rueckgabewert;
 	private Feld[ ] [ ] spielfeld;
 	
@@ -9,7 +9,7 @@ public class Turm extends Figur{
 		spielfeld= sp.getMat();
 		if(spielzugmoeglich(sp,von,nach))
 		{
-			sp.spielzugAusfuehren(von, nach, this);
+			//sp.spielzugAusfuehren(von, nach, this);
 		}
 		return rueckgabewert;
 	}

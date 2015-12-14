@@ -10,7 +10,8 @@ public class Springer extends Figur{
 		
 		if(this.spielzugMoeglich(sp,von,nach)){
 			
-			sp.spielzugAusführen(von, nach, this );
+			
+			sp.spielzugAusfuehren(von, nach, this );
 			return true;
 		}
 		
