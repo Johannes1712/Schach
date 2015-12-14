@@ -5,8 +5,6 @@ public class Figur extends Feld{
 	private boolean farbeWeiss;
 	private boolean bewegt;
 	
-
-	
 	protected Feld[ ] [ ] spielfeld;
 	
 	public boolean spielZug(Spielfeld sp, Position von, Position nach){
