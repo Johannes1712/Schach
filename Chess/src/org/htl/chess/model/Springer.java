@@ -10,6 +10,8 @@ public class Springer extends Figur{
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach){
 		
+		if(!super.spielzugMoeglich(sp, von, nach))return false;
+		
 		Feld figur= spielfeld [nach.getX()][nach.getY()];
 		if(figur instanceof Figur){
 			
