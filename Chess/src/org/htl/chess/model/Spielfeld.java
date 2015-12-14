@@ -2,7 +2,7 @@ package org.htl.chess.model;
 
 public class Spielfeld 
 {
-	private Feld[][] mat=new Feld[10][10];
+	private Feld[][] mat=new Feld[8][8];
 	private boolean werAmZug;
 	
 	public void ausgabe()
