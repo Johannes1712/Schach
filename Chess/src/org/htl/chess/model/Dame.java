@@ -14,19 +14,19 @@ public class Dame extends Figur {
 		
 		Feld figur=spielfeld[nach.getX()][nach.getY()];
 		
-		if(super.spielzugMoeglich(sp, von, nach)==false)rueckgabewert=false;
+		if(super.spielzugMoeglich(sp, von, nach)==false)return false;
 		
 		if((nach.getX()<=8)&&(nach.getY()<=8))
 		{
 			rueckgabewert=true;
 		}
-		else rueckgabewert=false;
+		else return false;
 		
 		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
 		{
-			return true;
+			rueckgabewert= true;
 		}
-		else rueckgabewert=false;
+		else return false;
 		
 		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
 		{
@@ -34,23 +34,6 @@ public class Dame extends Figur {
 			if(istGleichesTeam)return false;
 		}
 		
-		
-		/*for(int i=0;i<=7;i++)
-		{
-			if(sp.mat[von.getX()+i][von.getY()]==sp.mat[nach.getX()][von.getY()])
-			{
-				rueckgabewert=true;
-			}
-			else rueckgabewert=false;
-		}
-		for(int i=0;i<=7;i++)
-		{
-			if(sp.mat[von.getX()][von.getY()+1]==sp.mat[nach.getX()][von.getY()])
-			{
-				rueckgabewert=true;
-			}
-			else rueckgabewert=false;
-		}*/
 		
 		return rueckgabewert;
 		
