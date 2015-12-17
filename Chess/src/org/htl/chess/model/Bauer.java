@@ -45,6 +45,11 @@ public class Bauer extends Figur {
 				return true;
 			}
 		}
+		
+		/*if(nach.getY()==7){
+			
+		}*/
+		
 		return false;
 	}
 }
