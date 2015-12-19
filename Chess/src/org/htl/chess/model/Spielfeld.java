@@ -3,6 +3,7 @@ package org.htl.chess.model;
 public class Spielfeld 
 {
 	private Feld[][] mat=new Feld[8][8];
+	@SuppressWarnings("unused")
 	private boolean werAmZug;
 
 	public void ausgabe() {
