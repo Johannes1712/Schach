@@ -1,7 +1,8 @@
 package org.htl.chess.model;
 
-public class Spielfeld {
-	private Feld[][] mat = new Feld[8][8];
+public class Spielfeld 
+{
+	private Feld[][] mat=new Feld[8][8];
 	private boolean werAmZug;
 
 	public void ausgabe() {
@@ -24,6 +25,7 @@ public class Spielfeld {
 		}
 	}
 
+	@SuppressWarnings("null")
 	public boolean schach(){
 		
 		Position koenig1Pos = null;
@@ -39,6 +41,8 @@ public class Spielfeld {
 					if(welcherKoenig)koenig1Pos.setX(i);koenig1Pos.setY(b);welcherKoenig=false;
 					koenig2Pos.setX(i);koenig2Pos.setY(b);break;
 				}
+				
+				
 			}
 		}
 		welcherKoenig=true;
@@ -59,38 +63,45 @@ public class Spielfeld {
 		}	
 		
 		return false;
+		
 	}
-
-	public boolean schachMatt() {
+	public boolean schachMatt()
+	{
 		return false;
 	}
-
-	public void spielzug(String zug) {
-		if (Integer.parseInt(zug) / 2 == 0) {
-			werAmZug = true;
-		} else {
-			werAmZug = false;
+	
+	public void spielzug(String zug)
+	{
+		if(Integer.parseInt(zug)/2==0)
+		{
+			werAmZug=true;
+		}
+		else
+		{
+			werAmZug=false;
 		}
 	}
-
-	public Position schach2koordinate(String schach) {
+	
+	public Position schach2koordinate(String schach)
+	{
 		return new Position();
 	}
-
-	public void spielfeldVeraendern() {
-
+	
+	public void spielfeldVeraendern(){
+		
 	}
-
-	public Feld[][] getMat() {
+	
+	public Feld [][] getMat(){
 		return mat;
 	}
 
+
+
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur) {
-
-		Feld feld = new Feld();
-		;
-		mat[von.getX()][von.getY()] = feld;
-
-		mat[nach.getX()][nach.getY()] = figur;
+		
+		Feld feld = new Feld();;
+		mat[von.getX()][von.getY()]= feld;
+		
+		mat[nach.getX()][nach.getY()]= figur;
 	}
 }

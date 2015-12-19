@@ -1,51 +1,44 @@
-package org.htl.chess.model;
 
-public class Dame extends Figur{
+package org.htl.chess.model;
 	
+
+public class Dame extends Figur {
 	boolean rueckgabewert;
-	public boolean spielzug(Spielfeld sp, Position von, Position nach)
+	private Feld[ ] [ ] spielfeld;
+	
+	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
-		if(rueckgabewert==true)
-		{
-			//sp.spielzug();
-			rueckgabewert=true;
-		}
-		return rueckgabewert;
+		return super.spielZug(sp, von, nach);
 	}
 	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
 	{
-		if((nach.getx()<=8)&&(nach.gety()<=8))
+		
+		Feld figur=spielfeld[nach.getX()][nach.getY()];
+		
+		if(super.spielzugMoeglich(sp, von, nach)==false)return false;
+		
+		if((nach.getX()<=8)&&(nach.getY()<=8))
 		{
 			rueckgabewert=true;
 		}
-		else
-		{
-			rueckgabewert=false;
-			System.out.println("falsch");
-		}
+		else return false;
 		
-		//if(sp[nach.getx()][nach.gety()] instanceof Dame)
-		if(sp.matt[nach.getx()][nach.gety()]!=sp.matt[von.getx()][von.gety()])
+		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
 		{
-			rueckgabewert=true;
+			rueckgabewert= true;
 		}
-		else rueckgabewert=false;
+		else return false;
 		
-		//farbe weiss
-		if(sp.matt[nach.getx()][nach.gety()-1]==sp.matt[von.getx()][von.gety()])
+		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
 		{
-			//geschlagen
-		}
-		if(sp.matt[nach.getx()-1][nach.gety()]==sp.matt[von.getx()][von.gety()])
-		{
-			//geschlagen
-		}
-		if(sp.matt[nach.getx()-1][nach.gety()-1]==sp.matt[von.getx()][von.gety()])
-		{
-			//geschlagen
+			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
+			if(istGleichesTeam)return false;
 		}
 		
 		
 		return rueckgabewert;
+		
 	}
+
+
 }

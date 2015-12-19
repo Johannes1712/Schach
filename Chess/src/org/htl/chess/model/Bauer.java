@@ -16,9 +16,10 @@ public class Bauer extends Figur {
 		boolean eigener;
 		Figur figur = (Figur) spielfeld[von.getX()][von.getY()];
 		
+		if(!super.spielzugMoeglich(sp, von, nach))return false;
+		
 		//abfragen ob es dieselbe Figur ist 
 		if (figur instanceof Figur) {
-
 			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
 			if (istGleichesTeam)
 				return false;
@@ -44,6 +45,11 @@ public class Bauer extends Figur {
 				return true;
 			}
 		}
+		
+		/*if(nach.getY()==7){
+			
+		}*/
+		
 		return false;
 	}
 }
