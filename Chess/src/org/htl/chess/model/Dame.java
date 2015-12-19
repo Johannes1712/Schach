@@ -1,5 +1,6 @@
+package org.htl.chess.model;
 
-public class Dame extends Spielfigur{
+public class Dame extends Figur{
 	
 	boolean rueckgabewert;
 	public boolean spielzug(Spielfeld sp, Position von, Position nach)
