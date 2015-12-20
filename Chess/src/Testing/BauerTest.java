@@ -35,5 +35,4 @@ public class BauerTest {
 	public void testSpielZugMoeglich() {
 		fail("Not yet implemented");
 	}
-
 }

@@ -53,3 +53,8 @@ public class Bauer extends Figur {
 		return false;
 	}
 }
+
+
+
+
+

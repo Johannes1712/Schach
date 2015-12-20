@@ -1,3 +1,4 @@
+
 package org.htl.chess.model;
 
 public class Laeufer extends Figur {
