@@ -22,7 +22,7 @@ public class Figur extends Feld{
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach){
 		if(nach.getX()>8 || nach.getY()>8)return false;
-		return false;
+		return true;
 	}
 	
 	public void setFarbeWeiss(boolean farbeWeiss){
