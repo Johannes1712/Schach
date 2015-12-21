@@ -15,11 +15,6 @@ public class Dame extends Figur {
 	{	
 		if(super.spielzugMoeglich(sp, von, nach)==false)return false;
 		
-		if((nach.getX()<=7)&&(nach.getY()<=7))
-		{
-			rueckgabewert=true;
-		}
-		else return false;
 		
 		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
 		{
