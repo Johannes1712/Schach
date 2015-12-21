@@ -11,10 +11,9 @@ public class Laeufer extends Figur {
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) {
 		Feld figur = spielfeld[nach.getX()][nach.getY()];
-		boolean rueckgabewert;
+		boolean rueckgabewert=false;
 		int bewegenX = nach.getX() - von.getX();
 		int bewegenY = nach.getY() - von.getY();
-		
 		
 		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
