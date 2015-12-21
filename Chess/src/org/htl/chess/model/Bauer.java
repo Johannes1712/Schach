@@ -13,7 +13,15 @@ public class Bauer extends Figur {
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) {
 		boolean ersterSpielzug = false;
-		boolean eigener;
+		boolean rueckgabewert;
+		
+		if((nach.getX()<=7)&&(nach.getY()<=7))
+		{
+			rueckgabewert=true;
+		}
+		else return false;
+		
+		
 		Figur figur = (Figur) spielfeld[von.getX()][von.getY()];
 		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
@@ -37,12 +45,12 @@ public class Bauer extends Figur {
 
 		// Figur den 1.Spielzug
 		if (ersterSpielzug && (von.getY() + 2 == nach.getY()) || (von.getY() + 1 == nach.getY())) {
-			return true;
+			rueckgabewert= true;
 		
 		} else {
 			//schlagen
 			if ((von.getX() + 1 == nach.getX() || von.getX() - 1 == nach.getX()) && von.getY() + 1 == nach.getY()) {
-				return true;
+				rueckgabewert= true;
 			}
 		}
 		
@@ -50,7 +58,7 @@ public class Bauer extends Figur {
 			
 		}*/
 		
-		return false;
+		return rueckgabewert;
 	}
 }
 
