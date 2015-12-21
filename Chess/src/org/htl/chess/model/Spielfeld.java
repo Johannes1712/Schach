@@ -106,13 +106,13 @@ public class Spielfeld
 						if(welcherKoenig)
 						{
 							koenig1Pos.setX(i);koenig1Pos.setY(b);welcherKoenig=false;
-							Position nach1 = null; nach1.setX(i);nach1.setY(b);
+							Position nach1 = new Position(); nach1.setX(i);nach1.setY(b);
 							if(this.spielzuegePruefen(figur,koenig1Pos))return true;
 							
 						}
 						
 						koenig2Pos.setX(i);koenig2Pos.setY(b);
-						Position nach2=null; nach2.setX(i);nach2.setY(b);
+						Position nach2=new Position(); nach2.setX(i);nach2.setY(b);
 						if(this.spielzuegePruefen(figur,koenig2Pos))return true;
 
 					}
