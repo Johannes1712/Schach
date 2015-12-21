@@ -84,15 +84,9 @@ public class Spielfeld
 		return new Position();
 	}
 	
-	public void spielfeldVeraendern(){
-		
-	}
-	
 	public Feld [][] getMat(){
 		return mat;
 	}
-
-
 
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur) {
 		
