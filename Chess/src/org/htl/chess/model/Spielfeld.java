@@ -3,7 +3,6 @@ package org.htl.chess.model;
 public class Spielfeld 
 {
 	private Feld[][] mat = new Feld[8][8];
-	@SuppressWarnings("unused")
 	private boolean werAmZug;
 
 	public void ausgabe() 
@@ -37,12 +36,12 @@ public class Spielfeld
 		}
 	}
 
-	@SuppressWarnings("null")
+
 	public boolean schach() 
 	{
 
-		Position koenig1Pos = null;
-		Position koenig2Pos = null;
+		Position koenig1Pos = new Position();
+		Position koenig2Pos = new Position();
 		boolean welcherKoenig;
 
 		for (int i = 0; i <= 7; i++)
@@ -89,8 +88,8 @@ public class Spielfeld
 
 	public boolean schachMatt()
 	{
-		Position koenig1Pos = null;
-		Position koenig2Pos = null;
+		Position koenig1Pos = new Position();
+		Position koenig2Pos=new Position();
 		boolean welcherKoenig;
 		
 		if(this.schach())
