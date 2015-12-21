@@ -16,25 +16,19 @@ public class Bauer extends Figur
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
 	{
 		boolean ersterSpielzug = false;
-		boolean rueckgabewert;
-
-		if ((nach.getX() <= 7) && (nach.getY() <= 7)) 
-		{
-			rueckgabewert = true;
-		} else
-			return false;
+		boolean rueckgabewert = true;
 
 		Figur figur = (Figur) spielfeld[von.getX()][von.getY()];
 
 		if (!super.spielzugMoeglich(sp, von, nach))
-			return false;
+			rueckgabewert= false;
 
 		// abfragen ob es dieselbe Figur ist
 		if (figur instanceof Figur) 
 		{
 			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
 			if (istGleichesTeam)
-				return false;
+				rueckgabewert= false;
 		}
 
 		// Abfrage ob erste Spielzug oder nicht
