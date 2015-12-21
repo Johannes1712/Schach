@@ -3,15 +3,14 @@ package org.htl.chess.model;
 public class Turm extends Figur{
 	boolean rueckgabewert;
 	private Feld[ ] [ ] spielfeld;
+	private Feld figur;
 	
 	public boolean spielzug(Spielfeld sp, Position von, Position nach)
 	{
 		return super.spielZug(sp, von, nach);
 	}
 	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
-	{
-		Feld figur=spielfeld[nach.getX()][nach.getY()];
-		
+	{	
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		
 		if((nach.getX()<=7)&&(nach.getY()<=7))
@@ -27,6 +26,8 @@ public class Turm extends Figur{
 			rueckgabewert= true;
 		}
 		else return false;
+		
+		if(rueckgabewert) figur=spielfeld[nach.getX()][nach.getY()];
 		
 		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
 		{
