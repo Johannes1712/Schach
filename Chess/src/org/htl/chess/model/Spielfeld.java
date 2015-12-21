@@ -34,18 +34,16 @@ public class Spielfeld
 		boolean welcherKoenig;
 		
 		for(int i=0;i<=7;i++){
-			for(int b=0;b<=7;b++){
-				
+			for(int b=0;b<=7;b++){				
 				Figur figur= (Figur) mat[i][b];
 				if(figur instanceof Koenig){
 					welcherKoenig=true;
 					if(welcherKoenig)koenig1Pos.setX(i);koenig1Pos.setY(b);welcherKoenig=false;
 					koenig2Pos.setX(i);koenig2Pos.setY(b);break;
-				}
-				
-				
+				}				
 			}
 		}
+		
 		welcherKoenig=true;
 		for(int i=0;i<=7;i++){
 			for(int b=0;b<=7;b++){
@@ -61,10 +59,8 @@ public class Spielfeld
 					}
 				}
 			}	
-		}	
-		
+		}			
 		return false;
-		
 	}
 	public boolean schachMatt()
 	{
@@ -101,8 +97,7 @@ public class Spielfeld
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur) {
 		
 		Feld feld = new Feld();;
-		mat[von.getX()][von.getY()]= feld;
-		
+		mat[von.getX()][von.getY()]= feld;		
 		mat[nach.getX()][nach.getY()]= figur;
 	}
 }

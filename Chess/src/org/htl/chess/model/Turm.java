@@ -14,7 +14,7 @@ public class Turm extends Figur{
 		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		
-		if((nach.getX()<=8)&&(nach.getY()<=8))
+		if((nach.getX()<=7)&&(nach.getY()<=7))
 		{
 			rueckgabewert=true;
 		}

@@ -1,7 +1,6 @@
 
 package org.htl.chess.model;
 	
-
 public class Dame extends Figur {
 	boolean rueckgabewert;
 	private Feld[ ] [ ] spielfeld;
@@ -10,6 +9,7 @@ public class Dame extends Figur {
 	{
 		return super.spielZug(sp, von, nach);
 	}
+	
 	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
 	{
 		
@@ -17,7 +17,7 @@ public class Dame extends Figur {
 		
 		if(super.spielzugMoeglich(sp, von, nach)==false)return false;
 		
-		if((nach.getX()<=8)&&(nach.getY()<=8))
+		if((nach.getX()<=7)&&(nach.getY()<=7))
 		{
 			rueckgabewert=true;
 		}
@@ -35,10 +35,6 @@ public class Dame extends Figur {
 			if(istGleichesTeam)return false;
 		}
 		
-		
 		return rueckgabewert;
-		
 	}
-
-
 }
