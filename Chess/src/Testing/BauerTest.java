@@ -2,6 +2,7 @@ package Testing;
 
 import static org.junit.Assert.*;
 
+import org.htl.chess.model.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,7 +35,13 @@ public class BauerTest
 	@Test
 	public void testSpielZug() 
 	{
-		spielzugMoeglich;
+		Bauer figur=(Bauer) new Figur();
+		Spielfeld spf=new Spielfeld();
+		Position von=new Position();
+		Position nach=new Position();
+		
+		assert(figur.spielzugMoeglich(spf, von, nach));
+		
 		fail("Not yet implemented");
 	}
 
