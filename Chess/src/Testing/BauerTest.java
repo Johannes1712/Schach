@@ -34,6 +34,7 @@ public class BauerTest
 	@Test
 	public void testSpielZug() 
 	{
+		spielzugMoeglich;
 		fail("Not yet implemented");
 	}
 

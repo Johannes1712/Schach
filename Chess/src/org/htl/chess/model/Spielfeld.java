@@ -92,7 +92,8 @@ public class Spielfeld
 		return false;
 	}
 
-	public void spielzug(String zug) {
+	public void spielzug(String zug) 
+	{
 		if (Integer.parseInt(zug) / 2 == 0) 
 		{
 			werAmZug = true;
@@ -114,9 +115,7 @@ public class Spielfeld
 
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur)
 	{
-
 		Feld feld = new Feld();
-		;
 		mat[von.getX()][von.getY()] = feld;
 		mat[nach.getX()][nach.getY()] = figur;
 	}
