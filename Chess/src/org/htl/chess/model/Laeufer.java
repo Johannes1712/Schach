@@ -16,11 +16,6 @@ public class Laeufer extends Figur {
 		int bewegenY = nach.getY() - von.getY();
 		
 		
-		if((nach.getX()<=7)&&(nach.getY()<=7))
-		{
-			rueckgabewert=true;
-		}
-		else return false;
 		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		

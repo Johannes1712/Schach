@@ -1,17 +1,20 @@
 package org.htl.chess.model;
 
-public class Figur extends Feld{
+public class Figur extends Feld
+{
 	
 	private boolean farbeWeiss;
 	private boolean bewegt;
 	
 	protected Feld[ ] [ ] spielfeld;
 	
-	public boolean spielZug(Spielfeld sp, Position von, Position nach){
+	public boolean spielZug(Spielfeld sp, Position von, Position nach)
+	{
 		
 		spielfeld= sp.getMat();
 		
-		if(this.spielzugMoeglich(sp,von,nach)){
+		if(this.spielzugMoeglich(sp,von,nach))
+		{
 			
 			sp.spielzugAusfuehren(von, nach, this );
 			return true;
@@ -20,24 +23,29 @@ public class Figur extends Feld{
 		return false;
 	}
 	
-	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach){
+	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
+	{
 		if(nach.getX()>8 || nach.getY()>8)return false;
 		return true;
 	}
 	
-	public void setFarbeWeiss(boolean farbeWeiss){
+	public void setFarbeWeiss(boolean farbeWeiss)
+	{
 		this.farbeWeiss=farbeWeiss;
 	}
 	
-	public boolean getFarbeWeiss(){
+	public boolean getFarbeWeiss()
+	{
 		return farbeWeiss;
 	}
 	
-	public void setBewegt(boolean bewegt){
+	public void setBewegt(boolean bewegt)
+	{
 		this.bewegt=bewegt;
 	}
 	
-	public boolean getBewegt(){
+	public boolean getBewegt()
+	{
 		return bewegt;
 	}
 

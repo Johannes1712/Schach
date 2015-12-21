@@ -1,7 +1,7 @@
 package org.htl.chess.model;
 
 public class Turm extends Figur{
-	boolean rueckgabewert;
+	boolean rueckgabewert=false;
 	private Feld[ ] [ ] spielfeld;
 	private Feld figur;
 	
@@ -12,8 +12,6 @@ public class Turm extends Figur{
 	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
 	{	
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
-		
-		if(super.spielzugMoeglich(sp, von, nach)==false)return false;
 		
 		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
 		{

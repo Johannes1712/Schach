@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class BauerTest 
+public class LaeuferTest
 {
 
 	@BeforeClass
@@ -42,4 +42,5 @@ public class BauerTest
 	{
 		fail("Not yet implemented");
 	}
+
 }

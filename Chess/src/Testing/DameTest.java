@@ -8,31 +8,38 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class DameTest {
+public class DameTest 
+{
 
 	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() throws Exception 
+	{
 	}
 
 	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
+	public static void tearDownAfterClass() throws Exception
+	{
 	}
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws Exception 
+	{
 	}
 
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() throws Exception 
+	{
 	}
 
 	@Test
-	public void testSpielZug() {
+	public void testSpielZug() 
+	{
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSpielzugmoeglich() {
+	public void testSpielzugmoeglich() 
+	{
 		fail("Not yet implemented");
 	}
 
