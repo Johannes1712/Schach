@@ -16,19 +16,18 @@ public class Bauer extends Figur
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
 	{
 		boolean ersterSpielzug = false;
-		boolean rueckgabewert = true;
 
-		Figur figur = (Figur) spielfeld[von.getX()][von.getY()];
+		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
+		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
 
-		if (!super.spielzugMoeglich(sp, von, nach))
-			rueckgabewert= false;
+		if (!super.spielzugMoeglich(sp, von, nach))	return false;
 
 		// abfragen ob es dieselbe Figur ist
-		if (figur instanceof Figur) 
+		if (figurVon instanceof Figur) 
 		{
-			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
-			if (istGleichesTeam)
-				rueckgabewert= false;
+			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
+			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
+			if (istGleichesTeamVon==istGleichesTeamNach)return false;
 		}
 
 		// Abfrage ob erste Spielzug oder nicht
@@ -47,23 +46,21 @@ public class Bauer extends Figur
 		// Figur den 1.Spielzug
 		if (ersterSpielzug && (von.getY() + 2 == nach.getY()) || (von.getY() + 1 == nach.getY())) 
 		{
-			rueckgabewert = true;
+			return true;
 
 		} else 
 		{
 			// schlagen
 			if ((von.getX() + 1 == nach.getX() || von.getX() - 1 == nach.getX()) && von.getY() + 1 == nach.getY()) 
 			{
-				rueckgabewert = true;
+				return true;
 			}
 		}
-
 		/*
 		 * if(nach.getY()==7){
 		 * 
 		 * }
 		 */
-
-		return rueckgabewert;
+		return false;
 	}
 }

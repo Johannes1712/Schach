@@ -10,19 +10,21 @@ public class Laeufer extends Figur {
 	}
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) {
-		Feld figur = spielfeld[nach.getX()][nach.getY()];
 		boolean rueckgabewert=false;
 		int bewegenX = nach.getX() - von.getX();
 		int bewegenY = nach.getY() - von.getY();
 		
-		
-		if(!super.spielzugMoeglich(sp, von, nach))return false;
-		
-		// abfragen ob die Figur die eigene ist 
-		if (figur instanceof Figur) {
-			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
-			if (istGleichesTeam)
-				return false;
+		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
+		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+
+		if (!super.spielzugMoeglich(sp, von, nach))	return false;
+
+		// abfragen ob es dieselbe Figur ist
+		if (figurVon instanceof Figur) 
+		{
+			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
+			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
+			if (istGleichesTeamVon==istGleichesTeamNach)return false;
 		}
 
 		// Abfragen ob die Figur ein Laeufer ist oder nicht
