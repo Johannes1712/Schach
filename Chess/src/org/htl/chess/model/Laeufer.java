@@ -31,7 +31,12 @@ public class Laeufer extends Figur
 
 		if (bewegenX !=von.getX()  && bewegenY != von.getY()) 
 		{
-			// fuer vorwerts bewegen
+			//fuer bewegen
+			if(bewegenX==0||bewegenY==0)
+			{
+				return false;
+			}
+			else
 			if ((von.getX() + bewegenX) == nach.getX() && (von.getY() + bewegenY == nach.getY())) 
 			{
 				return true;
