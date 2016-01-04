@@ -15,9 +15,11 @@ public class Bauer extends Figur
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
 	{
-		boolean ersterSpielzug = false;
 		boolean farbeSchwarz=false;
-
+		
+		int bewegenX = nach.getX() - von.getX();
+		int bewegenY = nach.getY() - von.getY();
+		
 		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
 		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
 
@@ -30,6 +32,8 @@ public class Bauer extends Figur
 			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
 			if (istGleichesTeamVon==istGleichesTeamNach)return false;
 		}
+		
+		//abfragen welche Farbe die Figur hat
 		if(((Figur) figurVon).getFarbeWeiss())
 		{
 			farbeSchwarz	= false;
@@ -38,43 +42,62 @@ public class Bauer extends Figur
 		{
 			farbeSchwarz	= true;
 		}
-	
 		
-		// Abfrage ob erste Spielzug der Farbe weiß
+		//Für Farbe weiß
 		if(!farbeSchwarz)
-		{
+		{ 
+			// Abfrage ob erste Spielzug der Farbe weiß
 			if(((Figur) figurVon).getBewegt())
 			{
-				if ((von.getX() + 1 == nach.getX() || von.getX() - 1 == nach.getX()) && von.getY() + 1 == nach.getY()) 
+				if((bewegenX==1||bewegenX==-1||bewegenX==0) && bewegenY==1)
 				{
 					return true;
 				}
+				else
+				{
+					return false;
+				}
+				
 			}
 			else
 			{
-				if (ersterSpielzug && (von.getY() + 2 == nach.getY()) || (von.getY() + 1 == nach.getY())) 
+				if(bewegenX==0||bewegenX==1||bewegenX==-1)
 				{
-					return true;
+					if(bewegenY==2||bewegenY==1)
+					{
+						((Figur) figurVon).setBewegt(true);
+						return true;
+					}
 				}
+				
 			}
 		}
 		
 		//Für Farbe schwarz 
 		if(farbeSchwarz)
 		{
+			// Abfrage ob erste Spielzug der Farbe schwarz
 			if(((Figur) figurVon).getBewegt())
-			{
-				if ((von.getX() - 1 == nach.getX() || von.getX() +1 == nach.getX()) && von.getY() - 1 == nach.getY()) 
+			{			
+				if((bewegenX==1||bewegenX==-1||bewegenX==0) && bewegenY==-1)
 				{
 					return true;
+				}
+				else
+				{
+					return false;
 				}
 			}
 			else
 			{
-				if (ersterSpielzug && (von.getY()- 2 == nach.getY()) || (von.getY() - 1 == nach.getY())) 
+				if(bewegenX==0||bewegenX==1||bewegenX==-1)
 				{
-					return true;
-				}
+					if(bewegenY==-2||bewegenY==-1)
+					{
+						((Figur) figurVon).setBewegt(true);
+						return true;
+					}
+				}			
 			}
 		}
 		

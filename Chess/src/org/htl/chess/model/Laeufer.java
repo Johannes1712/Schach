@@ -29,17 +29,10 @@ public class Laeufer extends Figur
 			if (istGleichesTeamVon==istGleichesTeamNach)return false;
 		}
 
-		if (bewegenX > 0 && bewegenY > 0) 
+		if (bewegenX !=von.getX()  && bewegenY != von.getY()) 
 		{
 			// fuer vorwerts bewegen
 			if ((von.getX() + bewegenX) == nach.getX() && (von.getY() + bewegenY == nach.getY())) 
-			{
-				return true;
-			}
-		} else 
-		{
-			// fuer rueckwerts bewegen
-			if ((von.getX() - bewegenX) == nach.getX() && (von.getY() - bewegenY == nach.getY()))
 			{
 				return true;
 			}
