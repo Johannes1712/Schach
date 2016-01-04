@@ -16,6 +16,7 @@ public class Bauer extends Figur
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
 	{
 		boolean ersterSpielzug = false;
+		boolean farbeSchwarz=false;
 
 		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
 		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
@@ -29,33 +30,55 @@ public class Bauer extends Figur
 			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
 			if (istGleichesTeamVon==istGleichesTeamNach)return false;
 		}
-
-		// Abfrage ob erste Spielzug oder nicht
-		if ((von.getY() + 1 == nach.getY()) || (von.getY() + 2 == nach.getY()))
+		if(((Figur) figurVon).getFarbeWeiss())
 		{
-			if (von.getY() == 1) 
+			farbeSchwarz	= false;
+		}
+		else
+		{
+			farbeSchwarz	= true;
+		}
+	
+		
+		// Abfrage ob erste Spielzug der Farbe weiß
+		if(!farbeSchwarz)
+		{
+			if(((Figur) figurVon).getBewegt())
 			{
-				ersterSpielzug = true;
-
-			} else
+				if ((von.getX() + 1 == nach.getX() || von.getX() - 1 == nach.getX()) && von.getY() + 1 == nach.getY()) 
+				{
+					return true;
+				}
+			}
+			else
 			{
-				ersterSpielzug = false;
+				if (ersterSpielzug && (von.getY() + 2 == nach.getY()) || (von.getY() + 1 == nach.getY())) 
+				{
+					return true;
+				}
 			}
 		}
-
-		// Figur den 1.Spielzug
-		if (ersterSpielzug && (von.getY() + 2 == nach.getY()) || (von.getY() + 1 == nach.getY())) 
+		
+		//Für Farbe schwarz 
+		if(farbeSchwarz)
 		{
-			return true;
-
-		} else 
-		{
-			// schlagen
-			if ((von.getX() + 1 == nach.getX() || von.getX() - 1 == nach.getX()) && von.getY() + 1 == nach.getY()) 
+			if(((Figur) figurVon).getBewegt())
 			{
-				return true;
+				if ((von.getX() - 1 == nach.getX() || von.getX() +1 == nach.getX()) && von.getY() - 1 == nach.getY()) 
+				{
+					return true;
+				}
+			}
+			else
+			{
+				if (ersterSpielzug && (von.getY()- 2 == nach.getY()) || (von.getY() - 1 == nach.getY())) 
+				{
+					return true;
+				}
 			}
 		}
+		
+		
 		/*
 		 * if(nach.getY()==7){
 		 * 
