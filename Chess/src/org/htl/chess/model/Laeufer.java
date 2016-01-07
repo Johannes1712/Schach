@@ -28,7 +28,12 @@ public class Laeufer extends Figur
 			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
 			if (istGleichesTeamVon==istGleichesTeamNach)return false;
 		}
-
+		
+		for(int i=0;)
+		{
+			
+		}
+		
 		if (bewegenX !=von.getX()  && bewegenY != von.getY()) 
 		{
 			//fuer bewegen
