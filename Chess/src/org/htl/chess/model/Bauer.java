@@ -15,55 +15,98 @@ public class Bauer extends Figur
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
 	{
-		boolean ersterSpielzug = false;
-		boolean rueckgabewert = true;
+		boolean farbeSchwarz=false;
+		
+		int bewegenX = nach.getX() - von.getX();
+		int bewegenY = nach.getY() - von.getY();
+		
+		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
+		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
 
-		Figur figur = (Figur) spielfeld[von.getX()][von.getY()];
-
-		if (!super.spielzugMoeglich(sp, von, nach))
-			rueckgabewert= false;
+		if (!super.spielzugMoeglich(sp, von, nach))	return false;
 
 		// abfragen ob es dieselbe Figur ist
-		if (figur instanceof Figur) 
+		if (figurVon instanceof Figur) 
 		{
-			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
-			if (istGleichesTeam)
-				rueckgabewert= false;
+			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
+			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
+			if (istGleichesTeamVon==istGleichesTeamNach)return false;
 		}
-
-		// Abfrage ob erste Spielzug oder nicht
-		if ((von.getY() + 1 == nach.getY()) || (von.getY() + 2 == nach.getY()))
+		
+		//abfragen welche Farbe die Figur hat
+		if(((Figur) figurVon).getFarbeWeiss())
 		{
-			if (von.getY() == 1) 
+			farbeSchwarz	= false;
+		}
+		else
+		{
+			farbeSchwarz	= true;
+		}
+		
+		//Für Farbe weiß
+		if(!farbeSchwarz)
+		{ 
+			// Abfrage ob erste Spielzug der Farbe weiß
+			if(((Figur) figurVon).getBewegt())
 			{
-				ersterSpielzug = true;
-
-			} else
+				if((bewegenX==1||bewegenX==-1||bewegenX==0) && bewegenY==1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+				
+			}
+			else
 			{
-				ersterSpielzug = false;
+				if(bewegenX==0||bewegenX==1||bewegenX==-1)
+				{
+					if(bewegenY==2||bewegenY==1)
+					{
+						((Figur) figurVon).setBewegt(true);
+						return true;
+					}
+				}
+				
 			}
 		}
-
-		// Figur den 1.Spielzug
-		if (ersterSpielzug && (von.getY() + 2 == nach.getY()) || (von.getY() + 1 == nach.getY())) 
+		
+		//Für Farbe schwarz 
+		if(farbeSchwarz)
 		{
-			rueckgabewert = true;
-
-		} else 
-		{
-			// schlagen
-			if ((von.getX() + 1 == nach.getX() || von.getX() - 1 == nach.getX()) && von.getY() + 1 == nach.getY()) 
+			// Abfrage ob erste Spielzug der Farbe schwarz
+			if(((Figur) figurVon).getBewegt())
+			{			
+				if((bewegenX==1||bewegenX==-1||bewegenX==0) && bewegenY==-1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else
 			{
-				rueckgabewert = true;
+				if(bewegenX==0||bewegenX==1||bewegenX==-1)
+				{
+					if(bewegenY==-2||bewegenY==-1)
+					{
+						((Figur) figurVon).setBewegt(true);
+						return true;
+					}
+				}			
 			}
 		}
-
+		
+		
 		/*
 		 * if(nach.getY()==7){
 		 * 
 		 * }
 		 */
-
-		return rueckgabewert;
+		return false;
 	}
 }

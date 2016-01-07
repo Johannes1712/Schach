@@ -1,6 +1,7 @@
 package org.htl.chess.model;
 
-public class Turm extends Figur{
+public class Turm extends Figur
+{
 	boolean rueckgabewert=false;
 	private Feld[ ] [ ] spielfeld;
 	private Feld figur;
