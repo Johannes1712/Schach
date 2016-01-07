@@ -25,14 +25,6 @@ public class Bauer extends Figur
 
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
 
-		// abfragen ob es dieselbe Figur ist
-		if (figurVon instanceof Figur) 
-		{
-			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
-			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
-			if (istGleichesTeamVon==istGleichesTeamNach)return false;
-		}
-		
 		//abfragen welche Farbe die Figur hat
 		if(((Figur) figurVon).getFarbeWeiss())
 		{
