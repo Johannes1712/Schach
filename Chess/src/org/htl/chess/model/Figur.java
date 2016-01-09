@@ -26,7 +26,12 @@ public class Figur extends Feld
 		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
 		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
 		
-		// abfragen ob es dieselbe Figur ist
+		if(!this.dieselbeFigur(figurVon,figurNach))return false;
+		return true;
+	}
+	
+	public boolean dieselbeFigur(Figur figurVon,Figur figurNach){
+		
 		if (figurVon instanceof Figur) 
 		{
 			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
