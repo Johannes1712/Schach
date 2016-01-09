@@ -23,9 +23,8 @@ public class Bauer extends Figur
 		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
 		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
 
-	
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
-		
+
 		// abfragen ob es dieselbe Figur ist
 		if (figurVon instanceof Figur) 
 		{
@@ -33,8 +32,6 @@ public class Bauer extends Figur
 			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
 			if (istGleichesTeamVon==istGleichesTeamNach)return false;
 		}
-		
-	
 		
 		//abfragen welche Farbe die Figur hat
 		if(((Figur) figurVon).getFarbeWeiss())
@@ -60,6 +57,7 @@ public class Bauer extends Figur
 				{
 					return false;
 				}
+				
 			}
 			else
 			{
@@ -70,7 +68,8 @@ public class Bauer extends Figur
 						((Figur) figurVon).setBewegt(true);
 						return true;
 					}
-				}				
+				}
+				
 			}
 		}
 		
