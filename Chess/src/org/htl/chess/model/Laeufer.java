@@ -16,32 +16,76 @@ public class Laeufer extends Figur
 		int bewegenX = nach.getX() - von.getX();
 		int bewegenY = nach.getY() - von.getY();
 		
-		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
-		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
-
+		int zaehler;
+		
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
+		Position pos;
+		pos=new Position();
 
-		// abfragen ob es dieselbe Figur ist
-		if (figurVon instanceof Figur) 
+		if(bewegenX==0||bewegenY==0)
 		{
-			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
-			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
-			if (istGleichesTeamVon==istGleichesTeamNach)return false;
-		}
-
-		if (bewegenX !=von.getX()  && bewegenY != von.getY()) 
+			return false;
+		}			
+		
+		
+		if(bewegenY>0)
 		{
-			//fuer bewegen
-			if(bewegenX==0||bewegenY==0)
+			for(zaehler=0;zaehler<bewegenY;zaehler++)
 			{
-				return false;
+				Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+				pos.setX(von.getX()+zaehler);
+				pos.setY(von.getY()+zaehler);
+				if (super.spielzugMoeglich(sp, von ,pos))
+				{
+					break;
+				}
+				else
+				{
+					if(figurNach instanceof Figur)
+					{
+						return false;
+					}
+				}
 			}
-			else
-			if ((von.getX() + bewegenX) == nach.getX() && (von.getY() + bewegenY == nach.getY())) 
+			
+			if(zaehler==bewegenY)
 			{
 				return true;
 			}
+			else
+			{
+				return false;
+			}
 		}
-		return false;
+		else
+		{
+			for(zaehler=0;zaehler>bewegenY;zaehler--)
+			{	
+				Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+				pos.setX(von.getX()+zaehler);
+				pos.setY(von.getY()+zaehler);
+				if (super.spielzugMoeglich(sp, von ,pos))
+				{
+					break;
+				}
+				else
+				{
+					if(figurNach instanceof Figur)
+					{
+						return false;
+					}
+				}
+			}
+			
+			if(zaehler==bewegenY)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 }
+

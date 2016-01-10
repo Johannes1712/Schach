@@ -23,6 +23,21 @@ public class Figur extends Feld
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{
 		if(nach.getX()>8 || nach.getY()>8)return false;
+		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
+		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+		
+		if(!this.dieselbeFigur(figurVon,figurNach))return false;
+		return true;
+	}
+	
+	public boolean dieselbeFigur(Figur figurVon,Figur figurNach){
+		
+		if (figurVon instanceof Figur) 
+		{
+			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
+			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
+			if (istGleichesTeamVon==istGleichesTeamNach)return false;
+		}
 		return true;
 	}
 	
@@ -45,5 +60,4 @@ public class Figur extends Feld
 	{
 		return bewegt;
 	}
-
 }
