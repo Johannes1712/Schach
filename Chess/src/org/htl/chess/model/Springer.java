@@ -23,7 +23,7 @@ public class Springer extends Figur
 		if(figur instanceof Figur)
 		{
 			
-			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
 			if(istGleichesTeam)return false;
 		}
 		

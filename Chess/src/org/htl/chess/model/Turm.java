@@ -2,6 +2,10 @@ package org.htl.chess.model;
 
 public class Turm extends Figur
 {
+	public Turm(boolean farbe) {
+		super(farbe);
+		// TODO Auto-generated constructor stub
+	}
 	boolean rueckgabewert=false;
 	private Feld[ ] [ ] spielfeld;
 	private Feld figur;
@@ -24,7 +28,7 @@ public class Turm extends Figur
 		
 		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
 		{
-			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
 			if(istGleichesTeam)return false;
 		}
 		return rueckgabewert;

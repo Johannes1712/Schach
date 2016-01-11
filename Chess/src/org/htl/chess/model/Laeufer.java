@@ -3,6 +3,11 @@ package org.htl.chess.model;
 
 public class Laeufer extends Figur
 {
+	public Laeufer(boolean farbe) {
+		super(farbe);
+		// TODO Auto-generated constructor stub
+	}
+
 	private Feld[][] spielfeld;
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
