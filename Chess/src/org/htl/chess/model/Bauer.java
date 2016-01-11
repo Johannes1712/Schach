@@ -4,7 +4,6 @@ public class Bauer extends Figur
 {
 	public Bauer(boolean farbe) {
 		super(farbe);
-		// TODO Auto-generated constructor stub
 	}
 
 	// Spalten sind Buchstaben
@@ -24,19 +23,15 @@ public class Bauer extends Figur
 		
 		int bewegenX = nach.getX() - von.getX();
 		int bewegenY = nach.getY() - von.getY();
-		
-		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
-		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+		Figur figurVon=null;
+		Figur figurNach=null;
+		if(spielfeld[von.getX()][von.getY()] instanceof Figur)
+		{
+			figurVon = (Figur) spielfeld[von.getX()][von.getY()];
+			figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];			
+		}
 
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
-
-		// abfragen ob es dieselbe Figur ist
-		if (figurVon instanceof Figur) 
-		{
-			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeW();
-			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeW();
-			if (istGleichesTeamVon==istGleichesTeamNach)return false;
-		}
 		
 		//abfragen welche Farbe die Figur hat
 		if(((Figur) figurVon).getFarbeW())
@@ -73,8 +68,7 @@ public class Bauer extends Figur
 						((Figur) figurVon).setBewegt(true);
 						return true;
 					}
-				}
-				
+				}				
 			}
 		}
 		
