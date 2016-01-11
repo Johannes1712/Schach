@@ -3,10 +3,14 @@ package org.htl.chess.model;
 public class Figur extends Feld
 {
 	
-	private boolean farbeWeiss;
+	private boolean farbeW;
 	private boolean bewegt;
 	
 	protected Feld[ ] [ ] spielfeld;
+	
+	public Figur(boolean farbe){
+		this.farbeW=farbe;
+	}
 	
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
@@ -34,21 +38,17 @@ public class Figur extends Feld
 		
 		if (figurVon instanceof Figur) 
 		{
-			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
-			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
-			if (istGleichesTeamVon==istGleichesTeamNach)return false;
+			boolean istGleichesTeamVon= ((Figur)figurVon).getFarbeW();
+			boolean istGleichesTeamNach= ((Figur)figurNach).getFarbeW();
+			if(istGleichesTeamVon==istGleichesTeamNach) return false;
 		}
 		return true;
 	}
 	
-	public void setFarbeWeiss(boolean farbeWeiss)
-	{
-		this.farbeWeiss=farbeWeiss;
-	}
 	
-	public boolean getFarbeWeiss()
+	public boolean getFarbeW()
 	{
-		return farbeWeiss;
+		return farbeW;
 	}
 	
 	public void setBewegt(boolean bewegt)
