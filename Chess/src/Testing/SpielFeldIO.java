@@ -43,7 +43,7 @@ public class SpielFeldIO
 	
 	static public Spielfeld einlesen(String fName) throws FileNotFoundException
 	{
-		Position position= new Position();
+		Position position= new Position(0,0);
 		Spielfeld feld = new Spielfeld();
 		Scanner s = new Scanner (new File(fName));
 		int zeile = 0;

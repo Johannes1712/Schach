@@ -2,6 +2,7 @@ package Testing;
 
 import static org.junit.Assert.*;
 
+import org.htl.chess.model.Position;
 import org.htl.chess.model.Spielfeld;
 import org.junit.Test;
 
