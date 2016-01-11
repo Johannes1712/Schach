@@ -2,6 +2,11 @@ package org.htl.chess.model;
 
 public class Bauer extends Figur 
 {
+	public Bauer(boolean farbe) {
+		super(farbe);
+		// TODO Auto-generated constructor stub
+	}
+
 	// Spalten sind Buchstaben
 	// Zeilen sind Zahlen
 	// 0/0 ist links unten auf a1
@@ -28,13 +33,13 @@ public class Bauer extends Figur
 		// abfragen ob es dieselbe Figur ist
 		if (figurVon instanceof Figur) 
 		{
-			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
-			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
+			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeW();
+			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeW();
 			if (istGleichesTeamVon==istGleichesTeamNach)return false;
 		}
 		
 		//abfragen welche Farbe die Figur hat
-		if(((Figur) figurVon).getFarbeWeiss())
+		if(((Figur) figurVon).getFarbeW())
 		{
 			farbeSchwarz	= false;
 		}

@@ -4,10 +4,13 @@ public class Springer extends Figur
 {
 	
 
+	public Springer(boolean farbeW) {
+		super(farbeW);
+	}
+
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
 		
-
 		return super.spielZug(sp, von, nach);
 	}
 	
@@ -20,7 +23,7 @@ public class Springer extends Figur
 		if(figur instanceof Figur)
 		{
 			
-			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
 			if(istGleichesTeam)return false;
 		}
 		
