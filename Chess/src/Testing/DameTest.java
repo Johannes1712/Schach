@@ -2,8 +2,15 @@ package Testing;
 
 import static org.junit.Assert.*;
 
+import org.htl.chess.model.Bauer;
+import org.htl.chess.model.Dame;
+import org.htl.chess.model.Feld;
+import org.htl.chess.model.Figur;
+import org.htl.chess.model.Position;
+import org.htl.chess.model.Spielfeld;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -31,7 +38,8 @@ public class DameTest
 	{
 	}
 
-	@Test
+	private Feld[ ] [ ] spielfeld;
+	
 	public void testSpielZug() 
 	{
 		fail("Not yet implemented");
@@ -40,7 +48,49 @@ public class DameTest
 	@Test
 	public void testSpielzugmoeglich() 
 	{
-		fail("Not yet implemented");
+		try
+		{
+			Spielfeld sf=new Spielfeld(); //SpielfeldIO.einlesen("testdata/bauer_feld1.txt");
+			Dame d=new Dame();
+			Position von=new Position();
+			Position nach=new Position();
+			
+			von.setY(0);
+			von.setX(4);
+			nach.setX(4);
+			nach.setY(1);
+			boolean beobachtet=d.spielzugmoeglich(sf,von,nach);
+			Assert.assertFalse(beobachtet);
+			
+			nach.setX(9);
+			nach.setY(9);
+			beobachtet=d.spielzugmoeglich(sf,von,nach);
+			Assert.assertFalse(beobachtet);
+			
+			nach.setX(4);
+			nach.setY(2);
+			beobachtet=d.spielzugmoeglich(sf, von, nach);
+			Assert.assertFalse(beobachtet);
+			
+			Bauer b=new Bauer();
+			von.setY(1);
+			von.setX(5);
+			nach.setX(5);
+			nach.setY(2);
+			beobachtet=b.spielzugMoeglich(sf, von, nach);
+			Assert.assertTrue(beobachtet);
+			
+			nach.setX(6);
+			nach.setY(2);
+			beobachtet=b.spielzugMoeglich(sf, von, nach);
+			Assert.assertTrue(beobachtet);
+			
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			Assert.fail();
+		}
 	}
 
 }
