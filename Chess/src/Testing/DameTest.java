@@ -51,9 +51,10 @@ public class DameTest
 		try
 		{
 			Spielfeld sf=new Spielfeld(); //SpielfeldIO.einlesen("testdata/bauer_feld1.txt");
-			Dame d=new Dame();
+			Dame d=new Dame(true);
 			Position von=new Position();
 			Position nach=new Position();
+			sf.ausgabe();
 			
 			von.setY(0);
 			von.setX(4);
@@ -72,7 +73,7 @@ public class DameTest
 			beobachtet=d.spielzugmoeglich(sf, von, nach);
 			Assert.assertFalse(beobachtet);
 			
-			Bauer b=new Bauer();
+			Bauer b=new Bauer(true);
 			von.setY(1);
 			von.setX(5);
 			nach.setX(5);
