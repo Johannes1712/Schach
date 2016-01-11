@@ -3,17 +3,21 @@ package org.htl.chess.model;
 public class Figur extends Feld
 {
 	
-	private boolean farbeWeiss;
+	private boolean farbeW;
 	private boolean bewegt;
 	
 	protected Feld[ ] [ ] spielfeld;
 	
-	public boolean spielZug(Spielfeld sp, Position von, Position nach, Figur figur)
+	public Figur(boolean farbe){
+		this.farbeW=farbe;
+	}
+	
+	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
 		spielfeld= sp.getMat();	
-		if(figur.spielzugMoeglich(sp,von,nach))
+		if(this.spielzugMoeglich(sp,von,nach))
 		{			
-			sp.spielzugAusfuehren(von, nach, figur);
+			sp.spielzugAusfuehren(von, nach, this );
 			return true;
 		}
 		
@@ -22,9 +26,15 @@ public class Figur extends Feld
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{
+		Figur figurVon = null;
+		Figur figurNach = null;
+		
 		if(nach.getX()>8 || nach.getY()>8)return false;
-		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
-		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+		if(spielfeld[von.getX()][von.getY()] instanceof Figur)
+		{
+			figurVon = (Figur) spielfeld[von.getX()][von.getY()];
+			figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+		}
 		
 		if(!this.dieselbeFigur(figurVon,figurNach))return false;
 		return true;
@@ -34,21 +44,17 @@ public class Figur extends Feld
 		
 		if (figurVon instanceof Figur) 
 		{
-			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
-			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
-			if (istGleichesTeamVon==istGleichesTeamNach)return false;
+			boolean istGleichesTeamVon= ((Figur)figurVon).getFarbeW();
+			boolean istGleichesTeamNach= ((Figur)figurNach).getFarbeW();
+			if(istGleichesTeamVon==istGleichesTeamNach) return false;
 		}
 		return true;
 	}
 	
-	public void setFarbeWeiss(boolean farbeWeiss)
-	{
-		this.farbeWeiss=farbeWeiss;
-	}
 	
-	public boolean getFarbeWeiss()
+	public boolean getFarbeW()
 	{
-		return farbeWeiss;
+		return farbeW;
 	}
 	
 	public void setBewegt(boolean bewegt)

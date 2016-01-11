@@ -2,6 +2,10 @@ package org.htl.chess.model;
 
 public class Bauer extends Figur 
 {
+	public Bauer(boolean farbe) {
+		super(farbe);
+	}
+
 	// Spalten sind Buchstaben
 	// Zeilen sind Zahlen
 	// 0/0 ist links unten auf a1
@@ -10,7 +14,7 @@ public class Bauer extends Figur
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach) 
 	{
-		return super.spielZug(sp, von, nach, this);
+		return super.spielZug(sp, von, nach);
 	}
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
@@ -19,22 +23,18 @@ public class Bauer extends Figur
 		
 		int bewegenX = nach.getX() - von.getX();
 		int bewegenY = nach.getY() - von.getY();
-		
-		Figur figurVon = (Figur) spielfeld[von.getX()][von.getY()];
-		Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+		Figur figurVon=null;
+		Figur figurNach=null;
+		if(spielfeld[von.getX()][von.getY()] instanceof Figur)
+		{
+			figurVon = (Figur) spielfeld[von.getX()][von.getY()];
+			figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];			
+		}
 
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
-
-		// abfragen ob es dieselbe Figur ist
-		if (figurVon instanceof Figur) 
-		{
-			boolean istGleichesTeamVon = ((Figur) figurVon).getFarbeWeiss();
-			boolean istGleichesTeamNach = ((Figur) figurNach).getFarbeWeiss();
-			if (istGleichesTeamVon==istGleichesTeamNach)return false;
-		}
 		
 		//abfragen welche Farbe die Figur hat
-		if(((Figur) figurVon).getFarbeWeiss())
+		if(((Figur) figurVon).getFarbeW())
 		{
 			farbeSchwarz	= false;
 		}

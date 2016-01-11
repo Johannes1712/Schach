@@ -3,13 +3,18 @@ package org.htl.chess.model;
 	
 public class Dame extends Figur
 {
+	public Dame(boolean farbe) {
+		super(farbe);
+		// TODO Auto-generated constructor stub
+	}
+
 	boolean rueckgabewert=false;
 	private Feld[ ] [ ] spielfeld;
 	private Feld figur;
 	
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
-		return super.spielZug(sp, von, nach, this);
+		return super.spielZug(sp, von, nach);
 	}
 	
 	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
@@ -26,7 +31,7 @@ public class Dame extends Figur
 		
 		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
 		{
-			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
 			if(istGleichesTeam)return false;
 		}
 		return rueckgabewert;

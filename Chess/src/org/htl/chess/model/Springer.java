@@ -4,11 +4,20 @@ public class Springer extends Figur
 {
 	
 
+	public Springer(boolean farbeW) {
+		super(farbeW);
+	}
+
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
+<<<<<<< HEAD
 		
 
-		return super.spielZug(sp, von, nach, this);
+		return super.spielZug(sp, von, nach);
+=======
+		
+		return super.spielZug(sp, von, nach);
+>>>>>>> branch 'master' of https://github.com/Johannes1712/Schach.git
 	}
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
@@ -20,7 +29,7 @@ public class Springer extends Figur
 		if(figur instanceof Figur)
 		{
 			
-			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
 			if(istGleichesTeam)return false;
 		}
 		

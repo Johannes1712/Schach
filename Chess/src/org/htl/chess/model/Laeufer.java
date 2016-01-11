@@ -3,11 +3,15 @@ package org.htl.chess.model;
 
 public class Laeufer extends Figur
 {
+	public Laeufer(boolean farbe) {
+		super(farbe);
+	}
+
 	private Feld[][] spielfeld;
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
-		return super.spielZug(sp, von, nach, this);
+		return super.spielZug(sp, von, nach);
 	}
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach)
@@ -34,7 +38,11 @@ public class Laeufer extends Figur
 		{
 			for(zaehler=0;zaehler<bewegenY;zaehler++)
 			{
-				Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+				Figur figurNach=null;
+				if(spielfeld[von.getX()][von.getY()] instanceof Figur)
+				{
+					figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+				}
 				pos.setX(von.getX()+zaehler);
 				pos.setY(von.getY()+zaehler);
 				

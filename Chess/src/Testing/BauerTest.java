@@ -39,7 +39,7 @@ public class BauerTest
 	{
 		boolean ausfuehren;
 		Spielfeld spf=new Spielfeld();
-		Bauer figur2=new Bauer();
+		Bauer figur2=new Bauer(true);
 		spf.ausgabe();
 		Position von=new Position();
 		Position nach=new Position();
@@ -51,11 +51,8 @@ public class BauerTest
 		System.out.println(nach.getX()+" h "+nach.getY());
 		System.out.println(figur2+" h ");
 		System.out.println(figur2.spielZug(spf, von, nach));
-		ausfuehren=figur2.spielZug(spf, von, nach);
-		//assertTrue(ausfuehren);		
-		assertEquals(ausfuehren,true);
-
-		
+		ausfuehren=figur2.spielZug(spf, von, nach);	
+		assertEquals(ausfuehren,true);		
 	}
 
 	@Test
