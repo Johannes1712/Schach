@@ -9,7 +9,7 @@ public class Dame extends Figur
 	
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
-		return super.spielZug(sp, von, nach);
+		return super.spielZug(sp, von, nach, this);
 	}
 	
 	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)

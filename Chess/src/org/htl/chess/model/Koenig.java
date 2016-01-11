@@ -5,7 +5,7 @@ public class Koenig extends Figur
 
 	public boolean spielzug(Spielfeld sp,Position von,Position nach)
 	{
-		return super.spielZug(sp, von, nach);
+		return super.spielZug(sp, von, nach, this);
 	}
 	
 	public boolean spielzugMoeglich(Spielfeld sp,Position von,Position nach)

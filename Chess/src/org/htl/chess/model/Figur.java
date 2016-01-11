@@ -8,12 +8,12 @@ public class Figur extends Feld
 	
 	protected Feld[ ] [ ] spielfeld;
 	
-	public boolean spielZug(Spielfeld sp, Position von, Position nach)
+	public boolean spielZug(Spielfeld sp, Position von, Position nach, Figur figur)
 	{
 		spielfeld= sp.getMat();	
-		if(this.spielzugMoeglich(sp,von,nach))
+		if(figur.spielzugMoeglich(sp,von,nach))
 		{			
-			sp.spielzugAusfuehren(von, nach, this );
+			sp.spielzugAusfuehren(von, nach, figur);
 			return true;
 		}
 		

@@ -10,7 +10,7 @@ public class Bauer extends Figur
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach) 
 	{
-		return super.spielZug(sp, von, nach);
+		return super.spielZug(sp, von, nach, this);
 	}
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
@@ -68,8 +68,7 @@ public class Bauer extends Figur
 						((Figur) figurVon).setBewegt(true);
 						return true;
 					}
-				}
-				
+				}				
 			}
 		}
 		

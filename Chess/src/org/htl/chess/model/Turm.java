@@ -8,7 +8,7 @@ public class Turm extends Figur
 	
 	public boolean spielzug(Spielfeld sp, Position von, Position nach)
 	{
-		return super.spielZug(sp, von, nach);
+		return super.spielZug(sp, von, nach, this);
 	}
 	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
 	{	

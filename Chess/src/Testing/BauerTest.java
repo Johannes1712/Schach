@@ -1,5 +1,6 @@
 package Testing;
 
+
 import static org.junit.Assert.*;
 
 import org.htl.chess.model.*;
@@ -8,6 +9,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 
 public class BauerTest 
 {
@@ -35,19 +37,30 @@ public class BauerTest
 	@Test
 	public void testSpielZug() 
 	{
-		Bauer figur=(Bauer) new Figur();
+		boolean ausfuehren;
 		Spielfeld spf=new Spielfeld();
+		Bauer figur2=new Bauer();
+		spf.ausgabe();
 		Position von=new Position();
 		Position nach=new Position();
+		von.setX(1);
+		von.setY(1);
+		nach.setX(1);
+		nach.setY(2);
+		System.out.println(von.getX()+" h "+von.getY());
+		System.out.println(nach.getX()+" h "+nach.getY());
+		System.out.println(figur2+" h ");
+		System.out.println(figur2.spielZug(spf, von, nach));
+		ausfuehren=figur2.spielZug(spf, von, nach);
+		//assertTrue(ausfuehren);		
+		assertEquals(ausfuehren,true);
+
 		
-		assert(figur.spielzugMoeglich(spf, von, nach));
-		
-		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testSpielZugMoeglich() 
 	{
-		fail("Not yet implemented");
+		
 	}
 }

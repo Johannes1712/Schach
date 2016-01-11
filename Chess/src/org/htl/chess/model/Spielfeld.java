@@ -2,7 +2,7 @@ package org.htl.chess.model;
 
 public class Spielfeld 
 {
-	private Feld[][] mat = new Feld[8][8];
+	public Feld[][] mat = new Feld[8][8];
 	private boolean werAmZug;
 
 	public void ausgabe() 
@@ -11,7 +11,6 @@ public class Spielfeld
 		{
 			for (int b = 0; b <= 7; b++) 
 			{
-
 				Figur figur = (Figur) mat[i][b];
 				if (figur instanceof Bauer)
 					System.out.print("B ");
@@ -31,7 +30,6 @@ public class Spielfeld
 				System.out.print("| ");
 				if (b == 7)
 					System.out.println();
-
 			}
 		}
 	}
