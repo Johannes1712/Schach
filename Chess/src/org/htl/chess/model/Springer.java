@@ -10,14 +10,8 @@ public class Springer extends Figur
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
-<<<<<<< HEAD
-		
 
 		return super.spielZug(sp, von, nach);
-=======
-		
-		return super.spielZug(sp, von, nach);
->>>>>>> branch 'master' of https://github.com/Johannes1712/Schach.git
 	}
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
