@@ -2,6 +2,7 @@ package Testing;
 
 import static org.junit.Assert.*;
 
+import org.htl.chess.model.Spielfeld;
 import org.junit.Test;
 
 public class SpringerTest {
@@ -14,7 +15,7 @@ public class SpringerTest {
 	{
 		try
 		{
-			SpielFeld sf = SpielFeldIO.einlesen("testdata/bauer_feld1.txt");
+			Spielfeld sf = SpielFeldIO.einlesen("testdata/bauer_feld1.txt");
 			sf.setWeissNachOben(false);
 			Bauer b = (Bauer) sf.getFeld(3, 6);
 
