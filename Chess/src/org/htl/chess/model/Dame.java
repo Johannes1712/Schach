@@ -3,6 +3,11 @@ package org.htl.chess.model;
 	
 public class Dame extends Figur
 {
+	public Dame(boolean farbe) {
+		super(farbe);
+		// TODO Auto-generated constructor stub
+	}
+
 	boolean rueckgabewert=false;
 	private Feld[ ] [ ] spielfeld;
 	private Feld figur;
@@ -12,7 +17,7 @@ public class Dame extends Figur
 		return super.spielZug(sp, von, nach);
 	}
 	
-	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
+	public boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
 	{	
 		if(super.spielzugMoeglich(sp, von, nach)==false)return false;
 		
@@ -22,11 +27,45 @@ public class Dame extends Figur
 		}
 		else return false;
 		
+		if(nach.getX()>von.getX()||nach.getY()>von.getY())
+		{
+			
+			int xkoord;
+			int ykoord;
+			
+			for(xkoord=von.getX();xkoord<=nach.getX();xkoord++)
+			{
+				for(ykoord=von.getY();ykoord<=nach.getY();ykoord++)
+				{
+					if(spielfeld[xkoord][ykoord]==spielfeld[von.getX()][von.getY()])
+					{
+						return false;
+					}
+				}
+			}
+		}
+		else
+		{
+			int xkoord;
+			int ykoord;
+			
+			for(xkoord=nach.getX();xkoord<=von.getX();xkoord++)
+			{
+				for(ykoord=nach.getY();ykoord<=von.getY();ykoord++)
+				{
+					if(spielfeld[xkoord][ykoord]==spielfeld[von.getX()][von.getY()])
+					{
+						return false;
+					}
+				}
+			}
+		}
+		
 		if(rueckgabewert) figur=spielfeld[nach.getX()][nach.getY()];
 		
 		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
 		{
-			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
 			if(istGleichesTeam)return false;
 		}
 		return rueckgabewert;

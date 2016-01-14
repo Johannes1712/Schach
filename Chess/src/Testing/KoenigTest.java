@@ -40,35 +40,12 @@ public class KoenigTest {
 	@Test
 	public void testSpielzugMoeglich() {
 		
+		
+		
 		try
 		{
-			SpielFeld sf = SpielFeldIO.einlesen("testdata/bauer_feld1.txt");
 			
-			Koenig k = new Koenig();
-			Position von = new Position();
-			Position nach = new Position();
-			
-			//1 vor
-			
-			//1 zurück
-			
-			//1 rechts
-			
-			//1 links
-			
-			//1 dia rechts vor
-			
-			//1 dia rechts zurück
-			
-			//1 dia links vor
-			
-			//1 dia rechts vor
-			
-			//kleine Rochade
-			
-			//große Rochade
-		
-		} catch (FileNotFoundException e)
+		} catch (Exception e)
 		{
 
 			e.printStackTrace();
@@ -77,6 +54,23 @@ public class KoenigTest {
 		
 		//fail("Not yet implemented");
 	}
+	
+	
+	public void testSpielzugMoeglich2() {
+		
+		try
+		{
+			
+		} catch (Exception e)
+		{
+
+			e.printStackTrace();
+			Assert.fail();
+		}
+		
+		//fail("Not yet implemented");
+	}
+
 
 	@Test
 	public void testSpielzug() {

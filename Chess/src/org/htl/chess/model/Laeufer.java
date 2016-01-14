@@ -3,11 +3,14 @@ package org.htl.chess.model;
 
 public class Laeufer extends Figur
 {
+	public Laeufer(boolean farbe) {
+		super(farbe);
+	}
+
 	private Feld[][] spielfeld;
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
-
 		return super.spielZug(sp, von, nach);
 	}
 
@@ -15,7 +18,6 @@ public class Laeufer extends Figur
 	{
 		int bewegenX = nach.getX() - von.getX();
 		int bewegenY = nach.getY() - von.getY();
-		
 		int zaehler;
 		
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
@@ -25,19 +27,28 @@ public class Laeufer extends Figur
 		if(bewegenX==0||bewegenY==0)
 		{
 			return false;
-		}			
+		}				
 		
+		if(!(bewegenY==bewegenX||bewegenY==0-bewegenX||0-bewegenY==bewegenX))
+		{
+			return false;
+		}
 		
 		if(bewegenY>0)
 		{
 			for(zaehler=0;zaehler<bewegenY;zaehler++)
 			{
-				Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+				Figur figurNach=null;
+				if(spielfeld[von.getX()][von.getY()] instanceof Figur)
+				{
+					figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+				}
 				pos.setX(von.getX()+zaehler);
 				pos.setY(von.getY()+zaehler);
+				
 				if (super.spielzugMoeglich(sp, von ,pos))
 				{
-					break;
+					continue;
 				}
 				else
 				{
@@ -64,9 +75,10 @@ public class Laeufer extends Figur
 				Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
 				pos.setX(von.getX()+zaehler);
 				pos.setY(von.getY()+zaehler);
+				
 				if (super.spielzugMoeglich(sp, von ,pos))
 				{
-					break;
+					continue;
 				}
 				else
 				{

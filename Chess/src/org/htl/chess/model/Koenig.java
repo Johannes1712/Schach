@@ -3,6 +3,11 @@ package org.htl.chess.model;
 public class Koenig extends Figur
 {
 
+	public Koenig(boolean farbe) {
+		super(farbe);
+		// TODO Auto-generated constructor stub
+	}
+
 	public boolean spielzug(Spielfeld sp,Position von,Position nach)
 	{
 		return super.spielZug(sp, von, nach);
@@ -31,14 +36,15 @@ public class Koenig extends Figur
 		
 		if(figur instanceof Figur)
 		{
-			boolean istGleichesTeam = ((Figur) figur).getFarbeWeiss();
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
 			if(istGleichesTeam)rw = false;
 		}
 		
 		//Rochaden Weiﬂ:
 		
 																//groﬂe Rochade Weiﬂ
-		if (getFarbeWeiss() && ((nach.getX() == 2) && nach.getY() == 0) 
+		if (getFarbeW() && ((nach.getX() == 2) && nach.getY() == 0)
+
 				&& (getBewegt() == false) 						//Koenig darf zuvor nicht bewegt worden sein
 				&& (sp.schach() == false)						//Rochade ist im Schach nicht erlaubt
 				&& (((spielfeld [0][0] instanceof Turm)			//Turm muss in der Ecke stehen (bei gegnerischen Turm st‰nde der Kˆnig im Schach
@@ -50,7 +56,8 @@ public class Koenig extends Figur
 		}
 		
 																//kleine Rochade Weiﬂ
-		if (getFarbeWeiss() && ((nach.getX() == 6) && nach.getY() == 0) 
+		if (getFarbeW() && ((nach.getX() == 6) && nach.getY() == 0) 
+
 				&& (getBewegt() == false) 
 				&& (sp.schach() == false)
 				&& (((spielfeld [7][0] instanceof Turm)
@@ -64,7 +71,7 @@ public class Koenig extends Figur
 		//Rochaden Schwarz:
 		
 																//groﬂe Rochade Schwarz
-		if ((getFarbeWeiss() == false) && ((nach.getX() == 1) && nach.getY() == 7) 
+		if ((getFarbeW() == false) && ((nach.getX() == 1) && nach.getY() == 7) 
 				&& (getBewegt() == false) 
 				&& (sp.schach() == false)
 				&& (((spielfeld [0][7] instanceof Turm)
@@ -76,7 +83,7 @@ public class Koenig extends Figur
 		}
 		
 																//kleine Rochade Schwarz
-		if ((getFarbeWeiss() == false) && ((nach.getX() == 6) && nach.getY() == 7) 
+		if ((getFarbeW() == false) && ((nach.getX() == 6) && nach.getY() == 7) 
 				&& (getBewegt() == false)
 				&& (sp.schach() == false)
 				&& (((spielfeld [7][7] instanceof Turm)			
