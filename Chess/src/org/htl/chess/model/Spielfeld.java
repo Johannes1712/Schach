@@ -38,8 +38,8 @@ public class Spielfeld
 	public boolean schach() 
 	{
 
-		Position koenig1Pos = new Position();
-		Position koenig2Pos = new Position();
+		Position koenig1Pos = new Position(0,0);
+		Position koenig2Pos = new Position(0,0);
 		boolean welcherKoenig;
 
 		for (int i = 0; i <= 7; i++)
@@ -86,8 +86,8 @@ public class Spielfeld
 
 	public boolean schachMatt()
 	{
-		Position koenig1Pos = new Position();
-		Position koenig2Pos=new Position();
+		Position koenig1Pos = new Position(0,0);
+		Position koenig2Pos=new Position(0,0);
 		boolean welcherKoenig;
 		
 		if(this.schach())
@@ -104,13 +104,13 @@ public class Spielfeld
 						if(welcherKoenig)
 						{
 							koenig1Pos.setX(i);koenig1Pos.setY(b);welcherKoenig=false;
-							Position nach1 = new Position(); nach1.setX(i);nach1.setY(b);
+							Position nach1 = new Position(0,0); nach1.setX(i);nach1.setY(b);
 							if(this.spielzuegePruefen(figur,koenig1Pos))return true;
 							
 						}
 						
 						koenig2Pos.setX(i);koenig2Pos.setY(b);
-						Position nach2=new Position(); nach2.setX(i);nach2.setY(b);
+						Position nach2=new Position(0,0); nach2.setX(i);nach2.setY(b);
 						if(this.spielzuegePruefen(figur,koenig2Pos))return true;
 
 					}
@@ -216,12 +216,17 @@ public class Spielfeld
 
 	public Position schach2koordinate(String schach) 
 	{
-		return new Position();
+		return new Position(0,0);
 	}
 
 	public Feld[][] getMat() 
 	{
 		return mat;
+	}
+	public Figur getFigur(int x, int y) 
+	{
+		Figur figur;
+		return figur=(Figur) mat[x][y];
 	}
 
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur)
@@ -229,5 +234,8 @@ public class Spielfeld
 		Feld feld = new Feld();
 		mat[von.getX()][von.getY()] = feld;
 		mat[nach.getX()][nach.getY()] = figur;
+	}
+	public void figurenSetzen(Position pos, Feld f){
+		mat[pos.getX()][pos.getY()] = f;
 	}
 }

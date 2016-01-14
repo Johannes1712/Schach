@@ -4,7 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import org.htl.chess.model.Bauer;
+import org.htl.chess.model.Dame;
 import org.htl.chess.model.Feld;
+import org.htl.chess.model.Koenig;
+import org.htl.chess.model.Laeufer;
+import org.htl.chess.model.Position;
 import org.htl.chess.model.Spielfeld;
 import org.htl.chess.model.Springer;
 import org.htl.chess.model.Turm;
@@ -39,6 +44,7 @@ public class SpielFeldIO
 	
 	static public Spielfeld einlesen(String fName) throws FileNotFoundException
 	{
+		Position position= new Position(0,0);
 		Spielfeld feld = new Spielfeld();
 		Scanner s = new Scanner (new File(fName));
 		int zeile = 0;
@@ -49,7 +55,9 @@ public class SpielFeldIO
 			for (int spalte = 0; spalte < figs.length;spalte++)
 			{
 				Feld f = leseFeld(figs[spalte]); 
-				feld.setFeld(spalte, zeile,  f); //setze die aktuelle Figur auf das Spielfeld
+				position.setX(zeile);
+				position.setY(spalte);
+				feld.figurenSetzen(position,  f); //setze die aktuelle Figur auf das Spielfeld
 			}
 			zeile++;
 		}

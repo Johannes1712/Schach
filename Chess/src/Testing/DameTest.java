@@ -52,6 +52,7 @@ public class DameTest
 			Dame d=new Dame(true);
 			Position von=new Position();
 			Position nach=new Position();
+			sf.ausgabe();
 			
 			von.setY(0);
 			von.setX(4);
