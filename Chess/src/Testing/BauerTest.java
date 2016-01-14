@@ -33,16 +33,17 @@ public class BauerTest
 	public void tearDown() throws Exception 
 	{
 	}
-
+	
+	boolean ausfuehren;
+	Spielfeld spf=new Spielfeld();
+	Bauer figur2=new Bauer(true);	
+	Position von=new Position();
+	Position nach=new Position();
+	
 	@Test
 	public void testSpielZug() 
 	{
-		boolean ausfuehren;
-		Spielfeld spf=new Spielfeld();
-		Bauer figur2=new Bauer(true);
 		spf.ausgabe();
-		Position von=new Position();
-		Position nach=new Position();
 		von.setX(1);
 		von.setY(1);
 		nach.setX(1);
@@ -52,12 +53,21 @@ public class BauerTest
 		System.out.println(figur2+" h ");
 		System.out.println(figur2.spielZug(spf, von, nach));
 		ausfuehren=figur2.spielZug(spf, von, nach);	
-		assertEquals(ausfuehren,true);		
+		assertEquals(ausfuehren,true);	
 	}
 
 	@Test
 	public void testSpielZugMoeglich() 
 	{
-		
+		von.setX(1);
+		von.setY(1);
+		nach.setX(3);
+		nach.setY(2);
+		System.out.println(von.getX()+" h "+von.getY());
+		System.out.println(nach.getX()+" h "+nach.getY());
+		System.out.println(figur2+" h ");
+		System.out.println(figur2.spielZugMoeglich(spf, von, nach));
+		ausfuehren=figur2.spielZug(spf, von, nach);	
+		assertEquals(ausfuehren,false);
 	}
 }

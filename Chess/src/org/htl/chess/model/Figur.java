@@ -28,8 +28,10 @@ public class Figur extends Feld
 	{
 		Figur figurVon = null;
 		Figur figurNach = null;
-		
 		if(nach.getX()>8 || nach.getY()>8)return false;
+		System.out.println("Von X "+von.getX()+" von y"+von.getY());
+		System.out.println("Nach X "+nach.getX()+" nach y"+nach.getY());
+		
 		if(spielfeld[von.getX()][von.getY()] instanceof Figur)
 		{
 			figurVon = (Figur) spielfeld[von.getX()][von.getY()];

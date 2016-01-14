@@ -5,7 +5,6 @@ public class Dame extends Figur
 {
 	public Dame(boolean farbe) {
 		super(farbe);
-		// TODO Auto-generated constructor stub
 	}
 
 	boolean rueckgabewert=false;
@@ -17,9 +16,9 @@ public class Dame extends Figur
 		return super.spielZug(sp, von, nach);
 	}
 	
-	public boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
+	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{	
-		if(super.spielzugMoeglich(sp, von, nach)==false)return false;
+		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		
 		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
 		{

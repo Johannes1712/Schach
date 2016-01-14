@@ -23,6 +23,7 @@ public class SpielFeldIO
 	 * eine konkrete Figur, wenn es eine Spielfigur ist
 	 * Factory
 	 */	
+	/*
 	static Feld leseFeld(String f)
 	{
 		char typ = f.charAt(0); //z.B Bauer
@@ -43,7 +44,7 @@ public class SpielFeldIO
 	
 	static public Spielfeld einlesen(String fName) throws FileNotFoundException
 	{
-		Position position= new Position();
+		Position position= new Position(0,0);
 		Spielfeld feld = new Spielfeld();
 		Scanner s = new Scanner (new File(fName));
 		int zeile = 0;
@@ -69,5 +70,5 @@ public class SpielFeldIO
 		sf.ausgabe();
 
 	}
-
+	*/
 }
