@@ -18,6 +18,7 @@ public class SpielFeldIO
 	 * eine konkrete Figur, wenn es eine Spielfigur ist
 	 * Factory
 	 */	
+	/*
 	static Feld leseFeld(String f)
 	{
 		char typ = f.charAt(0); //z.B Bauer
@@ -61,5 +62,5 @@ public class SpielFeldIO
 		sf.ausgabe();
 
 	}
-
+	*/
 }

@@ -43,6 +43,7 @@ public class Laeufer extends Figur
 				{
 					figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
 				}
+				
 				pos.setX(von.getX()+zaehler);
 				pos.setY(von.getY()+zaehler);
 				

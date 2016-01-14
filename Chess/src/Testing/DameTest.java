@@ -46,12 +46,10 @@ public class DameTest
 	}
 
 	@Test
-	public void testSpielzugmoeglich() 
+	public void testSpielzugMoeglich() 
 	{
-		try
-		{
 			Spielfeld sf=new Spielfeld(); //SpielfeldIO.einlesen("testdata/bauer_feld1.txt");
-			Dame d=new Dame();
+			Dame d=new Dame(true);
 			Position von=new Position();
 			Position nach=new Position();
 			
@@ -59,20 +57,20 @@ public class DameTest
 			von.setX(4);
 			nach.setX(4);
 			nach.setY(1);
-			boolean beobachtet=d.spielzugmoeglich(sf,von,nach);
+			boolean beobachtet=d.spielzugMoeglich(sf,von,nach);
 			Assert.assertFalse(beobachtet);
 			
 			nach.setX(9);
 			nach.setY(9);
-			beobachtet=d.spielzugmoeglich(sf,von,nach);
+			beobachtet=d.spielzugMoeglich(sf,von,nach);
 			Assert.assertFalse(beobachtet);
 			
 			nach.setX(4);
 			nach.setY(2);
-			beobachtet=d.spielzugmoeglich(sf, von, nach);
+			beobachtet=d.spielzugMoeglich(sf, von, nach);
 			Assert.assertFalse(beobachtet);
 			
-			Bauer b=new Bauer();
+			Bauer b=new Bauer(true);
 			von.setY(1);
 			von.setX(5);
 			nach.setX(5);
@@ -84,13 +82,6 @@ public class DameTest
 			nach.setY(2);
 			beobachtet=b.spielzugMoeglich(sf, von, nach);
 			Assert.assertTrue(beobachtet);
-			
-		}
-		catch(Exception ex)
-		{
-			ex.printStackTrace();
-			Assert.fail();
-		}
 	}
 
 }

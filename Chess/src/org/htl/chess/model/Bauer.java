@@ -19,19 +19,30 @@ public class Bauer extends Figur
 
 	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
 	{
+	
 		boolean farbeSchwarz=false;
-		
 		int bewegenX = nach.getX() - von.getX();
+		System.out.println(bewegenX);
 		int bewegenY = nach.getY() - von.getY();
 		Figur figurVon=null;
 		Figur figurNach=null;
+		
+		
+		if(bewegenX==2)
+		{
+			return false;
+		}
+
+		if (!super.spielzugMoeglich(sp, von, nach))return false;
+		
+		
+		
 		if(spielfeld[von.getX()][von.getY()] instanceof Figur)
 		{
 			figurVon = (Figur) spielfeld[von.getX()][von.getY()];
 			figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];			
 		}
 
-		if (!super.spielzugMoeglich(sp, von, nach))	return false;
 		
 		//abfragen welche Farbe die Figur hat
 		if(((Figur) figurVon).getFarbeW())
