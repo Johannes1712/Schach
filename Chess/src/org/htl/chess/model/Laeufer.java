@@ -22,7 +22,7 @@ public class Laeufer extends Figur
 		
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
 		Position pos;
-		pos=new Position();
+		pos=new Position(0,0);
 
 		if(bewegenX==0||bewegenY==0)
 		{
@@ -43,6 +43,7 @@ public class Laeufer extends Figur
 				{
 					figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
 				}
+				
 				pos.setX(von.getX()+zaehler);
 				pos.setY(von.getY()+zaehler);
 				
