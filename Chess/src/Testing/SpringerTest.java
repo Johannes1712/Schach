@@ -1,9 +1,11 @@
 package Testing;
 
-import static org.junit.Assert.*;
+
 
 import org.htl.chess.model.Position;
 import org.htl.chess.model.Spielfeld;
+import org.htl.chess.model.Springer;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class SpringerTest {
@@ -17,16 +19,16 @@ public class SpringerTest {
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("testdata/bauer_feld1.txt");
-			sf.setWeissNachOben(false);
-			Bauer b = (Bauer) sf.getFeld(3, 6);
+			//sf.setWeissNachOben(false);
+			Springer sp = (Springer) sf.getFigur(1,0);
 
 			// 3 nach vorn
-			boolean beobachtet = b.spielzugMoeglich(sf, new Position(3, 6),
+			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(3, 6),
 					new Position(3, 3));
 			Assert.assertFalse(beobachtet);
 
 			// 2 nach vorn bei Beginn
-			beobachtet = b.spielzugMoeglich(sf, new Position(3, 6),
+			beobachtet = sp.spielzugMoeglich(sf, new Position(3, 6),
 					new Position(3, 4));
 			Assert.assertTrue(beobachtet);
 

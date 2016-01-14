@@ -223,6 +223,11 @@ public class Spielfeld
 	{
 		return mat;
 	}
+	public Figur getFigur(int x, int y) 
+	{
+		Figur figur;
+		return figur=(Figur) mat[x][y];
+	}
 
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur)
 	{
