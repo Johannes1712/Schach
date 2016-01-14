@@ -12,6 +12,7 @@ public class Springer extends Figur
 	{
 
 		return super.spielZug(sp, von, nach);
+
 	}
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
