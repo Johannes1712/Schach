@@ -29,25 +29,24 @@ public class Figur extends Feld
 		Figur figurVon = null;
 		Figur figurNach = null;
 		if(nach.getX()>8 || nach.getY()>8)return false;
-		System.out.println("Von X "+von.getX()+" von y"+von.getY());
-		System.out.println("Nach X "+nach.getX()+" nach y"+nach.getY());
 		
-		if(spielfeld[von.getX()][von.getY()] instanceof Figur)
+		if(sp.getFigur(von.getX(),von.getY()) instanceof Figur)
 		{
-			figurVon = (Figur) spielfeld[von.getX()][von.getY()];
-			figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+			figurVon = sp.getFigur(von.getX(),von.getY());
+			figurNach = sp.getFigur(nach.getX(),nach.getY());
 		}
 		
 		if(!this.dieselbeFigur(figurVon,figurNach))return false;
 		return true;
 	}
 	
-	public boolean dieselbeFigur(Figur figurVon,Figur figurNach){
+	public boolean dieselbeFigur(Figur figurVon, Figur figurNach){
 		
 		if (figurVon instanceof Figur) 
 		{
 			boolean istGleichesTeamVon= ((Figur)figurVon).getFarbeW();
 			boolean istGleichesTeamNach= ((Figur)figurNach).getFarbeW();
+			
 			if(istGleichesTeamVon==istGleichesTeamNach) return false;
 		}
 		return true;

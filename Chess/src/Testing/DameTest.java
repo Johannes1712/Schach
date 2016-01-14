@@ -42,7 +42,7 @@ public class DameTest
 	
 	public void testSpielZug() 
 	{
-		fail("Not yet implemented");
+	//	fail("Not yet implemented");
 	}
 
 	@Test
@@ -50,8 +50,8 @@ public class DameTest
 	{
 			Spielfeld sf=new Spielfeld(); //SpielfeldIO.einlesen("testdata/bauer_feld1.txt");
 			Dame d=new Dame(true);
-			Position von=new Position();
-			Position nach=new Position();
+			Position von=new Position(0,4);
+			Position nach=new Position(4,1);
 			sf.ausgabe();
 			
 			von.setY(0);

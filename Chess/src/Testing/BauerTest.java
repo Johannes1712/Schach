@@ -35,15 +35,16 @@ public class BauerTest
 	}
 	
 	boolean ausfuehren;
-	Spielfeld spf=new Spielfeld();
+	SpielFeldIO spf=new SpielFeldIO();
 	Bauer figur2=new Bauer(true);	
-	Position von=new Position();
-	Position nach=new Position();
+	
 	
 	@Test
 	public void testSpielZug() 
 	{
-		spf.ausgabe();
+		Position von=new Position(1,1);
+		Position nach=new Position(1,2);
+		SpielFeldIO.einlesen('B');
 		von.setX(1);
 		von.setY(1);
 		nach.setX(1);
@@ -59,6 +60,8 @@ public class BauerTest
 	@Test
 	public void testSpielZugMoeglich() 
 	{
+		Position von=new Position(1,2);
+		Position nach=new Position(3,2);
 		von.setX(1);
 		von.setY(1);
 		nach.setX(3);
@@ -67,6 +70,7 @@ public class BauerTest
 		System.out.println(nach.getX()+" h "+nach.getY());
 		System.out.println(figur2+" h ");
 		System.out.println(figur2.spielZugMoeglich(spf, von, nach));
+		spf.figurenSetzen(von, figur2);
 		ausfuehren=figur2.spielZug(spf, von, nach);	
 		assertEquals(ausfuehren,false);
 	}
