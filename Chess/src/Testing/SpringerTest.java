@@ -18,34 +18,20 @@ public class SpringerTest {
 	{
 		try
 		{
-			Spielfeld sf = SpielFeldIO.einlesen("testdata/bauer_feld1.txt");
+			Spielfeld sf = SpielFeldIO.einlesen("testdata/springer.txt");
 			//sf.setWeissNachOben(false);
 			Springer sp = (Springer) sf.getFigur(1,0);
 
-			// 3 nach vorn
-			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(3, 6),
-					new Position(3, 3));
+			// rechts nach vorn
+			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),
+					new Position(2, 2));
 			Assert.assertFalse(beobachtet);
 
-			// 2 nach vorn bei Beginn
-			beobachtet = sp.spielzugMoeglich(sf, new Position(3, 6),
+			// links nach vorn bei Beginn
+			beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),
 					new Position(3, 4));
 			Assert.assertTrue(beobachtet);
 
-			// 1 nach vorn bei Beginn
-			beobachtet = b.spielzugMoeglich(sf, new Position(3, 6),
-					new Position(3, 5));
-			Assert.assertTrue(beobachtet);
-
-			// 1x Diagonal wenn keine Figur auf Zielfeld steht LINKS
-			beobachtet = b.spielzugMoeglich(sf, new Position(3, 6),
-					new Position(4, 5));
-			Assert.assertFalse(beobachtet);
-
-			// 1x Diagonal wenn keine Figur auf Zielfeld steht LINKS
-			beobachtet = b.spielzugMoeglich(sf, new Position(3, 6),
-					new Position(7, 5));
-			Assert.assertFalse(beobachtet);
 		} catch (FileNotFoundException e)
 		{
 
