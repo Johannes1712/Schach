@@ -9,9 +9,9 @@ public class Springer extends Figur
 	}
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
-	{
 
-		return super.spielZug(sp, von, nach);
+	{
+		return super.spielZug(sp, von, nach);	
 	}
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
