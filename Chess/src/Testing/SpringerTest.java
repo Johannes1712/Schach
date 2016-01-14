@@ -29,7 +29,7 @@ public class SpringerTest {
 			// rechts nach vorn
 			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),
 					new Position(2, 2));
-			Assert.assertFalse(beobachtet);
+			Assert.assertTrue(beobachtet);
 
 			// links nach vorn bei Beginn
 			beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),
@@ -48,18 +48,15 @@ public class SpringerTest {
 	{
 		try
 		{
-			Spielfeld sf = SpielFeldIO.einlesen("testdata/bauer_feld2.txt");
-			Springer b = (Springer) sf.getFigur(3, 6);
+			Spielfeld sf = SpielFeldIO.einlesen("testdata/springer.txt");
+			Springer sp = (Springer) sf.getFigur(1,7);
 
-			// 1x Diagonal wenn gegnerische Figur auf Zielfeld steht LINKS
-			boolean beobachtet = b.spielzugMoeglich(sf, new Position(3, 6),
-					new Position(4, 5));
-			Assert.assertTrue(beobachtet);
+			// nicht eigene Figur schlagen
+			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,7),
+					new Position(3, 6));
+			Assert.assertFalse(beobachtet);
 
-			//b = (Bauer) sf.getFigur(4, 6);
-			beobachtet = b.spielzugMoeglich(sf, new Position(4, 6),
-					new Position(4, 5));
-
+	
 		} catch (FileNotFoundException e)
 		{
 
