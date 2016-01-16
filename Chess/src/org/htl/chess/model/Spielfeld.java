@@ -7,30 +7,45 @@ public class Spielfeld
 
 	public void ausgabe() 
 	{
+		boolean schonVergeben=false;
 		for (int i = 0; i <= 7; i++) 
 		{
 			for (int b = 0; b <= 7; b++) 
 			{
-				Figur figur = (Figur) mat[i][b];
+				Feld figur= mat [i][b];
+				
+				if(mat[i][b] instanceof Figur){
+					figur = (Figur) mat[i][b];
+					schonVergeben=false;
+				}else schonVergeben=true;
+					
 				if (figur instanceof Bauer)
-					System.out.print("B ");
+					System.out.print("B");
 				if (figur instanceof Turm)
-					System.out.print("T ");
+					System.out.print("T");
 				if (figur instanceof Springer)
-					System.out.print("S ");
+					System.out.print("S");
 				if (figur instanceof Laeufer)
-					System.out.print("L ");
+					System.out.print("L");
 				if (figur instanceof Koenig)
-					System.out.print("K ");
+					System.out.print("K");
 				if (figur instanceof Dame)
-					System.out.print("D ");
-				if (figur instanceof Feld)
+					System.out.print("D");
+				if (figur instanceof Feld && schonVergeben)
 					System.out.print("X ");
+				
+				if(!schonVergeben){
+					
+					boolean farbeW=((Figur) figur).getFarbeW();
+					if(farbeW)System.out.print("W");
+					else System.out.print("B");
+				}
 
 				System.out.print("| ");
 				if (b == 7)
 					System.out.println();
 			}
+			schonVergeben=false;
 		}
 	}
 
@@ -226,7 +241,7 @@ public class Spielfeld
 	public Figur getFigur(int x, int y) 
 	{
 		Figur figur;
-		return figur=(Figur) mat[x][y];
+		return figur=(Figur) mat[y][x];
 	}
 
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur)

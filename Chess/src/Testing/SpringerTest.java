@@ -13,7 +13,7 @@ public class SpringerTest {
 	public void test() {
 		
 		testSpielzugMoeglich1();
-		testSpielzugMoeglich2();
+		//testSpielzugMoeglich2();
 		
 	}
 	public void testSpielzugMoeglich1()
