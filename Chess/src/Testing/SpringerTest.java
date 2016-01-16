@@ -1,14 +1,8 @@
 package Testing;
 
-
 import org.htl.chess.model.Spielfeld;
-
-import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
-
 import org.htl.chess.model.Position;
-import org.htl.chess.model.Spielfeld;
 import org.htl.chess.model.Springer;
 import org.junit.Assert;
 import org.junit.Test;
