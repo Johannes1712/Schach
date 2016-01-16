@@ -17,19 +17,24 @@ public class SpringerTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
+		testSpielzugMoeglich1();
+		testSpielzugMoeglich2();
+		
 	}
 	public void testSpielzugMoeglich1()
 	{
 		try
 		{
-			Spielfeld sf = SpielFeldIO.einlesen("testdata/springer.txt");
+			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 			Springer sp = (Springer) sf.getFigur(1,0);
 
 			// rechts nach vorn
 			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),
 					new Position(2, 2));
 			Assert.assertTrue(beobachtet);
+			System.out.println(beobachtet);
+			
 
 			// links nach vorn bei Beginn
 			beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),
@@ -48,7 +53,7 @@ public class SpringerTest {
 	{
 		try
 		{
-			Spielfeld sf = SpielFeldIO.einlesen("testdata/springer.txt");
+			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 			Springer sp = (Springer) sf.getFigur(1,7);
 
 			// nicht eigene Figur schlagen

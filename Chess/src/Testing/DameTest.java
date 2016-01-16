@@ -18,7 +18,7 @@ import org.junit.Test;
 public class DameTest 
 {
 
-	@BeforeClass
+	/*@BeforeClass
 	public static void setUpBeforeClass() throws Exception 
 	{
 	}
@@ -83,6 +83,6 @@ public class DameTest
 			nach.setY(2);
 			beobachtet=b.spielzugMoeglich(sf, von, nach);
 			Assert.assertTrue(beobachtet);
-	}
+	}*/
 
 }
