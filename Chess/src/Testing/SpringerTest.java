@@ -28,7 +28,6 @@ public class SpringerTest {
 					new Position(2, 2));
 			Assert.assertTrue(beobachtet);
 			System.out.println(beobachtet);
-			
 
 			// links nach vorn bei Beginn
 			beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),
@@ -49,13 +48,12 @@ public class SpringerTest {
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 			Springer sp = (Springer) sf.getFigur(1,7);
-
-			// nicht eigene Figur schlagen
+			
 			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,7),
-					new Position(3, 6));
+					new Position(3, 4));
 			Assert.assertFalse(beobachtet);
 
-	
+
 		} catch (FileNotFoundException e)
 		{
 
