@@ -34,13 +34,13 @@ public class LaeuferTest
 	@Test
 	public void testSpielZug() 
 	{
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	public void testSpielZugMoeglich() 
 	{
-		fail("Not yet implemented");
+		
 	}
 
 }

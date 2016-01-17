@@ -3,6 +3,8 @@ package Testing;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+
 import org.htl.chess.model.*;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -35,43 +37,38 @@ public class BauerTest
 	}
 	
 	boolean ausfuehren;
-	SpielFeldIO spf=new SpielFeldIO();
 	Bauer figur2=new Bauer(true);	
 	
 	
 	@Test
-	public void testSpielZug() 
+	public void testSpielZug() throws FileNotFoundException 
 	{
+		SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt");
 		Position von=new Position(1,1);
 		Position nach=new Position(1,2);
-		SpielFeldIO.einlesen('B');
-		von.setX(1);
-		von.setY(1);
-		nach.setX(1);
-		nach.setY(2);
+		SpielFeldIO.leseFeld("BW");
+
 		System.out.println(von.getX()+" h "+von.getY());
 		System.out.println(nach.getX()+" h "+nach.getY());
 		System.out.println(figur2+" h ");
-		System.out.println(figur2.spielZug(spf, von, nach));
-		ausfuehren=figur2.spielZug(spf, von, nach);	
-		assertEquals(ausfuehren,true);	
+		System.out.println(figur2.spielZug(SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt"), von, nach));
+		ausfuehren=figur2.spielZug(SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt"), von, nach);	
+		
+		assertEquals(ausfuehren,false);	
 	}
 
 	@Test
-	public void testSpielZugMoeglich() 
+	public void testSpielZugMoeglich() throws FileNotFoundException 
 	{
+		SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt");
 		Position von=new Position(1,2);
 		Position nach=new Position(3,2);
-		von.setX(1);
-		von.setY(1);
-		nach.setX(3);
-		nach.setY(2);
 		System.out.println(von.getX()+" h "+von.getY());
 		System.out.println(nach.getX()+" h "+nach.getY());
 		System.out.println(figur2+" h ");
-		System.out.println(figur2.spielZugMoeglich(spf, von, nach));
-		spf.figurenSetzen(von, figur2);
-		ausfuehren=figur2.spielZug(spf, von, nach);	
+		System.out.println(figur2.spielZugMoeglich(SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt"), von, nach));
+		SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt").figurenSetzen(von, figur2);
+		ausfuehren=figur2.spielZug(SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt"), von, nach);	
 		assertEquals(ausfuehren,false);
 	}
 }
