@@ -14,7 +14,7 @@ import org.junit.Test;
 public class BauerTest 
 {
 
-	@BeforeClass
+	/*@BeforeClass
 	public static void setUpBeforeClass() throws Exception 
 	{
 	}
@@ -69,5 +69,5 @@ public class BauerTest
 		System.out.println(figur2.spielZugMoeglich(spf, von, nach));
 		ausfuehren=figur2.spielZug(spf, von, nach);	
 		assertEquals(ausfuehren,false);
-	}
+	}*/
 }

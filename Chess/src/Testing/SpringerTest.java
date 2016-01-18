@@ -1,14 +1,8 @@
 package Testing;
 
-
 import org.htl.chess.model.Spielfeld;
-
-import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
-
 import org.htl.chess.model.Position;
-import org.htl.chess.model.Spielfeld;
 import org.htl.chess.model.Springer;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,19 +11,23 @@ public class SpringerTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
+		testSpielzugMoeglich1();
+		//testSpielzugMoeglich2();
+		
 	}
 	public void testSpielzugMoeglich1()
 	{
 		try
 		{
-			Spielfeld sf = SpielFeldIO.einlesen("testdata/springer.txt");
+			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 			Springer sp = (Springer) sf.getFigur(1,0);
 
 			// rechts nach vorn
 			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),
 					new Position(2, 2));
-			Assert.assertFalse(beobachtet);
+			Assert.assertTrue(beobachtet);
+			System.out.println(beobachtet);
 
 			// links nach vorn bei Beginn
 			beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),
@@ -48,17 +46,13 @@ public class SpringerTest {
 	{
 		try
 		{
-			Spielfeld sf = SpielFeldIO.einlesen("testdata/bauer_feld2.txt");
-			Springer b = (Springer) sf.getFigur(3, 6);
+			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+			Springer sp = (Springer) sf.getFigur(1,7);
+			
+			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,7),
+					new Position(3, 4));
+			Assert.assertFalse(beobachtet);
 
-			// 1x Diagonal wenn gegnerische Figur auf Zielfeld steht LINKS
-			boolean beobachtet = b.spielzugMoeglich(sf, new Position(3, 6),
-					new Position(4, 5));
-			Assert.assertTrue(beobachtet);
-
-			//b = (Bauer) sf.getFigur(4, 6);
-			beobachtet = b.spielzugMoeglich(sf, new Position(4, 6),
-					new Position(4, 5));
 
 		} catch (FileNotFoundException e)
 		{

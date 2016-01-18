@@ -32,7 +32,7 @@ public class Figur extends Feld
 		System.out.println("Von X "+von.getX()+" von y"+von.getY());
 		System.out.println("Nach X "+nach.getX()+" nach y"+nach.getY());
 		
-		if(spielfeld[von.getX()][von.getY()] instanceof Figur)
+		if(sp.getFigur(von.getX(),von.getY()) instanceof Figur)
 		{
 			figurVon = (Figur) spielfeld[von.getX()][von.getY()];
 			figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
