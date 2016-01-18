@@ -3,9 +3,12 @@ package Testing;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+
 import org.htl.chess.model.*;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -14,7 +17,7 @@ import org.junit.Test;
 public class BauerTest 
 {
 
-	/*@BeforeClass
+	@BeforeClass
 	public static void setUpBeforeClass() throws Exception 
 	{
 	}
@@ -34,40 +37,44 @@ public class BauerTest
 	{
 	}
 	
-	boolean ausfuehren;
-	Spielfeld spf=new Spielfeld();
-	Bauer figur2=new Bauer(true);	
-	Position von=new Position();
-	Position nach=new Position();
+
+	
 	
 	@Test
 	public void testSpielZug() 
-	{
-		spf.ausgabe();
-		von.setX(1);
-		von.setY(1);
-		nach.setX(1);
-		nach.setY(2);
-		System.out.println(von.getX()+" h "+von.getY());
-		System.out.println(nach.getX()+" h "+nach.getY());
-		System.out.println(figur2+" h ");
-		System.out.println(figur2.spielZug(spf, von, nach));
-		ausfuehren=figur2.spielZug(spf, von, nach);	
-		assertEquals(ausfuehren,true);	
+	{	
+		
+		try
+		{
+			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+			Bauer sp = (Bauer) sf.getFigur(1,1);
+
+			// rechts nach vorn
+			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,1),new Position(1, 2));
+			Assert.assertTrue(beobachtet);
+			System.out.println(beobachtet);
+
+			beobachtet = sp.spielzugMoeglich(sf, new Position(1,1),new Position(3, 4));
+			Assert.assertFalse(beobachtet);
+
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+			Assert.fail();
+		}
 	}
 
 	@Test
-	public void testSpielZugMoeglich() 
+	public void testSpielZugMoeglich() throws FileNotFoundException 
 	{
-		von.setX(1);
-		von.setY(1);
-		nach.setX(3);
-		nach.setY(2);
-		System.out.println(von.getX()+" h "+von.getY());
-		System.out.println(nach.getX()+" h "+nach.getY());
-		System.out.println(figur2+" h ");
-		System.out.println(figur2.spielZugMoeglich(spf, von, nach));
-		ausfuehren=figur2.spielZug(spf, von, nach);	
+		boolean ausfuehren;
+		Bauer figur=new Bauer(true);
+		SpielFeldIO.leseFeld("LW");
+		Spielfeld spf= SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+		Position von=new Position(1,2);
+		Position nach=new Position(3,2);
+		spf.figurenSetzen(von, figur);		
+		ausfuehren=figur.spielZug(spf, von, nach);	
 		assertEquals(ausfuehren,false);
-	}*/
+	}
 }

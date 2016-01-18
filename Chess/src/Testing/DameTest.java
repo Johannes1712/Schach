@@ -2,12 +2,15 @@ package Testing;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+
 import org.htl.chess.model.Bauer;
 import org.htl.chess.model.Dame;
 import org.htl.chess.model.Feld;
 import org.htl.chess.model.Figur;
 import org.htl.chess.model.Position;
 import org.htl.chess.model.Spielfeld;
+import org.htl.chess.model.Springer;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -18,7 +21,7 @@ import org.junit.Test;
 public class DameTest 
 {
 
-	/*@BeforeClass
+	@BeforeClass
 	public static void setUpBeforeClass() throws Exception 
 	{
 	}
@@ -48,41 +51,36 @@ public class DameTest
 	@Test
 	public void testSpielzugMoeglich() 
 	{
-			Spielfeld sf=new Spielfeld(); //SpielfeldIO.einlesen("testdata/bauer_feld1.txt");
+		try
+		{
+			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 			Dame d=new Dame(true);
-			d = (Dame) sf.getFigur(0, 3);
+			d = (Dame) sf.getFigur(0,3);	
 			
-			Position von=new Position(0,3);
-			Position nach=new Position(3,1);
-			sf.ausgabe();
-			
-			
-			boolean beobachtet=d.spielzugMoeglich(sf,von,nach);
+			boolean beobachtet=d.spielzugMoeglich(sf,new Position(0,3),new Position(3,1));
 			Assert.assertFalse(beobachtet);
 			
-			nach.setX(9);
-			nach.setY(9);
-			beobachtet=d.spielzugMoeglich(sf,von,nach);
+
+			beobachtet=d.spielzugMoeglich(sf,new Position(0,3),new Position(9,9));
 			Assert.assertFalse(beobachtet);
 			
-			nach.setX(3);
-			nach.setY(3);
-			beobachtet=d.spielzugMoeglich(sf, von, nach);
+			beobachtet=d.spielzugMoeglich(sf, new Position(0,3), new Position(9,9));
 			Assert.assertFalse(beobachtet);
 			
 			Bauer b=new Bauer(true);
 			b = (Bauer) sf.getFigur(1,4);
-			von.setY(1);
-			von.setX(4);
-			nach.setX(4);
-			nach.setY(2);
-			beobachtet=b.spielzugMoeglich(sf, von, nach);
+			beobachtet=b.spielzugMoeglich(sf, new Position(4,1), new Position(4,2));
 			Assert.assertTrue(beobachtet);
 			
-			nach.setX(5);
-			nach.setY(2);
-			beobachtet=b.spielzugMoeglich(sf, von, nach);
+			beobachtet=b.spielzugMoeglich(sf, new Position(0,3), new Position(5,2));
 			Assert.assertTrue(beobachtet);
-	}*/
+			
+	}
+	catch(FileNotFoundException e)
+	{
+		e.printStackTrace();
+		Assert.fail();
+	}
+	}
 
 }
