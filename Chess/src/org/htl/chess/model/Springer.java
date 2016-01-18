@@ -10,20 +10,15 @@ public class Springer extends Figur
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
-
 		return super.spielZug(sp, von, nach);
-
-
 	}
-			
-
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{
 		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		
-		Feld figur= spielfeld [nach.getX()][nach.getY()];
+		Feld figur= sp.getFeld(nach.getX(),nach.getY());	
 		if(figur instanceof Figur)
 		{
 			

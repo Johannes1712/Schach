@@ -1,18 +1,8 @@
 package Testing;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
-
-import org.htl.chess.model.Bauer;
-import org.htl.chess.model.Dame;
-import org.htl.chess.model.Feld;
-import org.htl.chess.model.Koenig;
-import org.htl.chess.model.Laeufer;
-import org.htl.chess.model.Position;
-import org.htl.chess.model.Spielfeld;
-import org.htl.chess.model.Springer;
-import org.htl.chess.model.Turm;
+import org.htl.chess.model.*;
 
 
 public class SpielFeldIO
@@ -23,7 +13,6 @@ public class SpielFeldIO
 	 * eine konkrete Figur, wenn es eine Spielfigur ist
 	 * Factory
 	 */	
-	
 	static Feld leseFeld(String f)
 	{
 		char typ = f.charAt(0); //z.B Bauer
@@ -68,7 +57,5 @@ public class SpielFeldIO
 	{
 		Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 		sf.ausgabe();
-
 	}
-	
 }
