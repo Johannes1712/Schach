@@ -12,8 +12,6 @@ public class Springer extends Figur
 	{
 
 		return super.spielZug(sp, von, nach);
-
-
 	}
 			
 
@@ -23,7 +21,7 @@ public class Springer extends Figur
 		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		
-		Feld figur= spielfeld [nach.getX()][nach.getY()];
+		Feld figur= sp.getFeld(nach.getX(),nach.getY());	
 		if(figur instanceof Figur)
 		{
 			

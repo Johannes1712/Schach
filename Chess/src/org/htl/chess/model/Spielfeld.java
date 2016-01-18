@@ -238,10 +238,16 @@ public class Spielfeld
 	{
 		return mat;
 	}
+	
 	public Figur getFigur(int x, int y) 
 	{
 		Figur figur;
 		return figur=(Figur) mat[y][x];
+	}
+	
+	public Feld getFeld(int x, int y){
+		Feld feld;
+		return feld= mat[y][x];
 	}
 
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur)
@@ -250,6 +256,7 @@ public class Spielfeld
 		mat[von.getX()][von.getY()] = feld;
 		mat[nach.getX()][nach.getY()] = figur;
 	}
+	
 	public void figurenSetzen(Position pos, Feld f){
 		mat[pos.getX()][pos.getY()] = f;
 	}
