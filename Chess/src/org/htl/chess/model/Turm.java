@@ -58,7 +58,6 @@ public class Turm extends Figur
 				}
 			}
 		}
-		if(rueckgabewert) figur=spielfeld[nach.getX()][nach.getY()];
 		
 		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
 		{
