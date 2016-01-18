@@ -8,7 +8,8 @@ public class Figur extends Feld
 	
 	protected Feld[ ] [ ] spielfeld;
 	
-	public Figur(boolean farbe){
+	public Figur(boolean farbe)
+	{
 		this.farbeW=farbe;
 	}
 	

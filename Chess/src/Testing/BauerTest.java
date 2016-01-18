@@ -36,39 +36,33 @@ public class BauerTest
 	{
 	}
 	
-	boolean ausfuehren;
-	Bauer figur2=new Bauer(true);	
+
 	
 	
 	@Test
 	public void testSpielZug() throws FileNotFoundException 
-	{
-		SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt");
+	{			
+		boolean ausfuehren;
+		Bauer figur=new Bauer(true);	
+		SpielFeldIO.leseFeld("BW");
+		Spielfeld spf= SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 		Position von=new Position(1,1);
 		Position nach=new Position(1,2);
-		SpielFeldIO.leseFeld("BW");
-
-		System.out.println(von.getX()+" h "+von.getY());
-		System.out.println(nach.getX()+" h "+nach.getY());
-		System.out.println(figur2+" h ");
-		System.out.println(figur2.spielZug(SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt"), von, nach));
-		ausfuehren=figur2.spielZug(SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt"), von, nach);	
-		
+		ausfuehren=figur.spielZug(spf, von, nach);	
 		assertEquals(ausfuehren,false);	
 	}
 
 	@Test
 	public void testSpielZugMoeglich() throws FileNotFoundException 
 	{
-		SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt");
+		boolean ausfuehren;
+		Bauer figur=new Bauer(true);
+		SpielFeldIO.leseFeld("LW");
+		Spielfeld spf= SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 		Position von=new Position(1,2);
 		Position nach=new Position(3,2);
-		System.out.println(von.getX()+" h "+von.getY());
-		System.out.println(nach.getX()+" h "+nach.getY());
-		System.out.println(figur2+" h ");
-		System.out.println(figur2.spielZugMoeglich(SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt"), von, nach));
-		SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt").figurenSetzen(von, figur2);
-		ausfuehren=figur2.spielZug(SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt"), von, nach);	
+		spf.figurenSetzen(von, figur);		
+		ausfuehren=figur.spielZug(spf, von, nach);	
 		assertEquals(ausfuehren,false);
 	}
 }

@@ -55,7 +55,7 @@ public class SpielFeldIO
 
 	public static void main(String[] args) throws FileNotFoundException
 	{
-		Spielfeld sf = SpielFeldIO.einlesen("C://Users//Andrea//Dropbox//4. Klasse//SWP//SchachspielJohnnyAlexKurt//feld.txt");
+		Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 		sf.ausgabe();
 	}
 }
