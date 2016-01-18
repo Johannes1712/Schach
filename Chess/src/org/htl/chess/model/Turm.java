@@ -7,8 +7,6 @@ public class Turm extends Figur
 		// TODO Auto-generated constructor stub
 	}
 	boolean rueckgabewert=false;
-	private Feld[ ] [ ] spielfeld;
-	private Feld figur;
 	
 	public boolean spielzug(Spielfeld sp, Position von, Position nach)
 	{
@@ -16,7 +14,16 @@ public class Turm extends Figur
 	}
 	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
 	{	
+		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
+		
+		Feld figur= sp.getFeld(nach.getX(),nach.getY());
+		
+		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
+		{
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
+			if(istGleichesTeam)return false;
+		}
 		
 		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
 		{
@@ -59,11 +66,6 @@ public class Turm extends Figur
 			}
 		}
 		
-		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
-		{
-			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-			if(istGleichesTeam)return false;
-		}
 		return rueckgabewert;
 		
 	}

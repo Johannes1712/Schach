@@ -8,8 +8,6 @@ public class Dame extends Figur
 	}
 
 	boolean rueckgabewert=false;
-	private Feld[ ] [ ] spielfeld;
-	private Feld figur;
 	
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
@@ -18,7 +16,16 @@ public class Dame extends Figur
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{	
+		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
+		
+		Feld figur= sp.getFeld(nach.getX(),nach.getY());
+		
+		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
+		{
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
+			if(istGleichesTeam)return false;
+		}
 		
 		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
 		{
@@ -60,11 +67,6 @@ public class Dame extends Figur
 			}
 		}
 		
-		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
-		{
-			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-			if(istGleichesTeam)return false;
-		}
 		return rueckgabewert;
 	}
 }
