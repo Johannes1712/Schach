@@ -1,17 +1,19 @@
-package org.htl.chess.model;
+package Testing;
 
 import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
 
+import org.htl.chess.model.Bauer;
+import org.htl.chess.model.Position;
+import org.htl.chess.model.Spielfeld;
+import org.htl.chess.model.Turm;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import Testing.SpielFeldIO;
 
 
 public class TurmTest {
