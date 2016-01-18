@@ -43,19 +43,21 @@ public class Koenig extends Figur
 		//Rochaden Weiﬂ:
 		
 																//groﬂe Rochade Weiﬂ
-		if ((getFarbeW() == true) && ((nach.getX() == 2) && nach.getY() == 0) 
+		if (getFarbeW() && ((nach.getX() == 2) && nach.getY() == 0)
+
 				&& (getBewegt() == false) 						//Koenig darf zuvor nicht bewegt worden sein
 				&& (sp.schach() == false)						//Rochade ist im Schach nicht erlaubt
-				&& (((spielfeld [0][0] instanceof Turm)			//Turm muss in der Ecke stehen
-				&& !(spielfeld [1][0] instanceof Figur)  		//auf den Feldern zwischen Koenig und Turm darf keine Figur stehen
-				&& !(spielfeld [2][0] instanceof Figur) 
+				&& (((spielfeld [0][0] instanceof Turm)			//Turm muss in der Ecke stehen (bei gegnerischen Turm st‰nde der Kˆnig im Schach
+				&& !(spielfeld [1][0] instanceof Figur)  		// => Farbe muss nicht beachtet werden)
+				&& !(spielfeld [2][0] instanceof Figur) 		//auf den Feldern zwischen Koenig und Turm darf keine Figur stehen
 				&& !(spielfeld [3][0] instanceof Figur)))) 
 		{ 
 			rw = true;
 		}
 		
 																//kleine Rochade Weiﬂ
-		if ((getFarbeW() == true) && ((nach.getX() == 6) && nach.getY() == 0) 
+		if (getFarbeW() && ((nach.getX() == 6) && nach.getY() == 0) 
+
 				&& (getBewegt() == false) 
 				&& (sp.schach() == false)
 				&& (((spielfeld [7][0] instanceof Turm)
@@ -84,28 +86,28 @@ public class Koenig extends Figur
 		if ((getFarbeW() == false) && ((nach.getX() == 6) && nach.getY() == 7) 
 				&& (getBewegt() == false)
 				&& (sp.schach() == false)
-				&& (((spielfeld [7][7] instanceof Turm)
+				&& (((spielfeld [7][7] instanceof Turm)			
 				&& !(spielfeld [5][7] instanceof Figur) 
 				&& !(spielfeld [6][7] instanceof Figur)))) 
-		{ 
+		{
 			rw = true;
 		}
 		
 		//Verhindern, dass sich Koenig selbst ins Schach setzt:
 		
-		sp.spielzugAusfuehren(von, nach, this );
+		sp.spielzugAusfuehren(von, nach, this);
 		Figur spFigur = null;
 		
-		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
+		if (spielfeld [nach.getX()][nach.getY()] instanceof Figur)
 		{
-			spFigur = (Figur) spielfeld[nach.getX()][nach.getY()];
+			spFigur = (Figur) spielfeld [nach.getX()][nach.getY()];
 		}
 		
-		if(sp.schach())
+		if (sp.schach())
 		{
 			rw = false;
-			sp.spielzugAusfuehren(nach, von, this );
-			spielfeld[nach.getX()][nach.getY()] = spFigur;
+			sp.spielzugAusfuehren(nach, von, this);
+			spielfeld [nach.getX()][nach.getY()] = spFigur;
 		}
 		
 		return rw;		
