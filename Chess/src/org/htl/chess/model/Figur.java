@@ -29,10 +29,10 @@ public class Figur extends Feld
 		Figur figurVon = null;
 		Figur figurNach = null;
 		if(nach.getX()>8 || nach.getY()>8)return false;
-		System.out.println("Von X "+von.getX()+" von y"+von.getY());
+		System.out.println("Von X "+von.getX()+" nach y"+von.getY());
 		System.out.println("Nach X "+nach.getX()+" nach y"+nach.getY());
 		
-		if(sp.getFigur(von.getX(),von.getY()) instanceof Figur)
+		if(sp.getFeld(von.getX(),von.getY()) instanceof Figur && sp.getFeld(nach.getX(),nach.getY()) instanceof Figur)
 		{
 			figurVon = (Figur) spielfeld[von.getX()][von.getY()];
 			figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
