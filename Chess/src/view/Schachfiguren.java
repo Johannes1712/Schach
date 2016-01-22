@@ -1,10 +1,5 @@
 package view;
-/**
- * ist das Panel wo die Bilder angezeigt werden
- * 
- * @author Johannes Haslwanter
- * @version 1.0
- */
+
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,33 +9,35 @@ import javax.imageio.ImageIO;
 
 public class Schachfiguren{
 	
-	BufferedImage turmW,springerW,laeuferW,koenigW,dameW,turmB,springerB,laeuferB,koenigB,dameB;
+	BufferedImage bauerW,turmW,springerW,laeuferW,koenigW,dameW,bauerB,turmB,springerB,laeuferB,koenigB,dameB;
 	ArrayList<Image> list= new ArrayList<Image>();
 	
 	public void figurenLaden()
 	{
 		try {
 			
-			turmW=ImageIO.read(new File("Bild0.png"));
+			turmW=ImageIO.read(new File("TW.png"));
 			list.add(turmW);
-			springerW=ImageIO.read(new File("png"));
+			turmW=ImageIO.read(new File("TW.png"));
+			list.add(turmW);
+			springerW=ImageIO.read(new File("SW.png"));
 			list.add(springerW);
-			laeuferW=ImageIO.read(new File("Bild2.png"));
+			laeuferW=ImageIO.read(new File("LW.png"));
 			list.add(laeuferW);
-			koenigW=ImageIO.read(new File("Bild3.png"));
+			koenigW=ImageIO.read(new File("KW.png"));
 			list.add(koenigW);
-			dameW=ImageIO.read(new File("Bild4.png"));
+			dameW=ImageIO.read(new File("DW.png"));
 			list.add(dameW);
 			
-			turmB=ImageIO.read(new File("Bild0.png"));
+			turmB=ImageIO.read(new File("TB.png"));
 			list.add(turmB);
-			springerB=ImageIO.read(new File("png"));
+			springerB=ImageIO.read(new File("SB.png"));
 			list.add(springerB);
-			laeuferB=ImageIO.read(new File("Bild2.png"));
+			laeuferB=ImageIO.read(new File("LB.png"));
 			list.add(laeuferB);
-			koenigB=ImageIO.read(new File("Bild3.png"));
+			koenigB=ImageIO.read(new File("KB.png"));
 			list.add(koenigB);
-			dameB=ImageIO.read(new File("Bild4.png"));
+			dameB=ImageIO.read(new File("DB.png"));
 			list.add(dameB);
 			
 			
@@ -49,6 +46,10 @@ public class Schachfiguren{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public ArrayList<Image> getList(){
+		return list;
 	}
 	
 }
