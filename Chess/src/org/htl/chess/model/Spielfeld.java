@@ -6,7 +6,7 @@ public class Spielfeld
 	private boolean werAmZug;
 
 	public void ausgabe() 
-	{
+	{/*
 		boolean schonVergeben=false;
 		for (int i = 0; i <= 7; i++) 
 		{
@@ -46,7 +46,7 @@ public class Spielfeld
 					System.out.println();
 			}
 			schonVergeben=false;
-		}
+		}*/
 	}
 
 

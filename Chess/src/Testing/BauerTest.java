@@ -36,27 +36,40 @@ public class BauerTest
 	public void tearDown() throws Exception 
 	{
 	}
-	
 
-	
-	
 	@Test
 	public void testSpielZug() 
-	{	
-		
+	{			
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			Bauer sp = (Bauer) sf.getFigur(1,1);
-
-			// rechts nach vorn
-			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,1),new Position(1, 2));
+			Bauer b = (Bauer) sf.getFigur(1,6);
+			boolean beobachtet;
+			
+			beobachtet = b.spielZug(sf, new Position(1,1),new Position(2, 2));
 			Assert.assertTrue(beobachtet);
-			System.out.println(beobachtet);
-
-			beobachtet = sp.spielzugMoeglich(sf, new Position(1,1),new Position(3, 4));
+			
+			sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+			b = (Bauer) sf.getFigur(1,1);
+			
+			beobachtet = b.spielZug(sf, new Position(1,1),new Position(1, 2));
+			Assert.assertTrue(beobachtet);
+			
+			sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+			b = (Bauer) sf.getFigur(1,1);
+			
+			beobachtet = b.spielZug(sf, new Position(1,1),new Position(1, 3));		
+			Assert.assertTrue(beobachtet);
+			
+			sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+			b = (Bauer) sf.getFigur(1,1);
+			
+			beobachtet = b.spielZug(sf, new Position(1,1),new Position(1,5));
 			Assert.assertFalse(beobachtet);
-
+			
+			
+			beobachtet = b.spielZug(sf, new Position(1,6),new Position(1,5));
+			Assert.assertTrue(beobachtet);
 		} catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
@@ -65,16 +78,34 @@ public class BauerTest
 	}
 
 	@Test
-	public void testSpielZugMoeglich() throws FileNotFoundException 
+	public void testSpielzugMoeglich()  
 	{
-		boolean ausfuehren;
-		Bauer figur=new Bauer(true);
-		SpielFeldIO.leseFeld("LW");
-		Spielfeld spf= SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-		Position von=new Position(1,2);
-		Position nach=new Position(3,2);
-		spf.figurenSetzen(von, figur);		
-		ausfuehren=figur.spielZug(spf, von, nach);	
-		assertEquals(ausfuehren,false);
+		try
+		{
+			boolean beobachtet;
+			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+			Bauer b = (Bauer) sf.getFigur(1,1);
+			
+			beobachtet = b.spielzugMoeglich(sf, new Position(1,1),new Position(1, 2));
+			Assert.assertTrue(beobachtet);
+			
+			sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+			b = (Bauer) sf.getFigur(1,1);
+			
+			beobachtet = b.spielzugMoeglich(sf, new Position(1,1),new Position(2, 5));
+			Assert.assertFalse(beobachtet);	
+			
+			sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+			b = (Bauer) sf.getFigur(1,6);
+			
+			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(1, 5));
+			Assert.assertTrue(beobachtet);
+
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+			Assert.fail();
+		}
 	}
+	
 }
