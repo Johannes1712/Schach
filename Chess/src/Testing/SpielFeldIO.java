@@ -51,5 +51,4 @@ public class SpielFeldIO
 		}
 		return feld;
 	}
-
 }
