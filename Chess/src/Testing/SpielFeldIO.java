@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.Scanner;
 import org.htl.chess.model.*;
 
-
 public class SpielFeldIO
 {
 	/**
@@ -53,9 +52,4 @@ public class SpielFeldIO
 		return feld;
 	}
 
-	public static void main(String[] args) throws FileNotFoundException
-	{
-		Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-		sf.ausgabe();
-	}
 }
