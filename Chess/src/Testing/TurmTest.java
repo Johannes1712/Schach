@@ -34,16 +34,6 @@ public class TurmTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void testTurm() {
-		testSpielzugMoeglich();
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSpielzug() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testSpielzugMoeglich() 
@@ -53,7 +43,7 @@ public class TurmTest {
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 			//Turm t=new Turm(true);
-			Turm t = (Turm) sf.getFigur(1,0);
+			Turm t = (Turm) sf.getFigur(0,0);
 				
 			boolean beobachtet=t.spielzugMoeglich(sf,new Position(0,0),new Position(0,1));
 			Assert.assertFalse(beobachtet);
@@ -62,7 +52,7 @@ public class TurmTest {
 			Assert.assertFalse(beobachtet);
 				
 
-			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,3));
+			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,5));
 			Assert.assertFalse(beobachtet);
 				
 			System.out.println("hallo");

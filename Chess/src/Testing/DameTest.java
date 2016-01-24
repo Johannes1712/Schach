@@ -55,24 +55,24 @@ public class DameTest
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 			// Dame d=new Dame(true);
-			Dame d = (Dame) sf.getFigur(0,4);	
+			Dame d = (Dame) sf.getFigur(4,0);	
 			
-			boolean beobachtet=d.spielzugMoeglich(sf,new Position(0,4),new Position(4,1));
+			boolean beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(4,1));
 			Assert.assertFalse(beobachtet);
 			
 
-			beobachtet=d.spielzugMoeglich(sf,new Position(0,4),new Position(9,9));
+			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(9,9));
 			Assert.assertFalse(beobachtet);
 			
-			beobachtet=d.spielzugMoeglich(sf, new Position(0,4), new Position(9,9));
+			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(4,2));
 			Assert.assertFalse(beobachtet);
 			
 			Bauer b=new Bauer(true);
-			b = (Bauer) sf.getFigur(1,4);
-			beobachtet=b.spielzugMoeglich(sf, new Position(5,1), new Position(4,2));
+			b = (Bauer) sf.getFigur(5,1);
+			beobachtet=b.spielzugMoeglich(sf, new Position(5,1), new Position(5,2));
 			Assert.assertTrue(beobachtet);
 			
-			beobachtet=b.spielzugMoeglich(sf, new Position(0,4), new Position(6,2));
+			beobachtet=b.spielzugMoeglich(sf, new Position(4,0), new Position(6,2));
 			Assert.assertTrue(beobachtet);
 			
 	}
