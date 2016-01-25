@@ -38,6 +38,7 @@ public class Turm extends Figur
 					else rueckgabewert=true;
 				}
 			}
+			//if(rueckgabewert==true)return true;
 		}
 		else
 		{
@@ -52,6 +53,7 @@ public class Turm extends Figur
 					else rueckgabewert=true;
 				}
 			}
+			//if(rueckgabewert==true)return true;
 		}
 		/*if(rueckgabewert==true)
 		{
