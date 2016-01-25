@@ -228,6 +228,8 @@ public void testSpielzugMoeglich3() {
 		testSpielzugMoeglich();
 		testSpielzugMoeglich4();
 		testSpielzugMoeglich3();
+		testSpielzugMoeglich5();
+		testSpielzugMoeglich6();
 	}
 
 }
