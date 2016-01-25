@@ -54,26 +54,43 @@ public class DameTest
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			Dame d=new Dame(true);
-			d = (Dame) sf.getFigur(0,3);	
+			Dame d = (Dame) sf.getFigur(4,0);	
 			
-			boolean beobachtet=d.spielzugMoeglich(sf,new Position(0,3),new Position(3,1));
+			boolean beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(4,1));
 			Assert.assertFalse(beobachtet);
 			
 
-			beobachtet=d.spielzugMoeglich(sf,new Position(0,3),new Position(9,9));
+			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(9,9));
 			Assert.assertFalse(beobachtet);
 			
+<<<<<<< HEAD
 			/*beobachtet=d.spielzugMoeglich(sf, new Position(0,3), new Position(9,9));
+=======
+			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(4,2));
+>>>>>>> branch 'master' of https://github.com/Johannes1712/Schach.git
 			Assert.assertFalse(beobachtet);
 			
-			Bauer b=new Bauer(true);
-			b = (Bauer) sf.getFigur(1,4);
-			beobachtet=b.spielzugMoeglich(sf, new Position(4,1), new Position(4,2));
+			Bauer b = (Bauer) sf.getFigur(4,1);
+			beobachtet=b.spielzugMoeglich(sf, new Position(4,1), new Position(4,3));
 			Assert.assertTrue(beobachtet);
 			
+<<<<<<< HEAD
 			beobachtet=b.spielzugMoeglich(sf, new Position(0,3), new Position(5,2));
 			Assert.assertTrue(beobachtet);*/
+=======
+			beobachtet=d.spielzugMoeglich(sf, new Position(4,0), new Position(4,2));
+			Assert.assertTrue(beobachtet);
+>>>>>>> branch 'master' of https://github.com/Johannes1712/Schach.git
+			
+			Bauer b1=new Bauer(true);
+			b1 = (Bauer) sf.getFigur(5,1);
+			beobachtet=b.spielzugMoeglich(sf, new Position(5,1), new Position(5,3));
+			Assert.assertTrue(beobachtet);
+			
+			beobachtet=d.spielzugMoeglich(sf, new Position(4,0), new Position(6,2));
+			Assert.assertTrue(beobachtet);
+			
+			
 			
 	}
 	catch(FileNotFoundException e)

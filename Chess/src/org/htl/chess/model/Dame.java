@@ -7,9 +7,6 @@ public class Dame extends Figur
 		super(farbe);
 	}
 
-	boolean rueckgabewert=false;
-	private Feld[ ] [ ] spielfeld;
-	private Feld figur;
 	
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
@@ -18,15 +15,66 @@ public class Dame extends Figur
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{	
+		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		
-		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
-		{
-			rueckgabewert= true;
-		}
-		else return false;
+		Feld figur= sp.getFeld(nach.getX(),nach.getY());
 		
-		if(nach.getX()>von.getX()||nach.getY()>von.getY())
+		if(figur instanceof Figur)
+		{			
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
+			if(istGleichesTeam)return false;
+		}
+		
+		for(int i=1;i<=8;i++)
+		{
+			if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
+			{
+				
+				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
+				{
+					return true;
+				}
+			}
+		}
+		boolean rueckgabewert=true;
+		if(nach.getX()>von.getX()||nach.getX()<von.getX())
+		{
+			for(int i=1;i<=8;i++)
+			{
+				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
+				{
+					if(super.spielzugMoeglich(sp, von, nach))
+					{
+						return false;
+					}
+					else rueckgabewert=true;
+				}
+			}
+			if(rueckgabewert==true)
+			{
+				return true;
+			}
+		}
+		else
+		{
+			for(int i=1;i<=8;i++)
+			{
+				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
+				{
+					if(super.spielzugMoeglich(sp, von, nach))
+					{
+						return true;
+					}
+					else
+					{
+						return false;
+					}
+				}
+			}
+		}
+		
+		/*if(nach.getX()>von.getX()||nach.getY()>von.getY())
 		{
 			
 			int xkoord;
@@ -36,10 +84,7 @@ public class Dame extends Figur
 			{
 				for(ykoord=von.getY();ykoord<=nach.getY();ykoord++)
 				{
-					if(spielfeld[xkoord][ykoord]==spielfeld[von.getX()][von.getY()])
-					{
-						return false;
-					}
+					return true;
 				}
 			}
 		}
@@ -59,12 +104,7 @@ public class Dame extends Figur
 				}
 			}
 		}
-		
-		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
-		{
-			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-			if(istGleichesTeam)return false;
-		}
-		return rueckgabewert;
+		*/
+		return false;
 	}
 }

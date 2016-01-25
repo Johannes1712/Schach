@@ -6,34 +6,68 @@ public class Turm extends Figur
 		super(farbe);
 		// TODO Auto-generated constructor stub
 	}
-	boolean rueckgabewert=false;
-	private Feld[ ] [ ] spielfeld;
-	private Feld figur;
-	
 	public boolean spielzug(Spielfeld sp, Position von, Position nach)
 	{
 		return super.spielZug(sp, von, nach);
 	}
-	protected boolean spielzugmoeglich(Spielfeld sp, Position von, Position nach)
+	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{	
+		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		
-		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
-		{
-			rueckgabewert= true;
+		Feld figur= sp.getFeld(nach.getX(),nach.getY());
+		
+		if(figur instanceof Figur)
+		{			
+			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
+			if(istGleichesTeam)return false;
 		}
-		else return false;
 		
 		
-		if(nach.getX()>von.getX()||nach.getY()>von.getY())
+		boolean rueckgabewert=true;
+		if(nach.getX()>von.getX()||nach.getX()<von.getX())
+		{
+			for(int i=1;i<=8;i++)
+			{
+				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
+				{
+					if(!super.spielzugMoeglich(sp, von, nach))
+					{
+						return false;
+					}
+					else rueckgabewert=true;
+				}
+			}
+		}
+		else
+		{
+			for(int i=1;i<=8;i++)
+			{
+				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
+				{
+					if(!super.spielzugMoeglich(sp, von, nach))
+					{
+						return false;
+					}
+					else rueckgabewert=true;
+				}
+			}
+		}
+		/*if(rueckgabewert==true)
+		{
+			return true;
+		}*/
+		
+		
+		/*if(nach.getX()>von.getX()||nach.getY()>von.getY())
 		{
 			
 			int xkoord;
 			int ykoord;
-			
-			for(xkoord=von.getX();xkoord<=nach.getX();xkoord++)
+			System.out.println("hallo");
+			for(xkoord=von.getX();xkoord<nach.getX();xkoord++)
 			{
-				for(ykoord=von.getY();ykoord<=nach.getY();ykoord++)
+				for(ykoord=von.getY();ykoord<nach.getY();ykoord++)
 				{
 					if(spielfeld[xkoord][ykoord]==spielfeld[von.getX()][von.getY()])
 					{
@@ -47,9 +81,9 @@ public class Turm extends Figur
 			int xkoord;
 			int ykoord;
 			
-			for(xkoord=nach.getX();xkoord<=von.getX();xkoord++)
+			for(xkoord=nach.getX();xkoord<von.getX();xkoord++)
 			{
-				for(ykoord=nach.getY();ykoord<=von.getY();ykoord++)
+				for(ykoord=nach.getY();ykoord<von.getY();ykoord++)
 				{
 					if(spielfeld[xkoord][ykoord]==spielfeld[von.getX()][von.getY()])
 					{
@@ -57,14 +91,9 @@ public class Turm extends Figur
 					}
 				}
 			}
-		}
+		}*/
 		
-		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
-		{
-			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-			if(istGleichesTeam)return false;
-		}
-		return rueckgabewert;
+		return false;
 		
 	}
 
