@@ -20,8 +20,7 @@ public class Springer extends Figur
 		
 		Feld figur= sp.getFeld(nach.getX(),nach.getY());	
 		if(figur instanceof Figur)
-		{
-			
+		{			
 			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
 			if(istGleichesTeam)return false;
 		}
@@ -41,10 +40,7 @@ public class Springer extends Figur
 			{
 				return true;
 			}
-		}
-		
+		}		
 		return false;
-		
 	}
-
 }

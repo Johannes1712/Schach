@@ -1,5 +1,7 @@
 package org.htl.chess.model;
 
+import Testing.SpielFeldIO;
+
 public class Bauer extends Figur 
 {
 	public Bauer(boolean farbe) {
@@ -17,45 +19,35 @@ public class Bauer extends Figur
 		return super.spielZug(sp, von, nach);
 	}
 
-	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach) 
+	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach) 
 	{
+		if (!super.spielzugMoeglich(sp, von, nach))return false;
 	
 		boolean farbeSchwarz=false;
 		int bewegenX = nach.getX() - von.getX();
-		System.out.println(bewegenX);
+		System.out.println("BewegenX: "+bewegenX);
 		int bewegenY = nach.getY() - von.getY();
-		Figur figurVon=null;
-		Figur figurNach=null;
+		System.out.println("BewegenY: "+bewegenY);
 		
-		
-		if(bewegenX==2)
+		Figur figurVon = sp.getFigur(von.getX(),von.getY()); 
+		Feld figurNach=sp.getFeld(nach.getX(),nach.getY());
+		if(figurVon instanceof Figur && figurNach instanceof Figur)
 		{
-			return false;
+			if(figurVon.dieselbeFigur((Figur)figurNach, figurVon)) return false;
 		}
-
-		if (!super.spielzugMoeglich(sp, von, nach))return false;
-		
-		
-		
-		if(spielfeld[von.getX()][von.getY()] instanceof Figur)
-		{
-			figurVon = (Figur) spielfeld[von.getX()][von.getY()];
-			figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];			
-		}
-
-		
+	
 		//abfragen welche Farbe die Figur hat
-		if(((Figur) figurVon).getFarbeW())
-		{
-			farbeSchwarz	= false;
-		}
-		else
+		if(((Figur) figurVon).getFarbeW()==false)
 		{
 			farbeSchwarz	= true;
 		}
+		else
+		{
+			farbeSchwarz	= false;
+		}
 		
 		//Für Farbe weiß
-		if(!farbeSchwarz)
+		if(farbeSchwarz)
 		{ 
 			// Abfrage ob erste Spielzug der Farbe weiß
 			if(((Figur) figurVon).getBewegt())
@@ -84,7 +76,7 @@ public class Bauer extends Figur
 		}
 		
 		//Für Farbe schwarz 
-		if(farbeSchwarz)
+		if(!farbeSchwarz)
 		{
 			// Abfrage ob erste Spielzug der Farbe schwarz
 			if(((Figur) figurVon).getBewegt())
