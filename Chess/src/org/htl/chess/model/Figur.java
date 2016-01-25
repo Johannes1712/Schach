@@ -30,9 +30,6 @@ public class Figur extends Feld
 		Figur figurVon = null;
 		Figur figurNach = null;
 		if(nach.getX()>8 || nach.getY()>8)return false;
-
-		System.out.println("Von X "+von.getX()+" nach y"+von.getY());
-		System.out.println("Nach X "+nach.getX()+" nach y"+nach.getY());
 		
 		if(sp.getFeld(von.getX(),von.getY()) instanceof Figur && sp.getFeld(nach.getX(),nach.getY()) instanceof Figur)
 		{
@@ -46,11 +43,10 @@ public class Figur extends Feld
 	
 	public boolean dieselbeFigur(Figur figurVon, Figur figurNach){
 		
-		if (figurVon instanceof Figur) 
+		if (figurNach instanceof Figur) 
 		{
 			boolean istGleichesTeamVon= ((Figur)figurVon).getFarbeW();
 			boolean istGleichesTeamNach= ((Figur)figurNach).getFarbeW();
-			
 			if(istGleichesTeamVon==istGleichesTeamNach) return false;
 		}
 		return true;

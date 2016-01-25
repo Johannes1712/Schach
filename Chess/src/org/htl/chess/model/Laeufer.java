@@ -14,78 +14,61 @@ public class Laeufer extends Figur
 		return super.spielZug(sp, von, nach);
 	}
 
-	public boolean spielZugMoeglich(Spielfeld sp, Position von, Position nach)
+	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{
 		int bewegenX = nach.getX() - von.getX();
 		int bewegenY = nach.getY() - von.getY();
 		int zaehler;
-		
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
 		Position pos;
 		pos=new Position(0,0);
-
+		
+		Figur figurVon = sp.getFigur(von.getX(),von.getY());
+		
 		if(bewegenX==0||bewegenY==0)
 		{
 			return false;
 		}				
 		
-		if(!(bewegenY==bewegenX||bewegenY==0-bewegenX||0-bewegenY==bewegenX))
-		{
-			return false;
-		}
 		
 		if(bewegenY>0)
 		{
 			for(zaehler=0;zaehler<bewegenY;zaehler++)
 			{
-				Figur figurNach=null;
-				if(spielfeld[von.getX()][von.getY()] instanceof Figur)
-				{
-					figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
-				}
-				
+				Feld figurNach=sp.getFeld(nach.getX(),nach.getY());
 				pos.setX(von.getX()+zaehler);
 				pos.setY(von.getY()+zaehler);
-				
-				if (super.spielzugMoeglich(sp, von ,pos))
+
+				if(figurNach instanceof Figur)
 				{
-					continue;
-				}
-				else
-				{
-					if(figurNach instanceof Figur)
+					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
 					{
 						return false;
 					}
 				}
 			}
-			
 			if(zaehler==bewegenY)
 			{
 				return true;
-			}
-			else
-			{
-				return false;
 			}
 		}
 		else
 		{
 			for(zaehler=0;zaehler>bewegenY;zaehler--)
 			{	
-				Figur figurNach = (Figur) spielfeld[nach.getX()][nach.getY()];
+				Feld figurNach = sp.getFeld(nach.getX(), nach.getY());
 				pos.setX(von.getX()+zaehler);
 				pos.setY(von.getY()+zaehler);
 				
-				if (super.spielzugMoeglich(sp, von ,pos))
+				if(figurNach instanceof Figur)
 				{
-					continue;
-				}
-				else
-				{
-					if(figurNach instanceof Figur)
+					if(((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
 					{
 						return false;
+					}
+					else
+					{
+						return true;
 					}
 				}
 			}
@@ -94,11 +77,8 @@ public class Laeufer extends Figur
 			{
 				return true;
 			}
-			else
-			{
-				return false;
-			}
 		}
+		return false;
 	}
 }
 

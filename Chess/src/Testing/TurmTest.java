@@ -1,17 +1,19 @@
-package org.htl.chess.model;
+package Testing;
 
 import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
 
+import org.htl.chess.model.Bauer;
+import org.htl.chess.model.Position;
+import org.htl.chess.model.Spielfeld;
+import org.htl.chess.model.Turm;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import Testing.SpielFeldIO;
 
 
 public class TurmTest {
@@ -32,15 +34,6 @@ public class TurmTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void testTurm() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSpielzug() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testSpielzugMoeglich() 
@@ -49,8 +42,7 @@ public class TurmTest {
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			Turm t=new Turm(true);
-			t = (Turm) sf.getFigur(1,0);
+			Turm t = (Turm) sf.getFigur(0,0);
 				
 			boolean beobachtet=t.spielzugMoeglich(sf,new Position(0,0),new Position(0,1));
 			Assert.assertFalse(beobachtet);
@@ -59,16 +51,16 @@ public class TurmTest {
 			Assert.assertFalse(beobachtet);
 				
 
-			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,3));
+			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,5));
 			Assert.assertFalse(beobachtet);
 				
-			Bauer b=new Bauer(true);
-			b = (Bauer) sf.getFigur(0,1);
+			System.out.println("hallo");
+			Bauer b = (Bauer) sf.getFigur(0,1);
 			beobachtet=b.spielzugMoeglich(sf, new Position(0,1), new Position(0,3));
 			Assert.assertTrue(beobachtet);
 				
 			
-			beobachtet=b.spielzugMoeglich(sf, new Position(0,0), new Position(0,2));
+			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,2));
 			Assert.assertTrue(beobachtet);
 			
 		}

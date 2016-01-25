@@ -4,11 +4,14 @@ import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
 
+import org.htl.chess.model.Bauer;
 import org.htl.chess.model.Laeufer;
 import org.htl.chess.model.Position;
 import org.htl.chess.model.Spielfeld;
+import org.htl.chess.model.Springer;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -39,28 +42,37 @@ public class LaeuferTest
 	@Test
 	public void testSpielZug() throws FileNotFoundException 
 	{
-		boolean ausfuehren;
-		Laeufer figur=new Laeufer(true);
-		Spielfeld spf= SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-		SpielFeldIO.leseFeld("LW");
-		Position von=new Position(1,1);
-		Position nach=new Position(2,2);
-		ausfuehren=figur.spielZug(spf, von, nach);	
-		
-		assertEquals(ausfuehren,true);	
+		try
+		{
+			
+			Spielfeld sf = SpielFeldIO.einlesen("SchachLaeufer");
+			Laeufer lf = (Laeufer) sf.getFigur(2,0);
+			boolean beobachtet;
+			//läufer bewegen
+			beobachtet = lf.spielzugMoeglich(sf, new Position(2,0),new Position(2,1));
+			Assert.assertFalse(beobachtet);
+
+			beobachtet = lf.spielzugMoeglich(sf, new Position(2,0),new Position(0,3));
+			Assert.assertTrue(beobachtet);
+
+		} catch (FileNotFoundException e)
+		{
+
+			e.printStackTrace();
+			Assert.fail();
+		}
 	}
 
 	@Test
 	public void testSpielZugMoeglich() throws FileNotFoundException 
 	{
-		boolean ausfuehren;
-		Laeufer figur=new Laeufer(true);
-		Spielfeld spf= SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-		SpielFeldIO.leseFeld("LW");
-		Position von=new Position(1,1);
-		Position nach=new Position(2,2);
-		ausfuehren=figur.spielZugMoeglich(spf, von, nach);	
-		assertEquals(ausfuehren,true);	
+		Spielfeld sf = SpielFeldIO.einlesen("SchachLaeufer");
+		Laeufer lf = (Laeufer) sf.getFigur(3,6);
+		
+		boolean beobachtet = lf.spielzugMoeglich(sf, new Position(3,6),new Position(2, 5));
+		Assert.assertTrue(beobachtet);
+		
+		beobachtet = lf.spielzugMoeglich(sf, new Position(2,0),new Position(1,1));
+		Assert.assertTrue(beobachtet);
 	}
-
 }
