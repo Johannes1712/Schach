@@ -42,7 +42,6 @@ public class TurmTest {
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			//Turm t=new Turm(true);
 			Turm t = (Turm) sf.getFigur(0,0);
 				
 			boolean beobachtet=t.spielzugMoeglich(sf,new Position(0,0),new Position(0,1));
@@ -56,13 +55,12 @@ public class TurmTest {
 			Assert.assertFalse(beobachtet);
 				
 			System.out.println("hallo");
-			Bauer b=new Bauer(true);
-			b = (Bauer) sf.getFigur(0,1);
+			Bauer b = (Bauer) sf.getFigur(0,1);
 			beobachtet=b.spielzugMoeglich(sf, new Position(0,1), new Position(0,3));
 			Assert.assertTrue(beobachtet);
 				
 			
-			beobachtet=b.spielzugMoeglich(sf, new Position(0,0), new Position(0,2));
+			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,2));
 			Assert.assertTrue(beobachtet);
 			
 		}

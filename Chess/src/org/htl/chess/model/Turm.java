@@ -6,8 +6,6 @@ public class Turm extends Figur
 		super(farbe);
 		// TODO Auto-generated constructor stub
 	}
-	boolean rueckgabewert=false;
-	
 	public boolean spielzug(Spielfeld sp, Position von, Position nach)
 	{
 		return super.spielZug(sp, von, nach);
@@ -19,18 +17,49 @@ public class Turm extends Figur
 		
 		Feld figur= sp.getFeld(nach.getX(),nach.getY());
 		
-		if(spielfeld[nach.getX()][nach.getY()] instanceof Figur)
-		{
+		if(figur instanceof Figur)
+		{			
 			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
 			if(istGleichesTeam)return false;
 		}
-		if(spielfeld[nach.getX()][nach.getY()]!=spielfeld[von.getX()][von.getY()])
-		{
-			rueckgabewert= true;
-		}
-		else return false;
 		
-		if(nach.getX()>von.getX()||nach.getY()>von.getY())
+		
+		boolean rueckgabewert=true;
+		if(nach.getX()>von.getX()||nach.getX()<von.getX())
+		{
+			for(int i=1;i<=8;i++)
+			{
+				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
+				{
+					if(!super.spielzugMoeglich(sp, von, nach))
+					{
+						return false;
+					}
+					else rueckgabewert=true;
+				}
+			}
+		}
+		else
+		{
+			for(int i=1;i<=8;i++)
+			{
+				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
+				{
+					if(!super.spielzugMoeglich(sp, von, nach))
+					{
+						return false;
+					}
+					else rueckgabewert=true;
+				}
+			}
+		}
+		/*if(rueckgabewert==true)
+		{
+			return true;
+		}*/
+		
+		
+		/*if(nach.getX()>von.getX()||nach.getY()>von.getY())
 		{
 			
 			int xkoord;
@@ -62,9 +91,9 @@ public class Turm extends Figur
 					}
 				}
 			}
-		}
+		}*/
 		
-		return rueckgabewert;
+		return false;
 		
 	}
 
