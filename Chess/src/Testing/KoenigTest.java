@@ -40,32 +40,22 @@ public class KoenigTest {
 	
 	
 	@Test
-	public void testSpielzugMoeglich() {
+	public void testSpielzugMoeglich() { //weiﬂe Rochaden (richtig)
 
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("SchachRM.txt");
-			Koenig k = (Koenig) sf.getFigur(1,0);
+			Koenig k = (Koenig) sf.getFigur(3,0);
 			
 			//kleine Rochade weiﬂ
-			boolean beobachtet = k.spielzugMoeglich(sf, new Position(4,0),
-					new Position(6, 0));
-			Assert.assertFalse(beobachtet);
+			boolean beobachtet = k.spielzugMoeglich(sf, new Position(3,0),
+					new Position(1, 0));
+			Assert.assertTrue(beobachtet);
 			
 			//groﬂe Rochade weiﬂ
-			beobachtet = k.spielzugMoeglich(sf, new Position(4,0),
-					new Position(2, 0));
-			Assert.assertFalse(beobachtet);
-			
-			//kleine Rochade schwarz
-			beobachtet = k.spielzugMoeglich(sf, new Position(4,7),
-					new Position(6, 7));
-			Assert.assertFalse(beobachtet);
-			
-			//groﬂe Rochade schwarz
-			beobachtet = k.spielzugMoeglich(sf, new Position(4,7),
-					new Position(2, 7));
-			Assert.assertFalse(beobachtet);
+			beobachtet = k.spielzugMoeglich(sf, new Position(3,0),
+					new Position(5, 0));
+			Assert.assertTrue(beobachtet);
 			
 		} catch (Exception e)
 		{
@@ -74,10 +64,35 @@ public class KoenigTest {
 			Assert.fail();
 		}
 		
-		//fail("Not yet implemented");
 	}
 	
+	public void testSpielzugMoeglich4() { //schwarze Rochaden (richtig)
+
+		try
+		{
+			Spielfeld sf = SpielFeldIO.einlesen("SchachRM.txt");
+			Koenig k = (Koenig) sf.getFigur(3,7);
+			
+			//kleine Rochade schwarz
+			boolean beobachtet = k.spielzugMoeglich(sf, new Position(3,7),
+					new Position(1, 7));
+			Assert.assertTrue(beobachtet);
+			
+			//groﬂe Rochade schwarz
+			beobachtet = k.spielzugMoeglich(sf, new Position(3,7),
+					new Position(5, 7));
+			Assert.assertTrue(beobachtet);
+			
+		} catch (Exception e)
+		{
+
+			e.printStackTrace();
+			Assert.fail();
+		}
+		
+	}
 	
+	/*
 	public void testSpielzugMoeglich2() {
 		
 		try
@@ -108,6 +123,7 @@ public class KoenigTest {
 			//aus dem Schach mit Koenig schlagen
 			beobachtet = k.spielzugMoeglich(sf, new Position(3,0),
 					new Position(3, 1));
+			Assert.assertTrue(beobachtet);
 
 		} catch (Exception e)
 		{
@@ -115,7 +131,64 @@ public class KoenigTest {
 			Assert.fail();
 		}
 		
-		//fail("Not yet implemented");
+	}
+	*/
+	public void testSpielzugMoeglich5() { //weiﬂe Rochaden (falsch)
+
+		try
+		{
+			Spielfeld sf = SpielFeldIO.einlesen("SchachRNM.txt");
+			Koenig k = (Koenig) sf.getFigur(3,0);
+			
+
+			//kleine Rochade weiﬂ
+			boolean beobachtet = k.spielzugMoeglich(sf, new Position(4,0),
+					new Position(6, 0));
+			Assert.assertFalse(beobachtet);
+			
+			//groﬂe Rochade weiﬂ
+			beobachtet = k.spielzugMoeglich(sf, new Position(4,0),
+					new Position(2, 0));
+			Assert.assertFalse(beobachtet);
+			
+			//aus dem Schach mit Koenig schlagen
+			beobachtet = k.spielzugMoeglich(sf, new Position(3,0),
+					new Position(3, 1));
+			Assert.assertTrue(beobachtet);
+			
+		} catch (Exception e)
+		{
+
+			e.printStackTrace();
+			Assert.fail();
+		}
+		
+	}
+	
+	public void testSpielzugMoeglich6() { //schwarze Rochaden (falsch)
+
+		try
+		{
+			Spielfeld sf = SpielFeldIO.einlesen("SchachRNM.txt");
+			Koenig k = (Koenig) sf.getFigur(3,7);
+
+			//kleine Rochade schwarz
+			boolean beobachtet = k.spielzugMoeglich(sf, new Position(4,7),
+					new Position(6, 7));
+			Assert.assertFalse(beobachtet);
+			
+			//groﬂe Rochade schwarz
+			beobachtet = k.spielzugMoeglich(sf, new Position(4,7),
+					new Position(2, 7));
+			Assert.assertFalse(beobachtet);
+			
+		} catch (Exception e)
+		{
+
+			e.printStackTrace();
+			Assert.fail();
+		}
+		
 	}
 	
 public void testSpielzugMoeglich3() {
@@ -138,7 +211,7 @@ public void testSpielzugMoeglich3() {
 			//Figur bei Schach vorsetzen
 			beobachtet = k.spielzugMoeglich(sf, new Position(4,1),
 					new Position(4, 2));
-			Assert.assertFalse(beobachtet);
+			Assert.assertTrue(beobachtet);
 			
 		} catch (Exception e)
 		{
@@ -146,13 +219,15 @@ public void testSpielzugMoeglich3() {
 			Assert.fail();
 		}
 		
-		//fail("Not yet implemented");
 	}
 
 
 	@Test
 	public void testSpielzug() {
-		fail("Not yet implemented");
+		
+		testSpielzugMoeglich();
+		testSpielzugMoeglich4();
+		testSpielzugMoeglich3();
 	}
 
 }

@@ -64,7 +64,7 @@ public class DameTest
 			beobachtet=d.spielzugMoeglich(sf,new Position(0,3),new Position(9,9));
 			Assert.assertFalse(beobachtet);
 			
-			beobachtet=d.spielzugMoeglich(sf, new Position(0,3), new Position(9,9));
+			/*beobachtet=d.spielzugMoeglich(sf, new Position(0,3), new Position(9,9));
 			Assert.assertFalse(beobachtet);
 			
 			Bauer b=new Bauer(true);
@@ -73,7 +73,7 @@ public class DameTest
 			Assert.assertTrue(beobachtet);
 			
 			beobachtet=b.spielzugMoeglich(sf, new Position(0,3), new Position(5,2));
-			Assert.assertTrue(beobachtet);
+			Assert.assertTrue(beobachtet);*/
 			
 	}
 	catch(FileNotFoundException e)
