@@ -38,7 +38,6 @@ public class KoenigTest {
 	}
 
 	
-	
 	@Test
 	public void testSpielzugMoeglich() { //weiﬂe Rochaden (richtig)
 
