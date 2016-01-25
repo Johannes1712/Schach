@@ -12,8 +12,9 @@ public class Spiel {
 		Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 		sf.ausgabe();
 		
-		Frame frame=new Frame(sf);
-		frame.initialize();
+		System.out.println(sf.getFigur(1, 1).getFarbeW());
+		//Frame frame=new Frame(sf);
+		//frame.initialize();
 	}
 
 }

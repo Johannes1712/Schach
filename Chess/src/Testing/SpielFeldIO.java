@@ -40,7 +40,7 @@ public class SpielFeldIO
 		{
 			String line = s.nextLine(); //z.B. TW|SW|LW|DW|KW|LW|SW|TW
 			String[] figs = line.split("\\|");	//z.B. figs = {"TW", "SW" ,... }	
-			for (int spalte = 0; spalte < figs.length;spalte++)
+			for (int spalte = 0; spalte < figs.length ;spalte++)
 			{
 				Feld f = leseFeld(figs[spalte]); 
 				position.setX(zeile);
