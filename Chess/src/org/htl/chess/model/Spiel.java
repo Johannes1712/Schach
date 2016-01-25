@@ -13,8 +13,8 @@ public class Spiel {
 		sf.ausgabe();
 		
 		System.out.println(sf.getFigur(1, 1).getFarbeW());
-		//Frame frame=new Frame(sf);
-		//frame.initialize();
+		Frame frame=new Frame(sf);
+		frame.initialize();
 	}
 
 }
