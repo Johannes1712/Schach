@@ -94,7 +94,7 @@ public class Turm extends Figur
 			}
 		}*/
 		
-		return false;
+		return rueckgabewert;
 		
 	}
 

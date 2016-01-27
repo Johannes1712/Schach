@@ -22,7 +22,7 @@ public class Springer extends Figur
 		if(figur instanceof Figur)
 		{			
 			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-			if(istGleichesTeam)return false;
+			if(istGleichesTeam == this.getFarbeW())return false;
 		}
 		
 		if((nach.getX()== von.getX()+2)||(nach.getX()== von.getX()-2))

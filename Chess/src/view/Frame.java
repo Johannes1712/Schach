@@ -62,6 +62,7 @@ public class Frame{
 				
 				
 				feld.setBounds(100, 100, zaehlerx,zaehlery);
+				feld.setVisible(true);
 				
 				zaehlerx=zaehlerx+20;
 			}
