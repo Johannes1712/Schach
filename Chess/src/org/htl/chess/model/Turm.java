@@ -31,14 +31,15 @@ public class Turm extends Figur
 			{
 				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
 				{
-					if(!super.spielzugMoeglich(sp, von, nach))
+					/*if(!super.spielzugMoeglich(sp, von, nach))
 					{
 						return false;
 					}
-					else rueckgabewert=true;
+					else rueckgabewert=true;*/
+					return true;
 				}
 			}
-			//if(rueckgabewert==true)return true;
+			if(rueckgabewert==true)return true;
 		}
 		else
 		{
@@ -46,19 +47,17 @@ public class Turm extends Figur
 			{
 				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
 				{
-					if(!super.spielzugMoeglich(sp, von, nach))
+					System.out.println("HAllo");
+					/*if(!super.spielzugMoeglich(sp, von, nach))
 					{
 						return false;
 					}
-					else rueckgabewert=true;
+					else rueckgabewert=true;*/
+					return true;
 				}
 			}
-			//if(rueckgabewert==true)return true;
+			if(rueckgabewert==true)return true;
 		}
-		/*if(rueckgabewert==true)
-		{
-			return true;
-		}*/
 		
 		
 		/*if(nach.getX()>von.getX()||nach.getY()>von.getY())
