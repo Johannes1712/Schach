@@ -52,16 +52,13 @@ public class TurmTest {
 			Assert.assertFalse(beobachtet);
 				
 
-<<<<<<< HEAD
 			/*beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,5));
 			Assert.assertFalse(beobachtet);*/
 				
 			System.out.println("hallo");
 			Bauer b = (Bauer) sf.getFigur(0,1);
 			beobachtet=b.spielzugMoeglich(sf, new Position(0,1), new Position(0,3));
-=======
 			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,5));
->>>>>>> branch 'master' of https://github.com/Johannes1712/Schach.git
 			Assert.assertTrue(beobachtet);
 			
 			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,2));
