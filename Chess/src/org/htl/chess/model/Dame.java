@@ -44,7 +44,7 @@ public class Dame extends Figur
 			{
 				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
 				{
-					if(super.spielzugMoeglich(sp, von, nach))
+					if(!super.spielzugMoeglich(sp, von, nach))
 					{
 						return false;
 					}
@@ -62,16 +62,17 @@ public class Dame extends Figur
 			{
 				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
 				{
-					if(super.spielzugMoeglich(sp, von, nach))
-					{
-						return true;
-					}
-					else
+					if(!super.spielzugMoeglich(sp, von, nach))
 					{
 						return false;
 					}
+					else
+					{
+						rueckgabewert=true;
+					}
 				}
 			}
+			if(rueckgabewert==true)return true;
 		}
 		
 		/*if(nach.getX()>von.getX()||nach.getY()>von.getY())
