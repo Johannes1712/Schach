@@ -61,7 +61,8 @@ public class Spielfeld
 		{
 			for (int b = 0; b <= 7; b++) 
 			{
-				Figur figur = (Figur) mat[i][b];
+				
+				Feld figur= getFeld(i,b);
 				if (figur instanceof Koenig) 
 				{
 					welcherKoenig = true;
@@ -81,15 +82,13 @@ public class Spielfeld
 		{
 			for (int b = 0; b <= 7; b++) 
 			{
-				Figur figur = (Figur) mat[i][b];
+				Feld figur=  (Figur) getFeld(i,b);
 				if (figur instanceof Figur) 
 				{
-					Position figurPos = null;
-					figurPos.setX(i);
-					figurPos.setY(b);
+					Position figurPos = new Position(i,b);
 
-					if (figur.spielzugMoeglich(this, figurPos, koenig1Pos)
-							|| figur.spielzugMoeglich(this, figurPos, koenig2Pos)) 
+					if (((Figur) figur).spielzugMoeglich(this, figurPos, koenig1Pos)
+							|| ((Figur) figur).spielzugMoeglich(this, figurPos, koenig2Pos)) 
 					{
 						return true;
 					}
@@ -112,7 +111,7 @@ public class Spielfeld
 				for(int b=0;b<=7;b++)
 				{
 					
-					Figur figur= (Figur) mat[i][b];
+					Feld figur=  (Figur) getFeld(i,b);
 					if(figur instanceof Koenig)
 					{
 						welcherKoenig=true;						
@@ -120,13 +119,13 @@ public class Spielfeld
 						{
 							koenig1Pos.setX(i);koenig1Pos.setY(b);welcherKoenig=false;
 							Position nach1 = new Position(0,0); nach1.setX(i);nach1.setY(b);
-							if(this.spielzuegePruefen(figur,koenig1Pos))return true;
+							if(this.spielzuegePruefen((Figur) figur,koenig1Pos))return true;
 							
 						}
 						
 						koenig2Pos.setX(i);koenig2Pos.setY(b);
 						Position nach2=new Position(0,0); nach2.setX(i);nach2.setY(b);
-						if(this.spielzuegePruefen(figur,koenig2Pos))return true;
+						if(this.spielzuegePruefen((Figur) figur,koenig2Pos))return true;
 
 					}
 				}

@@ -44,9 +44,8 @@ public class TurmTest {
 			Turm t = (Turm) sf.getFigur(0,0);
 			boolean beobachtet;
 			
-			beobachtet=t.spielzugMoeglich(sf,new Position(0,0),new Position(0,1));
-			Assert.assertTrue(beobachtet);
-				
+			beobachtet=t.spielzugMoeglich(sf,new Position(0,0),new Position(2,0));
+			Assert.assertFalse(beobachtet);				
 			
 			beobachtet=t.spielzugMoeglich(sf,new Position(0,0),new Position(9,9));
 			Assert.assertFalse(beobachtet);

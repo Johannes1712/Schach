@@ -32,7 +32,7 @@ public class Koenig extends Figur
 			rw = false;
 		}
 		
-		Feld figur = spielfeld [nach.getX()][nach.getY()];
+		Feld figur = sp.getFeld(nach.getX(), nach.getY());
 		
 		if(figur instanceof Figur)
 		{
@@ -96,18 +96,19 @@ public class Koenig extends Figur
 		//Verhindern, dass sich Koenig selbst ins Schach setzt:
 		
 		sp.spielzugAusfuehren(von, nach, this);
-		Figur spFigur = null;
+		Feld spFigur =  sp.getFeld(nach.getX(),nach.getY());
 		
-		if (spielfeld [nach.getX()][nach.getY()] instanceof Figur)
+		if (spFigur instanceof Figur)
 		{
-			spFigur = (Figur) spielfeld [nach.getX()][nach.getY()];
+			spFigur = (Figur)spFigur;
 		}
 		
 		if (sp.schach())
 		{
 			rw = false;
-			sp.spielzugAusfuehren(nach, von, this);
-			spielfeld [nach.getX()][nach.getY()] = spFigur;
+			sp.figurenSetzen(new Position(nach.getX(), nach.getY()), spFigur);
+			//spFigur=sp.getFeld(nach.getX(), nach.getY());
+			//spielfeld [nach.getX()][nach.getY()] = spFigur;
 		}
 		
 		return rw;		
