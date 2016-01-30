@@ -25,12 +25,11 @@ public class Bauer extends Figur
 	
 		boolean farbeSchwarz=false;
 		int bewegenX = nach.getX() - von.getX();
-		System.out.println("BewegenX: "+bewegenX);
 		int bewegenY = nach.getY() - von.getY();
-		System.out.println("BewegenY: "+bewegenY);
 		
 		Figur figurVon = sp.getFigur(von.getX(),von.getY()); 
 		Feld figurNach=sp.getFeld(nach.getX(),nach.getY());
+		
 		if(figurVon instanceof Figur && figurNach instanceof Figur)
 		{
 			if(figurVon.dieselbeFigur((Figur)figurNach, figurVon)) return false;

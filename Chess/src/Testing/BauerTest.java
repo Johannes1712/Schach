@@ -58,8 +58,8 @@ public class BauerTest
 			sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 			b = (Bauer) sf.getFigur(1,1);
 			
-			beobachtet = b.spielZug(sf, new Position(1,1),new Position(1, 3));		
-			Assert.assertTrue(beobachtet);
+			beobachtet = b.spielZug(sf, new Position(1,1),new Position(1, 7));		
+			Assert.assertFalse(beobachtet);
 			
 			sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 			b = (Bauer) sf.getFigur(1,1);

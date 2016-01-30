@@ -45,16 +45,20 @@ public class LaeuferTest
 		try
 		{
 			
-			Spielfeld sf = SpielFeldIO.einlesen("SchachLaeufer");
+		Spielfeld sf = SpielFeldIO.einlesen("SchachLaeufer");
 			Laeufer lf = (Laeufer) sf.getFigur(2,0);
 			boolean beobachtet;
-			//läufer bewegen
+				//läufer bewegen
 			beobachtet = lf.spielzugMoeglich(sf, new Position(2,0),new Position(2,1));
 			Assert.assertFalse(beobachtet);
 
 			beobachtet = lf.spielzugMoeglich(sf, new Position(2,0),new Position(0,3));
 			Assert.assertTrue(beobachtet);
 
+			
+			beobachtet = lf.spielzugMoeglich(sf, new Position(2,7),new Position(3,7));
+			Assert.assertFalse(beobachtet);
+			
 		} catch (FileNotFoundException e)
 		{
 
@@ -67,11 +71,12 @@ public class LaeuferTest
 	public void testSpielZugMoeglich() throws FileNotFoundException 
 	{
 		Spielfeld sf = SpielFeldIO.einlesen("SchachLaeufer");
-		Laeufer lf = (Laeufer) sf.getFigur(3,6);
+		Laeufer lf = (Laeufer) sf.getFigur(2,7);
 		
-		boolean beobachtet = lf.spielzugMoeglich(sf, new Position(3,6),new Position(2, 5));
-		Assert.assertTrue(beobachtet);
-		
+		boolean beobachtet = lf.spielzugMoeglich(sf, new Position(2,7),new Position(5,4));
+		Assert.assertFalse(beobachtet);
+		System.out.println(sf.getFigur(2, 7).getFarbeW());
+		System.out.println(sf.getFigur(5, 4).getFarbeW());
 		beobachtet = lf.spielzugMoeglich(sf, new Position(2,0),new Position(1,1));
 		Assert.assertTrue(beobachtet);
 	}

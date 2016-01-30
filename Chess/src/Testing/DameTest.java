@@ -63,8 +63,6 @@ public class DameTest
 			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(9,9));
 			Assert.assertFalse(beobachtet);
 			
-
-			beobachtet=d.spielzugMoeglich(sf, new Position(0,3), new Position(9,9));
 			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(4,2));
 			Assert.assertFalse(beobachtet);
 			
