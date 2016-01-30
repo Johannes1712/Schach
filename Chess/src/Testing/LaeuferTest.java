@@ -45,7 +45,7 @@ public class LaeuferTest
 		try
 		{
 			
-		Spielfeld sf = SpielFeldIO.einlesen("SchachLaeufer");
+			Spielfeld sf = SpielFeldIO.einlesen("SchachLaeufer");
 			Laeufer lf = (Laeufer) sf.getFigur(2,0);
 			boolean beobachtet;
 				//läufer bewegen

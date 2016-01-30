@@ -34,7 +34,7 @@ public class Bauer extends Figur
 		{
 			if(figurVon.dieselbeFigur((Figur)figurNach, figurVon)) return false;
 		}
-	
+		
 		//abfragen welche Farbe die Figur hat
 		if(((Figur) figurVon).getFarbeW()==false)
 		{
@@ -53,24 +53,53 @@ public class Bauer extends Figur
 			{
 				if((bewegenX==1||bewegenX==-1||bewegenX==0) && bewegenY==1)
 				{
-					return true;
+					if(figurNach instanceof Figur)
+					{
+						return true;
+					}
+					else
+					{
+						return false;
+					}
+					
 				}
 				else
 				{
-					return false;
-				}
-				
+					if(bewegenX==0 && bewegenY==1)
+					{
+						return true;
+					}
+					else
+					{
+						return false;						
+					}					
+				}				
 			}
 			else
 			{
-				if(bewegenX==0||bewegenX==1||bewegenX==-1)
+				if(bewegenX==1||bewegenX==-1)
 				{
 					if(bewegenY==2||bewegenY==1)
 					{
-						((Figur) figurVon).setBewegt(true);
-						return true;
+						if(figurNach instanceof Figur)
+						{
+							((Figur) figurVon).setBewegt(true);
+							return true;
+						}
+					
 					}
-				}				
+				}
+				else
+				{
+					if(bewegenX==0)
+					{
+						if(bewegenY==2||bewegenY==1)
+						{
+							((Figur) figurVon).setBewegt(true);
+							return true;
+						}
+					}
+				}
 			}
 		}
 		
@@ -80,25 +109,58 @@ public class Bauer extends Figur
 			// Abfrage ob erste Spielzug der Farbe schwarz
 			if(((Figur) figurVon).getBewegt())
 			{			
-				if((bewegenX==1||bewegenX==-1||bewegenX==0) && bewegenY==-1)
+				if((bewegenX==1||bewegenX==-1) && bewegenY==-1)
 				{
-					return true;
+					if(figurNach instanceof Figur)
+					{
+						return true;
+					}
+					else
+					{
+						return false;
+					}
 				}
 				else
 				{
-					return false;
+					if(bewegenX==0 && bewegenY==-1)
+					{
+						return true;
+					}
+					else
+					{
+						return false;
+					}					
 				}
 			}
 			else
 			{
-				if(bewegenX==0||bewegenX==1||bewegenX==-1)
+				if(bewegenX==1||bewegenX==-1)
 				{
 					if(bewegenY==-2||bewegenY==-1)
 					{
-						((Figur) figurVon).setBewegt(true);
-						return true;
+						if(figurNach instanceof Figur)
+						{
+							((Figur) figurVon).setBewegt(true);
+							return true;	
+						}
+						else
+						{
+							return false;
+						}
 					}
-				}			
+				}
+				else
+				{
+					if(bewegenX==0)
+					{
+						if(bewegenY==-2||bewegenY==-1)
+						{
+							((Figur) figurVon).setBewegt(true);
+							return true;
+						}
+					}
+					return false;
+				}
 			}
 		}
 		
