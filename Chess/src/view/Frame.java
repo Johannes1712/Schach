@@ -86,26 +86,26 @@ public class Frame{
 				
 				FeldLaden feld=new FeldLaden();
 				if(y%2==0 && x%2==1 && !schonAusgewaehlt){
-					feld.feldSetzen(figuren.getList(), true, spielfeld.getFeld(y, x));
-					feld.addMouseListener(new FeldListener(pos, spielfeld, frame,this,spielfeld.getFeld(y, x)));
+					feld.feldSetzen(figuren.getList(), true, spielfeld.getFeld(x, y));
+					feld.addMouseListener(new FeldListener(pos, spielfeld, frame,this,spielfeld.getFeld(x, y)));
 					
 					schonAusgewaehlt=true;
 				}
 				if(y%2==0 && x%2==0 && !schonAusgewaehlt){
-					feld.feldSetzen(figuren.getList(), false, spielfeld.getFeld(y, x));
-					feld.addMouseListener(new FeldListener(pos, spielfeld, frame,this,spielfeld.getFeld(y, x)));
+					feld.feldSetzen(figuren.getList(), false, spielfeld.getFeld(x, y));
+					feld.addMouseListener(new FeldListener(pos, spielfeld, frame,this,spielfeld.getFeld(x, y)));
 					
 					schonAusgewaehlt=true;
 				}
 				if(y%2==1 && x%2==0 && !schonAusgewaehlt){
-					feld.feldSetzen(figuren.getList(), true, spielfeld.getFeld(y, x));
-					feld.addMouseListener(new FeldListener(pos, spielfeld, frame,this,spielfeld.getFeld(y, x)));
+					feld.feldSetzen(figuren.getList(), true, spielfeld.getFeld(x, y));
+					feld.addMouseListener(new FeldListener(pos, spielfeld, frame,this,spielfeld.getFeld(x, y)));
 					
 					schonAusgewaehlt=true;
 				}
 				if(y%2==1 && x%2==1 && !schonAusgewaehlt){
-					feld.feldSetzen(figuren.getList(), false, spielfeld.getFeld(y, x));
-					feld.addMouseListener(new FeldListener(pos, spielfeld, frame,this,spielfeld.getFeld(y, x)));
+					feld.feldSetzen(figuren.getList(), false, spielfeld.getFeld(x, y));
+					feld.addMouseListener(new FeldListener(pos, spielfeld, frame,this,spielfeld.getFeld(x, y)));
 					
 					schonAusgewaehlt=true;
 				}
