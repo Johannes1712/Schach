@@ -16,8 +16,8 @@ public class Schachfiguren{
 	{
 		try {
 			
-			turmW=ImageIO.read(new File("TW.png"));
-			list.add(turmW);
+			bauerW=ImageIO.read(new File("BW.png"));
+			list.add(bauerW);
 			turmW=ImageIO.read(new File("TW.png"));
 			list.add(turmW);
 			springerW=ImageIO.read(new File("SW.png"));
@@ -29,6 +29,8 @@ public class Schachfiguren{
 			dameW=ImageIO.read(new File("DW.png"));
 			list.add(dameW);
 			
+			bauerB=ImageIO.read(new File("BB.png"));
+			list.add(bauerB);
 			turmB=ImageIO.read(new File("TB.png"));
 			list.add(turmB);
 			springerB=ImageIO.read(new File("SB.png"));
@@ -39,6 +41,7 @@ public class Schachfiguren{
 			list.add(koenigB);
 			dameB=ImageIO.read(new File("DB.png"));
 			list.add(dameB);
+			
 			
 			
 		} catch (IOException e) {
