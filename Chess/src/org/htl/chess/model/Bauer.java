@@ -32,7 +32,7 @@ public class Bauer extends Figur
 		
 		if(figurVon instanceof Figur && figurNach instanceof Figur)
 		{
-			if(figurVon.dieselbeFigur((Figur)figurNach, figurVon)) return false;
+			if(!figurVon.dieselbeFigur((Figur)figurNach, figurVon)) return false;
 		}
 		
 		//abfragen welche Farbe die Figur hat
@@ -67,7 +67,14 @@ public class Bauer extends Figur
 				{
 					if(bewegenX==0 && bewegenY==1)
 					{
-						return true;
+						if(figurNach instanceof Figur)
+						{
+							return false;
+						}
+						else
+						{
+							return true;
+						}
 					}
 					else
 					{
@@ -95,8 +102,16 @@ public class Bauer extends Figur
 					{
 						if(bewegenY==2||bewegenY==1)
 						{
-							((Figur) figurVon).setBewegt(true);
-							return true;
+
+							if(figurNach instanceof Figur)
+							{
+								return false;
+							}
+							else
+							{
+								((Figur) figurVon).setBewegt(true);
+								return true;
+							}
 						}
 					}
 				}
@@ -124,7 +139,14 @@ public class Bauer extends Figur
 				{
 					if(bewegenX==0 && bewegenY==-1)
 					{
-						return true;
+						if(figurNach instanceof Figur)
+						{
+							return false;
+						}
+						else
+						{
+							return true;
+						}
 					}
 					else
 					{
@@ -155,8 +177,15 @@ public class Bauer extends Figur
 					{
 						if(bewegenY==-2||bewegenY==-1)
 						{
-							((Figur) figurVon).setBewegt(true);
-							return true;
+							if(figurNach instanceof Figur)
+							{
+								return false;
+							}
+							else
+							{
+								((Figur) figurVon).setBewegt(true);
+								return true;
+							}				
 						}
 					}
 					return false;
