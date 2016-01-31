@@ -26,8 +26,7 @@ public class Springer extends Figur
 		}
 		
 		if((nach.getX()== von.getX()+2)||(nach.getX()== von.getX()-2))
-		{
-			
+		{			
 			if((nach.getY()== von.getY()+1)||(nach.getY()== von.getY()-1))
 			{
 				return true;

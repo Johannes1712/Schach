@@ -56,12 +56,7 @@ public class Bauer extends Figur
 					if(figurNach instanceof Figur)
 					{
 						return true;
-					}
-					else
-					{
-						return false;
-					}
-					
+					}					
 				}
 				else
 				{
@@ -130,10 +125,6 @@ public class Bauer extends Figur
 					{
 						return true;
 					}
-					else
-					{
-						return false;
-					}
 				}
 				else
 				{
@@ -147,11 +138,7 @@ public class Bauer extends Figur
 						{
 							return true;
 						}
-					}
-					else
-					{
-						return false;
-					}					
+					}				
 				}
 			}
 			else
@@ -164,10 +151,6 @@ public class Bauer extends Figur
 						{
 							((Figur) figurVon).setBewegt(true);
 							return true;	
-						}
-						else
-						{
-							return false;
 						}
 					}
 				}
@@ -188,7 +171,6 @@ public class Bauer extends Figur
 							}				
 						}
 					}
-					return false;
 				}
 			}
 		}
