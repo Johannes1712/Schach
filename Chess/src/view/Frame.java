@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import org.htl.chess.model.Feld;
 import org.htl.chess.model.Position;
 import org.htl.chess.model.Spielfeld;
 import control.FeldListener;
@@ -15,7 +16,7 @@ import control.FeldListener;
 public class Frame{
 	
 	private JFrame frame;
-	private ArrayList<JPanel> panels;
+	private JPanel[][] panels = new JPanel[8][8];
 	private Spielfeld spielfeld;
 	private Schachfiguren figuren;
 	private JPanel jpanel;
@@ -51,9 +52,8 @@ public class Frame{
 		figuren= new Schachfiguren();
 		figuren.figurenLaden();
 		
-		panels=new ArrayList<JPanel>();
-		
 		spielfeldAufbauen();
+		aktualisieren();
 		
 		frame.add(jpanelrechts, BorderLayout.WEST);
 		frame.add(jpanellinks, BorderLayout.EAST);
@@ -64,8 +64,7 @@ public class Frame{
 	
 	public void aktualisieren(){
 		
-		spielfeldAufbauen();
-		frame.repaint();
+		this.felderAktualisieren();
 		frame.setVisible(true);
 		
 	}
@@ -73,7 +72,7 @@ public class Frame{
 	
 	public void spielfeldAufbauen(){
 		
-		panels.clear();
+		jpanel.removeAll();
 		
 		boolean schonAusgewaehlt=false;
 		Position pos;
@@ -110,20 +109,26 @@ public class Frame{
 					schonAusgewaehlt=true;
 				}
 				
+				panels[x][y]=feld;
+				
 				feld.setBounds(0, 0, 20,20);
-				jpanel.add(feld);
-				
-				feld.repaint();
-				feld.setVisible(true);
-				
 				schonAusgewaehlt=false;
 				
 			}
 		}
+	}
+	
+	public void felderAktualisieren(){
 		
+		jpanel.removeAll();
+		
+		for(int x=0; x<=7; x++){
+			for(int y=0; y<=7; y++){
+				
+				jpanel.add(panels[x][y]);
+			}
+		}
 		jpanel.repaint();
-		frame.repaint();
-		
 	}
 	
 	public void felderAnfaerben(ArrayList<Position> liste){
@@ -134,13 +139,15 @@ public class Frame{
 			int x= pos.getX();
 			int y= pos.getY();
 			
-			feld=(FeldLaden) jpanel.getComponentAt(x, y);
+			feld=(FeldLaden) panels[x][y];
 			feld.setFaerbig(true);
+			
+			System.out.println("in Methode felderAnfaerben");
+			
+			feld.repaint();
+			
 		}
-		
-		jpanel.repaint();
 		frame.repaint();
-		feld.setFaerbig(false);
 		
 	}
 

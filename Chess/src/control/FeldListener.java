@@ -66,8 +66,13 @@ public class FeldListener implements MouseListener{
 					}
 				}
 			}
-			
+			System.out.println("Listener");
+			System.out.println(positionListe.get(0));
 			frame.felderAnfaerben(positionListe);
+		}
+		if(figurAusgewaehlt){
+			
+			
 		}
 		
 	}
