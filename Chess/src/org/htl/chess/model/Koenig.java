@@ -23,13 +23,13 @@ public class Koenig extends Figur
 		if  ((von.getX() > nach.getX() +1)						//Koenig darf nicht mehr als 1 Feld in X-Richtung gehen						
 				|| (von.getX() < nach.getX() - 1))						
 		{
-			rw = false;
+			return false;
 		}
 		
 		if ((von.getY() > nach.getY() + 1) 						//Koenig kann immer nur 1 oder 0 Felder vor oder zurück gehen
 				|| (von.getY() < nach.getY() - 1))		
 		{
-			rw = false;
+			return false;
 		}
 		
 		Feld figur = sp.getFeld(nach.getX(), nach.getY());
@@ -37,7 +37,7 @@ public class Koenig extends Figur
 		if(figur instanceof Figur)
 		{
 			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-			if(istGleichesTeam)rw = false;
+			if(istGleichesTeam)return false;
 		}
 		
 		//Rochaden Weiß:
@@ -52,7 +52,7 @@ public class Koenig extends Figur
 				&& !(spielfeld [2][0] instanceof Figur) 		//auf den Feldern zwischen Koenig und Turm darf keine Figur stehen
 				&& !(spielfeld [3][0] instanceof Figur)))) 
 		{ 
-			rw = true;
+			return true;
 		}
 		
 																//kleine Rochade Weiß
@@ -64,7 +64,7 @@ public class Koenig extends Figur
 				&& !(spielfeld [5][0] instanceof Figur) 
 				&& !(spielfeld [6][0] instanceof Figur)))) 
 		{ 
-			rw = true;
+			return true;
 		}
 		
 		
@@ -79,7 +79,7 @@ public class Koenig extends Figur
 				&& !(spielfeld [2][7] instanceof Figur) 
 				&& !(spielfeld [3][7] instanceof Figur)))) 
 		{ 
-			rw = true;
+			return true;
 		}
 		
 																//kleine Rochade Schwarz
@@ -90,7 +90,7 @@ public class Koenig extends Figur
 				&& !(spielfeld [5][7] instanceof Figur) 
 				&& !(spielfeld [6][7] instanceof Figur)))) 
 		{
-			rw = true;
+			return true;
 		}
 		
 		//Verhindern, dass sich Koenig selbst ins Schach setzt:
@@ -103,13 +103,13 @@ public class Koenig extends Figur
 			spFigur = (Figur)spFigur;
 		}
 		
-		if (sp.schach())
+		/*if (sp.schach())
 		{
 			rw = false;
 			sp.figurenSetzen(new Position(nach.getX(), nach.getY()), spFigur);
 			//spFigur=sp.getFeld(nach.getX(), nach.getY());
 			//spielfeld [nach.getX()][nach.getY()] = spFigur;
-		}
+		}*/
 		
 		return rw;		
 	}

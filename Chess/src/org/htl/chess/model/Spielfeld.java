@@ -52,27 +52,30 @@ public class Spielfeld
 
 	public boolean schach() 
 	{
-
 		Position koenig1Pos = new Position(0,0);
 		Position koenig2Pos = new Position(0,0);
 		boolean welcherKoenig;
-
+		welcherKoenig = true;
 		for (int i = 0; i <= 7; i++)
 		{
 			for (int b = 0; b <= 7; b++) 
 			{
 				
-				Feld figur= getFeld(i,b);
+				Feld figur= getFeld(b,i);
 				if (figur instanceof Koenig) 
-				{
-					welcherKoenig = true;
+				{					
 					if (welcherKoenig)
-						koenig1Pos.setX(i);
-					koenig1Pos.setY(b);
-					welcherKoenig = false;
-					koenig2Pos.setX(i);
-					koenig2Pos.setY(b);
-					break;
+					{
+						koenig1Pos.setX(b);
+						koenig1Pos.setY(i);
+						welcherKoenig = false;
+					}
+					else
+					{
+						koenig2Pos.setX(b);
+						koenig2Pos.setY(i);
+						break;
+					}
 				}
 			}
 		}
@@ -82,11 +85,11 @@ public class Spielfeld
 		{
 			for (int b = 0; b <= 7; b++) 
 			{
-				Feld figur=  (Figur) getFeld(i,b);
+				System.out.println(i + "," + b);
+				Feld figur=  getFeld(i,b);
 				if (figur instanceof Figur) 
 				{
 					Position figurPos = new Position(i,b);
-
 					if (((Figur) figur).spielzugMoeglich(this, figurPos, koenig1Pos)
 							|| ((Figur) figur).spielzugMoeglich(this, figurPos, koenig2Pos)) 
 					{
@@ -117,15 +120,21 @@ public class Spielfeld
 						welcherKoenig=true;						
 						if(welcherKoenig)
 						{
-							koenig1Pos.setX(i);koenig1Pos.setY(b);welcherKoenig=false;
-							Position nach1 = new Position(0,0); nach1.setX(i);nach1.setY(b);
+							koenig1Pos.setX(i);
+							koenig1Pos.setY(b);
+							welcherKoenig=false;
+							Position nach1 = new Position(0,0); 
+							nach1.setX(i);
+							nach1.setY(b);
 							if(this.spielzuegePruefen((Figur) figur,koenig1Pos))return true;
-							
 						}
 						
-						koenig2Pos.setX(i);koenig2Pos.setY(b);
-						Position nach2=new Position(0,0); nach2.setX(i);nach2.setY(b);
-						if(this.spielzuegePruefen((Figur) figur,koenig2Pos))return true;
+						koenig2Pos.setX(i);
+						koenig2Pos.setY(b);
+						Position nach2=new Position(0,0);
+						nach2.setX(i);
+						nach2.setY(b);
+						if(this.spielzuegePruefen((Figur) figur, koenig2Pos))return true;
 
 					}
 				}

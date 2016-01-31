@@ -27,7 +27,7 @@ public class Figur extends Feld
 	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{
-		Figur figurVon = figurVon = sp.getFigur(von.getX(),von.getY());
+		Figur figurVon = sp.getFigur(von.getX(),von.getY());
 		Figur figurNach = null;
 		if(nach.getX()>8 || nach.getY()>8)return false;
 		
