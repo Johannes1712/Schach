@@ -24,24 +24,49 @@ public class Laeufer extends Figur
 		pos=new Position(0,0);
 		
 		Figur figurVon = sp.getFigur(von.getX(),von.getY());
+		Feld figurNach=sp.getFeld(nach.getX(),nach.getY());
 		
 		if(bewegenX==0||bewegenY==0)
 		{
 			return false;
 		}				
 		
-		
+		if(figurNach instanceof Figur)
+		{
+			if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+			{
+				return false;
+			}	
+		}
+
 		if(bewegenY>0)
 		{
-			for(zaehler=0;zaehler<bewegenY;zaehler++)
+			
+			for(zaehler=1;zaehler<bewegenY;zaehler++)
 			{
-				Feld figurNach=sp.getFeld(nach.getX(),nach.getY());
 				pos.setX(von.getX()+zaehler);
 				pos.setY(von.getY()+zaehler);
-
-				if(figurNach instanceof Figur)
+				Feld figur=sp.getFeld(pos.getX(), pos.getY());
+				
+				if(figur instanceof Figur)
 				{
-					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+
+					if(pos.getY()==nach.getY()&&pos.getX()==nach.getX())
+					{
+						if((Figur)figur instanceof Figur)
+						{
+							if(((Figur) figur).dieselbeFigur((Figur)figur,(Figur) figurNach))
+							{
+								return true;
+							}
+						}
+						else
+						{
+							return true;
+						}
+
+					}					
+					else
 					{
 						return false;
 					}
@@ -54,23 +79,26 @@ public class Laeufer extends Figur
 		}
 		else
 		{
-			for(zaehler=0;zaehler>bewegenY;zaehler--)
-			{	
-				Feld figurNach = sp.getFeld(nach.getX(), nach.getY());
+			for(zaehler=-1;zaehler>bewegenY;zaehler--)
+			{					
 				pos.setX(von.getX()+zaehler);
 				pos.setY(von.getY()+zaehler);
-				
-				if(figurNach instanceof Figur)
+				Feld figur=sp.getFeld(pos.getX(), pos.getY());
+				if(figur instanceof Figur)
 				{
-					if(((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+
+					if(pos.getY()==nach.getY()&&pos.getX()==nach.getX())
+					{
+						if(((Figur) figur).dieselbeFigur((Figur)figur,(Figur) figurNach))
+						{
+							return true;
+						}
+					}					
+					else
 					{
 						return false;
 					}
-					else
-					{
-						return true;
-					}
-				}
+				}				
 			}
 			
 			if(zaehler==bewegenY)

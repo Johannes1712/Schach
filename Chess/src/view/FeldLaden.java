@@ -1,16 +1,15 @@
 package view;
 
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-
 import org.htl.chess.model.Bauer;
 import org.htl.chess.model.Dame;
 import org.htl.chess.model.Feld;
@@ -26,6 +25,7 @@ public class FeldLaden extends JPanel {
 	
 	int figurIndex;
 	boolean weissesFeld;
+	boolean faerbig;
 	
 	BufferedImage weiss,schwarz;
 	ArrayList<Image> figurenliste;
@@ -42,8 +42,13 @@ public class FeldLaden extends JPanel {
 	
 	protected void paintComponent(Graphics g){
 		
-		if(weissesFeld)g.drawImage(weiss,0,0,null);
-		else g.drawImage(schwarz,0,0,null);
+		if(faerbig){
+			g.setColor(Color.CYAN);
+		}
+		else{
+			if(weissesFeld)g.drawImage(weiss,0,0,null);
+			else g.drawImage(schwarz,0,0,null);
+		}
 		
 		if(figurIndex<12)g.drawImage(figurenliste.get(figurIndex),0,0,null);
 	}
@@ -66,38 +71,30 @@ public class FeldLaden extends JPanel {
 			boolean istWeiss=((Figur) feld).getFarbeW();
 			Figur figur= ((Figur)feld);
 			
-			if (figur instanceof Bauer && istWeiss)
-				figurIndex=0;
-			if (figur instanceof Turm && istWeiss)
-				figurIndex=1;
-			if (figur instanceof Springer && istWeiss)
-				figurIndex=2;
-			if (figur instanceof Laeufer && istWeiss)
-				figurIndex=3;
-			if (figur instanceof Koenig && istWeiss)
-				figurIndex=4;
-			if (figur instanceof Dame && istWeiss)
-				figurIndex=5;
-			
-			if (figur instanceof Bauer && !istWeiss)
-				figurIndex=6;
-			if (figur instanceof Turm && !istWeiss)
-				figurIndex=7;
-			if (figur instanceof Springer && !istWeiss)
-				figurIndex=8;
-			if (figur instanceof Laeufer && !istWeiss)
-				figurIndex=9;
-			if (figur instanceof Koenig && !istWeiss)
-				figurIndex=10;
-			if (figur instanceof Dame && !istWeiss)
-				figurIndex=11;
+			if (figur instanceof Bauer && istWeiss)figurIndex=0;
+			if (figur instanceof Turm && istWeiss)figurIndex=1;
+			if (figur instanceof Springer && istWeiss)figurIndex=2;
+			if (figur instanceof Laeufer && istWeiss)figurIndex=3;
+			if (figur instanceof Koenig && istWeiss)figurIndex=4;
+			if (figur instanceof Dame && istWeiss)figurIndex=5;
+			if (figur instanceof Bauer && !istWeiss)figurIndex=6;
+			if (figur instanceof Turm && !istWeiss)figurIndex=7;
+			if (figur instanceof Springer && !istWeiss)figurIndex=8;
+			if (figur instanceof Laeufer && !istWeiss)figurIndex=9;
+			if (figur instanceof Koenig && !istWeiss)figurIndex=10;
+			if (figur instanceof Dame && !istWeiss)figurIndex=11;
 		}
 		else{
 			if (feld instanceof Feld)
-				return figurIndex;
+				return figurIndex=30;
 		}
 		
 		return figurIndex;
+	}
+
+	
+	public void setFaerbig(boolean faerbig){
+		this.faerbig=faerbig;
 	}
 
 }
