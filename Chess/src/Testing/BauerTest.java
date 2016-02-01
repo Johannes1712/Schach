@@ -74,6 +74,12 @@ public class BauerTest
 			beobachtet = b.spielzugMoeglich(sf, new Position(1,1),new Position(1, 4));
 			Assert.assertFalse(beobachtet);
 			
+			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(2, 6));
+			Assert.assertFalse(beobachtet);
+			
+			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(0, 6));
+			Assert.assertFalse(beobachtet);
+			
 			beobachtet = b.spielzugMoeglich(sf, new Position(1,1),new Position(2, 5));
 			Assert.assertFalse(beobachtet);	
 
