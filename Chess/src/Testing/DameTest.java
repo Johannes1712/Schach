@@ -63,11 +63,8 @@ public class DameTest
 			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(9,9));
 			Assert.assertFalse(beobachtet);
 			
-<<<<<<< HEAD
 			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(4,5));
-=======
 			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(4,2));
->>>>>>> branch 'master' of https://github.com/Johannes1712/Schach.git
 			Assert.assertFalse(beobachtet);
 			
 			Bauer b = (Bauer) sf.getFigur(4,1);

@@ -6,7 +6,7 @@ public class Spielfeld
 	private boolean werAmZug;
 
 	public void ausgabe() 
-	{/*
+	{
 		boolean schonVergeben=false;
 		for (int i = 0; i <= 7; i++) 
 		{
@@ -46,7 +46,8 @@ public class Spielfeld
 					System.out.println();
 			}
 			schonVergeben=false;
-		}*/
+		}
+		System.out.println(mat[0][0]);
 	}
 
 
@@ -250,12 +251,12 @@ public class Spielfeld
 	public Figur getFigur(int x, int y) 
 	{
 		Figur figur;
-		return figur=(Figur) mat[y][x];
+		return figur=(Figur) mat[x][y];
 	}
 	
 	public Feld getFeld(int x, int y){
 		Feld feld;
-		return feld= mat[y][x];
+		return feld= mat[x][y];
 	}
 
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur)
