@@ -27,12 +27,12 @@ public class Bauer extends Figur
 		int bewegenX = nach.getX() - von.getX();
 		int bewegenY = nach.getY() - von.getY();
 		
-		Figur figurVon = sp.getFigur(von.getX(),von.getY()); 
-		Feld figurNach=sp.getFeld(nach.getX(),nach.getY());
+		Figur figurVon = sp.getFigur(von.getX(), von.getY()); 
+		Feld figurNach=sp.getFeld(nach.getX(), nach.getY());
 		
 		if(figurVon instanceof Figur && figurNach instanceof Figur)
 		{
-			if(figurVon.dieselbeFigur((Figur)figurNach, figurVon)) return false;
+			if(!figurVon.dieselbeFigur((Figur)figurNach, figurVon)) return false;
 		}
 		
 		//abfragen welche Farbe die Figur hat
@@ -56,18 +56,20 @@ public class Bauer extends Figur
 					if(figurNach instanceof Figur)
 					{
 						return true;
-					}
-					else
-					{
-						return false;
-					}
-					
+					}					
 				}
 				else
 				{
 					if(bewegenX==0 && bewegenY==1)
 					{
-						return true;
+						if(figurNach instanceof Figur)
+						{
+							return false;
+						}
+						else
+						{
+							return true;
+						}
 					}
 					else
 					{
@@ -95,9 +97,21 @@ public class Bauer extends Figur
 					{
 						if(bewegenY==2||bewegenY==1)
 						{
-							((Figur) figurVon).setBewegt(true);
-							return true;
+
+							if(figurNach instanceof Figur)
+							{
+								return false;
+							}
+							else
+							{
+								((Figur) figurVon).setBewegt(true);
+								return true;
+							}
 						}
+					}
+					else
+					{
+						return false;
 					}
 				}
 			}
@@ -115,21 +129,24 @@ public class Bauer extends Figur
 					{
 						return true;
 					}
-					else
-					{
-						return false;
-					}
 				}
 				else
 				{
 					if(bewegenX==0 && bewegenY==-1)
 					{
-						return true;
+						if(figurNach instanceof Figur)
+						{
+							return false;
+						}
+						else
+						{
+							return true;
+						}
 					}
 					else
 					{
 						return false;
-					}					
+					}
 				}
 			}
 			else
@@ -143,10 +160,6 @@ public class Bauer extends Figur
 							((Figur) figurVon).setBewegt(true);
 							return true;	
 						}
-						else
-						{
-							return false;
-						}
 					}
 				}
 				else
@@ -155,11 +168,21 @@ public class Bauer extends Figur
 					{
 						if(bewegenY==-2||bewegenY==-1)
 						{
-							((Figur) figurVon).setBewegt(true);
-							return true;
+							if(figurNach instanceof Figur)
+							{
+								return false;
+							}
+							else
+							{
+								((Figur) figurVon).setBewegt(true);
+								return true;
+							}				
 						}
 					}
-					return false;
+					else
+					{
+						return false;
+					}
 				}
 			}
 		}

@@ -34,7 +34,6 @@ public class FeldListener implements MouseListener{
 		this.spielfeld=spielfeld;
 		this.jframe= jframe;
 		this.frame= frame;
-		
 	}
 	
 	@Override

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
 
 import org.htl.chess.model.Bauer;
+import org.htl.chess.model.Laeufer;
 import org.htl.chess.model.Position;
 import org.htl.chess.model.Spielfeld;
 import org.htl.chess.model.Turm;
@@ -44,7 +45,7 @@ public class TurmTest {
 			Turm t = (Turm) sf.getFigur(0,0);
 			boolean beobachtet;
 			
-			beobachtet=t.spielzugMoeglich(sf,new Position(0,0),new Position(2,0));
+			beobachtet=t.spielzugMoeglich(sf,new Position(0,0),new Position(6,0));
 			Assert.assertFalse(beobachtet);				
 			
 			beobachtet=t.spielzugMoeglich(sf,new Position(0,0),new Position(9,9));
@@ -54,11 +55,23 @@ public class TurmTest {
 			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,5));
 			Assert.assertTrue(beobachtet);
 			
-			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,5));
+
+			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,2));
+			Assert.assertFalse(beobachtet);
+			
+			Bauer b = (Bauer) sf.getFigur(1,1);
+			beobachtet=b.spielzugMoeglich(sf, new Position(1,1), new Position(1,3));
 			Assert.assertTrue(beobachtet);
 			
-			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,2));
+			Laeufer lf = (Laeufer) sf.getFigur(2,0);
+			beobachtet=lf.spielzugMoeglich(sf, new Position(2,0), new Position(0,2));
 			Assert.assertTrue(beobachtet);
+			
+			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,5));
+			Assert.assertFalse(beobachtet);
+			
+			
+			
 			
 		}
 		catch(FileNotFoundException e)

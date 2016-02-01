@@ -36,48 +36,21 @@ public class KoenigTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-
 	
 	@Test
-	public void testSpielzugMoeglich() { //weiﬂe Rochaden (richtig)
-
-		try
-		{
-			Spielfeld sf = SpielFeldIO.einlesen("SchachRM.txt");
-			Koenig k = (Koenig) sf.getFigur(3,0);
-			
-			//kleine Rochade weiﬂ
-			boolean beobachtet = k.spielzugMoeglich(sf, new Position(3,0),
-					new Position(1, 0));
-			Assert.assertTrue(beobachtet);
-			
-			//groﬂe Rochade weiﬂ
-			/*beobachtet = k.spielzugMoeglich(sf, new Position(3,0),
-					new Position(5, 0));
-			Assert.assertTrue(beobachtet);*/
-			
-		} catch (Exception e)
-		{
-
-			e.printStackTrace();
-			Assert.fail();
-		}
-		
-	}
-	
-	public void testSpielzugMoeglich4() { //schwarze Rochaden (richtig)
+	public void testSpielzugMoeglich1() { //weiﬂe Rochaden (richtig)
 
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("SchachRM.txt");
 			Koenig k = (Koenig) sf.getFigur(3,7);
 			
-			//kleine Rochade schwarz
+			//kleine Rochade weiﬂ
 			boolean beobachtet = k.spielzugMoeglich(sf, new Position(3,7),
 					new Position(1, 7));
 			Assert.assertTrue(beobachtet);
 			
-			//groﬂe Rochade schwarz
+			//groﬂe Rochade weiﬂ
 			beobachtet = k.spielzugMoeglich(sf, new Position(3,7),
 					new Position(5, 7));
 			Assert.assertTrue(beobachtet);
@@ -91,68 +64,21 @@ public class KoenigTest {
 		
 	}
 	
-	/*
-	public void testSpielzugMoeglich2() {
-		
-		try
-		{
-			Spielfeld sf = SpielFeldIO.einlesen("SchachRNM.txt");
-			Koenig k = (Koenig) sf.getFigur(1,0);
-			
-			//kleine Rochade weiﬂ
-			boolean beobachtet = k.spielzugMoeglich(sf, new Position(4,0),
-					new Position(6, 0));
-			Assert.assertFalse(beobachtet);
-			
-			//groﬂe Rochade weiﬂ
-			beobachtet = k.spielzugMoeglich(sf, new Position(4,0),
-					new Position(2, 0));
-			Assert.assertFalse(beobachtet);
-			
-			//kleine Rochade schwarz
-			beobachtet = k.spielzugMoeglich(sf, new Position(4,7),
-					new Position(6, 7));
-			Assert.assertFalse(beobachtet);
-			
-			//groﬂe Rochade schwarz
-			beobachtet = k.spielzugMoeglich(sf, new Position(4,7),
-					new Position(2, 7));
-			Assert.assertFalse(beobachtet);
-			
-			//aus dem Schach mit Koenig schlagen
-			beobachtet = k.spielzugMoeglich(sf, new Position(3,0),
-					new Position(3, 1));
-			Assert.assertTrue(beobachtet);
-
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-			Assert.fail();
-		}
-		
-	}
-	*/
-	public void testSpielzugMoeglich5() { //weiﬂe Rochaden (falsch)
+	public void testSpielzugMoeglich2() { //schwarze Rochaden (richtig)
 
 		try
 		{
-			Spielfeld sf = SpielFeldIO.einlesen("SchachRNM.txt");
+			Spielfeld sf = SpielFeldIO.einlesen("SchachRM.txt");
 			Koenig k = (Koenig) sf.getFigur(3,0);
 			
-
-			//kleine Rochade weiﬂ
-			boolean beobachtet = k.spielzugMoeglich(sf, new Position(4,0),
-					new Position(6, 0));
-			Assert.assertFalse(beobachtet);
+			//kleine Rochade schwarz
+			boolean beobachtet = k.spielzugMoeglich(sf, new Position(3,0),
+					new Position(1, 0));
+			Assert.assertTrue(beobachtet);
 			
-			//groﬂe Rochade weiﬂ
-			beobachtet = k.spielzugMoeglich(sf, new Position(4,0),
-					new Position(2, 0));
-			Assert.assertFalse(beobachtet);
-			
-			//aus dem Schach mit Koenig schlagen
+			//groﬂe Rochade schwarz
 			beobachtet = k.spielzugMoeglich(sf, new Position(3,0),
-					new Position(3, 1));
+					new Position(5, 0));
 			Assert.assertTrue(beobachtet);
 			
 		} catch (Exception e)
@@ -164,7 +90,39 @@ public class KoenigTest {
 		
 	}
 	
-	public void testSpielzugMoeglich6() { //schwarze Rochaden (falsch)
+	public void testSpielzugMoeglich3() { //weiﬂe Rochaden (falsch)
+
+		try
+		{
+			Spielfeld sf = SpielFeldIO.einlesen("SchachRNM.txt");
+			Koenig k = (Koenig) sf.getFigur(3,7);
+			
+
+			//kleine Rochade weiﬂ
+			boolean beobachtet = k.spielzugMoeglich(sf, new Position(3,7),
+					new Position(1, 7));
+			Assert.assertFalse(beobachtet);
+			
+			//groﬂe Rochade weiﬂ
+			beobachtet = k.spielzugMoeglich(sf, new Position(3,7),
+					new Position(5,7));
+			Assert.assertFalse(beobachtet);
+			
+			//aus dem Schach mit Koenig schlagen
+			beobachtet = k.spielzugMoeglich(sf, new Position(3,7),
+					new Position(3, 6));
+			Assert.assertTrue(beobachtet);
+			
+		} catch (Exception e)
+		{
+
+			e.printStackTrace();
+			Assert.fail();
+		}
+		
+	}
+	
+	public void testSpielzugMoeglich4() { //schwarze Rochaden (falsch)
 
 		try
 		{
@@ -172,13 +130,13 @@ public class KoenigTest {
 			Koenig k = (Koenig) sf.getFigur(3,7);
 
 			//kleine Rochade schwarz
-			boolean beobachtet = k.spielzugMoeglich(sf, new Position(4,7),
-					new Position(6, 7));
+			boolean beobachtet = k.spielzugMoeglich(sf, new Position(3,7),
+					new Position(1, 7));
 			Assert.assertFalse(beobachtet);
 			
 			//groﬂe Rochade schwarz
-			beobachtet = k.spielzugMoeglich(sf, new Position(4,7),
-					new Position(2, 7));
+			beobachtet = k.spielzugMoeglich(sf, new Position(3,7),
+					new Position(5, 7));
 			Assert.assertFalse(beobachtet);
 			
 		} catch (Exception e)
@@ -190,12 +148,12 @@ public class KoenigTest {
 		
 	}
 	
-public void testSpielzugMoeglich3() {
+	public void testSpielzugMoeglich5() {
 		
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Schach.txt");
-			Koenig k = (Koenig) sf.getFigur(1,0);
+			Koenig k = (Koenig) sf.getFigur(3,1);
 			
 			//selbst ins Schach setzen
 			boolean beobachtet = k.spielzugMoeglich(sf, new Position(3,1),
@@ -220,15 +178,14 @@ public void testSpielzugMoeglich3() {
 		
 	}
 
-
 	@Test
 	public void testSpielzug() {
 		
-		testSpielzugMoeglich();
-		testSpielzugMoeglich4();
+		testSpielzugMoeglich1();
+		testSpielzugMoeglich2();
 		testSpielzugMoeglich3();
+		testSpielzugMoeglich4();
 		testSpielzugMoeglich5();
-		testSpielzugMoeglich6();
 	}
 
 }

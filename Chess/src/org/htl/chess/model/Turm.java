@@ -29,17 +29,17 @@ public class Turm extends Figur
 			{
 				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
 				{
-					return true;
+					if(super.spielzugMoeglich(sp, von, nach))return false;
 				}
 			}
 		}
-		else
+		if(nach.getY()>von.getY()||nach.getY()<von.getY())
 		{
 			for(int i=1;i<=8;i++)
 			{
 				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
 				{
-					return true;
+					if(super.spielzugMoeglich(sp, von, nach))return true;
 				}
 			}
 		}

@@ -42,20 +42,19 @@ public class BauerTest
 	{			
 		try
 		{
-
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 			Bauer b = (Bauer) sf.getFigur(1,1);
 			boolean beobachtet;
-				//läufer bewegen
-			beobachtet = b.spielZug(sf, new Position(2,1),new Position(3,2));
-			Assert.assertFalse(beobachtet);
+			
+			beobachtet = b.spielZug(sf, new Position(2,1),new Position(2,3));
+			Assert.assertTrue(beobachtet);
 
 			beobachtet = b.spielZug(sf, new Position(1,1),new Position(0,3));
 			Assert.assertFalse(beobachtet);
-
 			
 			beobachtet = b.spielZug(sf, new Position(6,6),new Position(3,7));
 			Assert.assertFalse(beobachtet);
+			
 		} catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
@@ -75,12 +74,24 @@ public class BauerTest
 			beobachtet = b.spielzugMoeglich(sf, new Position(1,1),new Position(1, 4));
 			Assert.assertFalse(beobachtet);
 			
+			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(2, 6));
+			Assert.assertFalse(beobachtet);
+			
+			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(0, 6));
+			Assert.assertFalse(beobachtet);
+			
 			beobachtet = b.spielzugMoeglich(sf, new Position(1,1),new Position(2, 5));
 			Assert.assertFalse(beobachtet);	
 
 			b = (Bauer) sf.getFigur(1,6);
 			
 			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(1, 5));
+			Assert.assertTrue(beobachtet);
+			
+			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(1,2));
+			Assert.assertFalse(beobachtet);
+			
+			beobachtet = b.spielzugMoeglich(sf, new Position(7,6),new Position(6, 5));
 			Assert.assertFalse(beobachtet);
 
 		} catch (FileNotFoundException e)
