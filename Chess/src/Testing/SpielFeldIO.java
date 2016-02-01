@@ -45,7 +45,7 @@ public class SpielFeldIO
 				Feld f = leseFeld(figs[spalte]); 
 				position.setX(zeile);
 				position.setY(spalte);
-				feld.figurenSetzen(position,  f); //setze die aktuelle Figur auf das Spielfeld
+				feld.figurenSetzen(position,f); //setze die aktuelle Figur auf das Spielfeld
 			}
 			zeile++;
 		}

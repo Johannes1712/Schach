@@ -39,20 +39,15 @@ public class FeldListener implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 	
+		@SuppressWarnings("unused")
 		boolean figurAusgewaehlt=false;
+		
 		ArrayList<Position> positionListe= new ArrayList<Position>();
 		
 		if(feld instanceof Figur ){
 			
 			Figur figur= (Figur)feld;
 			figurAusgewaehlt=true;
-			
-			if (figur instanceof Bauer)figur=(Bauer)figur;
-			if (figur instanceof Turm)figur= (Turm) figur;
-			if (figur instanceof Springer)figur= (Springer)figur;
-			if (figur instanceof Laeufer)figur= (Laeufer)figur;
-			if (figur instanceof Koenig)figur= (Koenig)figur;
-			if (figur instanceof Dame)figur= (Dame)figur;
 			
 			for(int x=0; x<=7;x++){
 				for(int y=0;y<=7;y++){
@@ -63,39 +58,35 @@ public class FeldListener implements MouseListener{
 					}
 				}
 			}
-			
+			System.out.println("Listener");
+			System.out.println(positionListe.get(0));
 			frame.felderAnfaerben(positionListe);
 		}
-		System.out.println("Listener-Clicked");
+		if(figurAusgewaehlt){
+			
+			
+		}
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("Listener-Entered");
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("Listener-Exited");
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("Listener-Pressed");
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println("Listener-Released");
-		
+
 	}
 
 }

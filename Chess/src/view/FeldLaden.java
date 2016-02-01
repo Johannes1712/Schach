@@ -27,7 +27,6 @@ public class FeldLaden extends JPanel {
 	{
 		figurenliste=list;
 		figurIndex=getFigur(feld);
-		
 		this.weissesFeld=weissesFeld;
 		
 		farbenLaden();
@@ -35,15 +34,20 @@ public class FeldLaden extends JPanel {
 	
 	protected void paintComponent(Graphics g){
 		
+		
 		if(faerbig){
-			g.setColor(Color.CYAN);
-		}
-		else{
+			this.setBackground(Color.BLACK);
+			this.invalidate();
+			this.setOpaque(false);
+			System.out.println("Feld blau");
+			faerbig=false;
+			
+		}else{
 			if(weissesFeld)g.drawImage(weiss,0,0,null);
 			else g.drawImage(schwarz,0,0,null);
 		}
-		
 		if(figurIndex<12)g.drawImage(figurenliste.get(figurIndex),0,0,null);
+		
 	}
 	
 	public void farbenLaden(){
