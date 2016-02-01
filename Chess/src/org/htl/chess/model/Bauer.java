@@ -27,8 +27,8 @@ public class Bauer extends Figur
 		int bewegenX = nach.getX() - von.getX();
 		int bewegenY = nach.getY() - von.getY();
 		
-		Figur figurVon = sp.getFigur(von.getX(),von.getY()); 
-		Feld figurNach=sp.getFeld(nach.getX(),nach.getY());
+		Figur figurVon = sp.getFigur(von.getX(), von.getY()); 
+		Feld figurNach=sp.getFeld(nach.getX(), nach.getY());
 		
 		if(figurVon instanceof Figur && figurNach instanceof Figur)
 		{
@@ -109,6 +109,10 @@ public class Bauer extends Figur
 							}
 						}
 					}
+					else
+					{
+						return false;
+					}
 				}
 			}
 		}
@@ -138,7 +142,11 @@ public class Bauer extends Figur
 						{
 							return true;
 						}
-					}				
+					}
+					else
+					{
+						return false;
+					}
 				}
 			}
 			else
@@ -170,6 +178,10 @@ public class Bauer extends Figur
 								return true;
 							}				
 						}
+					}
+					else
+					{
+						return false;
 					}
 				}
 			}

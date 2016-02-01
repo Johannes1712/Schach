@@ -46,7 +46,7 @@ public class BauerTest
 			Bauer b = (Bauer) sf.getFigur(1,1);
 			boolean beobachtet;
 			
-			beobachtet = b.spielZug(sf, new Position(2,1),new Position(3,2));
+			beobachtet = b.spielZug(sf, new Position(2,1),new Position(2,3));
 			Assert.assertTrue(beobachtet);
 
 			beobachtet = b.spielZug(sf, new Position(1,1),new Position(0,3));
@@ -80,13 +80,13 @@ public class BauerTest
 			b = (Bauer) sf.getFigur(1,6);
 			
 			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(1, 5));
-			Assert.assertFalse(beobachtet);
+			Assert.assertTrue(beobachtet);
 			
 			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(1,2));
 			Assert.assertFalse(beobachtet);
 			
 			beobachtet = b.spielzugMoeglich(sf, new Position(7,6),new Position(6, 5));
-			Assert.assertTrue(beobachtet);
+			Assert.assertFalse(beobachtet);
 
 		} catch (FileNotFoundException e)
 		{
