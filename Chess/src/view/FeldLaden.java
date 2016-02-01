@@ -10,14 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import org.htl.chess.model.Bauer;
-import org.htl.chess.model.Dame;
-import org.htl.chess.model.Feld;
-import org.htl.chess.model.Figur;
-import org.htl.chess.model.Koenig;
-import org.htl.chess.model.Laeufer;
-import org.htl.chess.model.Springer;
-import org.htl.chess.model.Turm;
+import org.htl.chess.model.*;
 
 public class FeldLaden extends JPanel {
 

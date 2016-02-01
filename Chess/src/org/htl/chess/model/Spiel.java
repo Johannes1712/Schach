@@ -4,7 +4,6 @@ import view.Frame;
 import java.io.FileNotFoundException;
 import Testing.SpielFeldIO;
 
-
 public class Spiel {
 	
 	public static void main(String[] args) throws FileNotFoundException
@@ -16,5 +15,4 @@ public class Spiel {
 		Frame frame=new Frame(sf);
 		frame.initialize();
 	}
-
 }
