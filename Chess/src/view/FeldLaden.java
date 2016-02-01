@@ -45,6 +45,7 @@ public class FeldLaden extends JPanel {
 		if(faerbig){
 			this.setBackground(Color.BLACK);
 			this.invalidate();
+			this.setOpaque(false);
 			System.out.println("Feld blau");
 			faerbig=false;
 			
