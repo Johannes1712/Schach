@@ -50,13 +50,6 @@ public class FeldListener implements MouseListener{
 			Figur figur= (Figur)feld;
 			figurAusgewaehlt=true;
 			
-			if (figur instanceof Bauer)figur=(Bauer)figur;
-			if (figur instanceof Turm)figur= (Turm) figur;
-			if (figur instanceof Springer)figur= (Springer)figur;
-			if (figur instanceof Laeufer)figur= (Laeufer)figur;
-			if (figur instanceof Koenig)figur= (Koenig)figur;
-			if (figur instanceof Dame)figur= (Dame)figur;
-			
 			for(int x=0; x<=7;x++){
 				for(int y=0;y<=7;y++){
 					
