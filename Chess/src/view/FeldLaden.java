@@ -50,8 +50,8 @@ public class FeldLaden extends JPanel {
 	
 	public void farbenLaden(){
 		try {
-			weiss=ImageIO.read(new File("Weiss.png"));
-			schwarz=ImageIO.read(new File("Schwarz.png"));
+			weiss=ImageIO.read(new File("FeldWeiss.jpg"));
+			schwarz=ImageIO.read(new File("FeldSchwarz.jpg"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();

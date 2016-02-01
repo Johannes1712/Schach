@@ -32,7 +32,7 @@ public class Koenig extends Figur
 			rw = false;
 		}
 		
-		Feld figur = spielfeld [nach.getX()][nach.getY()];
+		Feld figur = sp.getFeld(nach.getX(), nach.getY());
 		
 		if(figur instanceof Figur)
 		{
@@ -53,6 +53,9 @@ public class Koenig extends Figur
 				&& !(spielfeld [4][7] instanceof Figur)))) 
 		{ 
 			rw = true;
+			
+			Feld turm1 = sp.getFeld(7,7);
+			sp.figurenSetzen(new Position(4,7), turm1);
 		}
 		
 																//kleine Rochade Weiﬂ
@@ -65,6 +68,9 @@ public class Koenig extends Figur
 				&& !(spielfeld [2][7] instanceof Figur)))) 
 		{ 
 			rw = true;
+			
+			Feld turm1 = sp.getFeld(0,7);
+			sp.figurenSetzen(new Position(2,7), turm1);
 		}
 		
 		
@@ -74,12 +80,15 @@ public class Koenig extends Figur
 		if ((getFarbeW() == false) && ((nach.getX() == 5) && nach.getY() == 0) 
 				&& (getBewegt() == false) 
 				&& (sp.schach() == false)
-				&& (((spielfeld [7][7] instanceof Turm)
-				&& !(spielfeld [6][7] instanceof Figur) 
-				&& !(spielfeld [5][7] instanceof Figur) 
-				&& !(spielfeld [4][7] instanceof Figur)))) 
+				&& (((spielfeld [7][0] instanceof Turm)
+				&& !(spielfeld [6][0] instanceof Figur) 
+				&& !(spielfeld [5][0] instanceof Figur) 
+				&& !(spielfeld [4][0] instanceof Figur)))) 
 		{ 
 			rw = true;
+			
+			Feld turm1 = sp.getFeld(7,0);
+			sp.figurenSetzen(new Position(4,0), turm1);
 		}
 		
 																//kleine Rochade Schwarz
@@ -91,23 +100,27 @@ public class Koenig extends Figur
 				&& !(spielfeld [2][0] instanceof Figur)))) 
 		{
 			rw = true;
+			
+			Feld turm1 = sp.getFeld(0,0);
+			sp.figurenSetzen(new Position(2,0), turm1);
 		}
 		
 		//Verhindern, dass sich Koenig selbst ins Schach setzt:
 		
+		Feld spFigur =  sp.getFeld(nach.getX(),nach.getY());
 		sp.spielzugAusfuehren(von, nach, this);
-		Figur spFigur = null;
 		
-		if (spielfeld [nach.getX()][nach.getY()] instanceof Figur)
+		if (spFigur instanceof Figur)
 		{
-			spFigur = (Figur) spielfeld [nach.getX()][nach.getY()];
+			spFigur = (Figur)spFigur;
 		}
 		
 		if (sp.schach())
 		{
 			rw = false;
-			sp.spielzugAusfuehren(nach, von, this);
-			spielfeld [nach.getX()][nach.getY()] = spFigur;
+			sp.figurenSetzen(new Position(nach.getX(), nach.getY()), spFigur);
+			//spFigur=sp.getFeld(nach.getX(), nach.getY());
+			//spielfeld [nach.getX()][nach.getY()] = spFigur;
 		}
 		
 		return rw;		

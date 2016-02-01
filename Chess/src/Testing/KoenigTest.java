@@ -153,7 +153,7 @@ public class KoenigTest {
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Schach.txt");
-			Koenig k = (Koenig) sf.getFigur(1,0);
+			Koenig k = (Koenig) sf.getFigur(3,1);
 			
 			//selbst ins Schach setzen
 			boolean beobachtet = k.spielzugMoeglich(sf, new Position(3,1),

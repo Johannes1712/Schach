@@ -23,22 +23,15 @@ public class Turm extends Figur
 			if(istGleichesTeam)return false;
 		}
 		
-		
-		boolean rueckgabewert=true;
 		if(nach.getX()>von.getX()||nach.getX()<von.getX())
 		{
 			for(int i=1;i<=8;i++)
 			{
 				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
 				{
-					if(!super.spielzugMoeglich(sp, von, nach))
-					{
-						return false;
-					}
-					else rueckgabewert=true;
+					return true;
 				}
 			}
-			//if(rueckgabewert==true)return true;
 		}
 		else
 		{
@@ -46,57 +39,12 @@ public class Turm extends Figur
 			{
 				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
 				{
-					if(!super.spielzugMoeglich(sp, von, nach))
-					{
-						return false;
-					}
-					else rueckgabewert=true;
-				}
-			}
-			//if(rueckgabewert==true)return true;
-		}
-		/*if(rueckgabewert==true)
-		{
-			return true;
-		}*/
-		
-		
-		/*if(nach.getX()>von.getX()||nach.getY()>von.getY())
-		{
-			
-			int xkoord;
-			int ykoord;
-			System.out.println("hallo");
-			for(xkoord=von.getX();xkoord<nach.getX();xkoord++)
-			{
-				for(ykoord=von.getY();ykoord<nach.getY();ykoord++)
-				{
-					if(spielfeld[xkoord][ykoord]==spielfeld[von.getX()][von.getY()])
-					{
-						return false;
-					}
+					return true;
 				}
 			}
 		}
-		else
-		{
-			int xkoord;
-			int ykoord;
-			
-			for(xkoord=nach.getX();xkoord<von.getX();xkoord++)
-			{
-				for(ykoord=nach.getY();ykoord<von.getY();ykoord++)
-				{
-					if(spielfeld[xkoord][ykoord]==spielfeld[von.getX()][von.getY()])
-					{
-						return false;
-					}
-				}
-			}
-		}*/
 		
 		return false;
 		
 	}
-
 }
