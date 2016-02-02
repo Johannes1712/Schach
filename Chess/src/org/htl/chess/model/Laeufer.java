@@ -3,8 +3,8 @@ package org.htl.chess.model;
 
 public class Laeufer extends Figur
 {
-	public Laeufer(boolean farbe) {
-		super(farbe);
+	public Laeufer(boolean farbe, boolean bewegt) {
+		super(farbe,bewegt);
 	}
 
 	private Feld[][] spielfeld;

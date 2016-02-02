@@ -1,7 +1,6 @@
 package view;
 
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -27,7 +26,7 @@ public class FeldLaden extends JPanel {
 	boolean weissesFeld;
 	boolean faerbig;
 	
-	BufferedImage weiss,schwarz;
+	BufferedImage weiss,schwarz,blau;
 	ArrayList<Image> figurenliste;
 	
 	public void feldSetzen(ArrayList<Image> list, boolean weissesFeld, Feld feld)
@@ -43,17 +42,14 @@ public class FeldLaden extends JPanel {
 		
 		
 		if(faerbig){
-			this.setBackground(Color.BLACK);
-			this.invalidate();
-			this.setOpaque(false);
-			System.out.println("Feld blau");
+			g.drawImage(blau,0,0,null);
 			faerbig=false;
 			
 		}else{
 			if(weissesFeld)g.drawImage(weiss,0,0,null);
 			else g.drawImage(schwarz,0,0,null);
 		}
-		if(figurIndex<12)g.drawImage(figurenliste.get(figurIndex),0,0,null);
+		if(figurIndex<12)g.drawImage(figurenliste.get(figurIndex),22,0,null);
 		
 	}
 	
@@ -61,6 +57,7 @@ public class FeldLaden extends JPanel {
 		try {
 			weiss=ImageIO.read(new File("FeldWeiss.jpg"));
 			schwarz=ImageIO.read(new File("FeldSchwarz.jpg"));
+			blau=ImageIO.read(new File("FeldBlau.jpg"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();

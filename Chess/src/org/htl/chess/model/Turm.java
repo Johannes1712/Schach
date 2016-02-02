@@ -2,9 +2,8 @@ package org.htl.chess.model;
 
 public class Turm extends Figur
 {
-	public Turm(boolean farbe) {
-		super(farbe);
-		// TODO Auto-generated constructor stub
+	public Turm(boolean farbe, boolean bewegt) {
+		super(farbe,bewegt);
 	}
 	public boolean spielzug(Spielfeld sp, Position von, Position nach)
 	{

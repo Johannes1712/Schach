@@ -2,12 +2,10 @@ package org.htl.chess.model;
 
 public class Koenig extends Figur
 {
-
-	public Koenig(boolean farbe) {
-		super(farbe);
-		// TODO Auto-generated constructor stub
+	public Koenig(boolean farbe, boolean bewegt) {
+	super(farbe,bewegt);
 	}
-
+	
 	public boolean spielzug(Spielfeld sp,Position von,Position nach)
 	{
 		return super.spielZug(sp, von, nach);

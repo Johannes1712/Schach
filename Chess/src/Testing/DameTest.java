@@ -76,7 +76,7 @@ public class DameTest
 			beobachtet=d.spielzugMoeglich(sf, new Position(4,0), new Position(4,2));
 			Assert.assertTrue(beobachtet);
 			
-			Bauer b1=new Bauer(true);
+			Bauer b1=new Bauer(true,false);
 			b1 = (Bauer) sf.getFigur(5,1);
 			beobachtet=b.spielzugMoeglich(sf, new Position(5,1), new Position(5,3));
 			Assert.assertTrue(beobachtet);

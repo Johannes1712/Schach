@@ -1,9 +1,13 @@
 package org.htl.chess.model;
 
+import java.util.ArrayList;
+
 public class Spielfeld 
 {
 	public Feld[][] mat = new Feld[8][8];
 	private boolean werAmZug;
+	private Position posVon;
+	private ArrayList<Position> positionListe;
 
 	public void ausgabe() 
 	{
@@ -250,13 +254,12 @@ public class Spielfeld
 	
 	public Figur getFigur(int x, int y) 
 	{
-		Figur figur;
-		return figur=(Figur) mat[x][y];
+		return (Figur) mat[x][y];
 	}
 	
 	public Feld getFeld(int x, int y){
-		Feld feld;
-		return feld= mat[x][y];
+		
+		return  mat[x][y];
 	}
 
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur)
@@ -269,4 +272,18 @@ public class Spielfeld
 	public void figurenSetzen(Position pos, Feld f){
 		mat[pos.getX()][pos.getY()] = f;
 	}
+	
+	public void setAktuellePositionFigur(Position pos){
+		posVon=pos;
+	}
+	public Position getAktuellePositionFigur(){
+		return posVon;
+	}
+	public void setAktuellePositionListe(ArrayList<Position> positionListe){
+		this.positionListe=positionListe;
+	}
+	public ArrayList<Position>  getAktuellePositionListe(){
+		return this.positionListe;
+	}
+	
 }
