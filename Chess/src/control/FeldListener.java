@@ -42,17 +42,24 @@ public class FeldListener implements MouseListener{
 		positionListe= new ArrayList<Position>();
 		zugBeendet=false;
 		
-		if(figurPlatzieren && !figurWaehlen) figurPlatzieren();
-		else{
-			figurPlatzieren=false;positionListe.clear(); spielfeld.setAktuellePositionListe(positionListe);
-		}
+		if(spielfeld.schachMatt()){
+			if(figurPlatzieren && !figurWaehlen) figurPlatzieren();
+			else{
+				figurPlatzieren=false;positionListe.clear(); spielfeld.setAktuellePositionListe(positionListe);
+			}
 		
-		if(spielfeld.getFeld(posAktuell.getX(), posAktuell.getY()) instanceof Figur){
-			if(istWeissAmZug==spielfeld.getFigur(posAktuell.getX(), posAktuell.getY()).getFarbeW()){
+			if(spielfeld.getFeld(posAktuell.getX(), posAktuell.getY()) instanceof Figur){
+				if(istWeissAmZug==spielfeld.getFigur(posAktuell.getX(), posAktuell.getY()).getFarbeW()){
 				
-				if((figurWaehlen || !figurPlatzieren) && !zugBeendet) figurWaehlen();
+					if((figurWaehlen || !figurPlatzieren) && !zugBeendet) figurWaehlen();
+				}
 			}
 		}
+		else{
+			System.exit(0);
+		}
+		
+		
 
 	}
 	
