@@ -19,10 +19,10 @@ public class FigurTest {
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			Springer sp = (Springer) sf.getFigur(1,0);
+			Springer sp = (Springer) sf.getFigur(0,1);
 
 			// über das Spielfeld hinaus
-			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),new Position(7, 27));
+			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(0,1),new Position(10, 27));
 			Assert.assertFalse(beobachtet);
 
 		} catch (FileNotFoundException e)
@@ -38,10 +38,10 @@ public class FigurTest {
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			Springer sp = (Springer) sf.getFigur(1,7);
+			Springer sp = (Springer) sf.getFigur(7,1);
 			
 			// nicht dieselbe Figur schlagen
-			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,7),new Position(3, 6));
+			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(7,1),new Position(6,3));
 			Assert.assertFalse(beobachtet);
 
 

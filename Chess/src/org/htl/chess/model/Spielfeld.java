@@ -231,17 +231,6 @@ public class Spielfeld
 		
 		return schach;
 	}
-//	public void spielzug(String zug) 
-//	{
-//		if (Integer.parseInt(zug) / 2 == 0) 
-//		{
-//			werAmZug = true;
-//		} else 
-//		{
-//			werAmZug = false;
-//		}
-//	}
-	
 	
 	public void setWeissAmZug(boolean weissAmZug){
 		this.weissAmZug=weissAmZug;

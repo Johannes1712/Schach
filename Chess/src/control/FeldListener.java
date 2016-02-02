@@ -54,7 +54,7 @@ public class FeldListener implements MouseListener{
 					if((figurWaehlen || !figurPlatzieren) && !zugBeendet) figurWaehlen();
 				}
 			}
-		//}
+//		}
 //		else{
 //			System.exit(0);
 //		}

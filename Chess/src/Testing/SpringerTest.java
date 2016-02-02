@@ -21,14 +21,14 @@ public class SpringerTest
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			Springer sp = (Springer) sf.getFigur(1,0);
+			Springer sp = (Springer) sf.getFigur(0,1);
 
 			// rechts nach vorn
-			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),new Position(2, 2));
+			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(0,1),new Position(2, 2));
 			Assert.assertTrue(beobachtet);
 
 			// links nach vorn bei Beginn
-			beobachtet = sp.spielzugMoeglich(sf, new Position(1,0),new Position(0,2));
+			beobachtet = sp.spielzugMoeglich(sf, new Position(0,1),new Position(2,0));
 			System.out.println("Farbe: "+sp.getFarbeW());
 			Assert.assertTrue(beobachtet);
 
@@ -45,9 +45,9 @@ public class SpringerTest
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			Springer sp = (Springer) sf.getFigur(1,7);
+			Springer sp = (Springer) sf.getFigur(7,1);
 			
-			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(1,7),new Position(3, 4));
+			boolean beobachtet = sp.spielzugMoeglich(sf, new Position(7,1),new Position(4,3));
 			Assert.assertFalse(beobachtet);
 
 		} catch (FileNotFoundException e)
