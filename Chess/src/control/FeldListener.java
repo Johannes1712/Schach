@@ -43,7 +43,9 @@ public class FeldListener implements MouseListener{
 		zugBeendet=false;
 		
 		if(figurPlatzieren && !figurWaehlen) figurPlatzieren();
-		else figurPlatzieren=false;
+		else{
+			figurPlatzieren=false;positionListe.clear(); spielfeld.setAktuellePositionListe(positionListe);
+		}
 		
 		if(spielfeld.getFeld(posAktuell.getX(), posAktuell.getY()) instanceof Figur){
 			if(istWeissAmZug==spielfeld.getFigur(posAktuell.getX(), posAktuell.getY()).getFarbeW()){
@@ -96,12 +98,12 @@ public class FeldListener implements MouseListener{
 			spielfeld.spielzugAusfuehren(figurPosition, posAktuell, spielfeld.getFigur(xFigur,yFigur));
 			frame.spielfeldAufbauen();
 			
-			
-			positionListe.clear();
-			spielfeld.setAktuellePositionListe(positionListe);
 			istWeissAmZug=!istWeissAmZug;
 			zugBeendet=true;
 		}
+		positionListe.clear();
+		spielfeld.setAktuellePositionListe(positionListe);
+		
 		figurWaehlen=true;
 		figurPlatzieren=false;
 		

@@ -1,4 +1,3 @@
-
 package org.htl.chess.model;
 
 public class Laeufer extends Figur
@@ -20,6 +19,7 @@ public class Laeufer extends Figur
 		int bewegenY = nach.getY() - von.getY();
 		int zaehler;
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
+		
 		Position pos;
 		pos=new Position(0,0);
 		
