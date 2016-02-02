@@ -3,10 +3,9 @@ package org.htl.chess.model;
 	
 public class Dame extends Figur
 {
-	public Dame(boolean farbe) {
-		super(farbe);
+	public Dame(boolean farbe, boolean bewegt) {
+		super(farbe,bewegt);
 	}
-
 	
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{

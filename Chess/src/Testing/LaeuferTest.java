@@ -49,12 +49,11 @@ public class LaeuferTest
 			Laeufer lf = (Laeufer) sf.getFigur(2,0);
 			boolean beobachtet;
 				//läufer bewegen
-			beobachtet = lf.spielzugMoeglich(sf, new Position(2,0),new Position(2,1));
+			beobachtet = lf.spielzugMoeglich(sf, new Position(2,0),new Position(0,1));
 			Assert.assertFalse(beobachtet);
 
-			beobachtet = lf.spielzugMoeglich(sf, new Position(2,0),new Position(0,3));
+			beobachtet = lf.spielzugMoeglich(sf, new Position(2,0),new Position(0,2));
 			Assert.assertTrue(beobachtet);
-
 			
 			beobachtet = lf.spielzugMoeglich(sf, new Position(2,7),new Position(3,7));
 			Assert.assertFalse(beobachtet);

@@ -1,7 +1,6 @@
 package view;
 
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -10,14 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import org.htl.chess.model.Bauer;
-import org.htl.chess.model.Dame;
-import org.htl.chess.model.Feld;
-import org.htl.chess.model.Figur;
-import org.htl.chess.model.Koenig;
-import org.htl.chess.model.Laeufer;
-import org.htl.chess.model.Springer;
-import org.htl.chess.model.Turm;
+import org.htl.chess.model.*;
 
 public class FeldLaden extends JPanel {
 
@@ -27,14 +19,13 @@ public class FeldLaden extends JPanel {
 	boolean weissesFeld;
 	boolean faerbig;
 	
-	BufferedImage weiss,schwarz;
+	BufferedImage weiss,schwarz,blau;
 	ArrayList<Image> figurenliste;
 	
 	public void feldSetzen(ArrayList<Image> list, boolean weissesFeld, Feld feld)
 	{
 		figurenliste=list;
 		figurIndex=getFigur(feld);
-		
 		this.weissesFeld=weissesFeld;
 		
 		farbenLaden();
@@ -42,21 +33,24 @@ public class FeldLaden extends JPanel {
 	
 	protected void paintComponent(Graphics g){
 		
+		
 		if(faerbig){
-			g.setColor(Color.CYAN);
-		}
-		else{
+			g.drawImage(blau,0,0,null);
+			faerbig=false;
+			
+		}else{
 			if(weissesFeld)g.drawImage(weiss,0,0,null);
 			else g.drawImage(schwarz,0,0,null);
 		}
+		if(figurIndex<12)g.drawImage(figurenliste.get(figurIndex),22,0,null);
 		
-		if(figurIndex<12)g.drawImage(figurenliste.get(figurIndex),0,0,null);
 	}
 	
 	public void farbenLaden(){
 		try {
 			weiss=ImageIO.read(new File("FeldWeiss.jpg"));
 			schwarz=ImageIO.read(new File("FeldSchwarz.jpg"));
+			blau=ImageIO.read(new File("FeldBlau.jpg"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();

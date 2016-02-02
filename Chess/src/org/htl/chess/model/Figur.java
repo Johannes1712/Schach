@@ -8,9 +8,10 @@ public class Figur extends Feld
 	
 	protected Feld[ ] [ ] spielfeld;
 	
-	public Figur(boolean farbe)
+	public Figur(boolean farbe, boolean bewegt)
 	{
 		this.farbeW=farbe;
+		this.bewegt=false;
 	}
 	
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)

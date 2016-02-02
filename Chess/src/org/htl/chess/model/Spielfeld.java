@@ -1,12 +1,16 @@
 package org.htl.chess.model;
 
+import java.util.ArrayList;
+
 public class Spielfeld 
 {
 	public Feld[][] mat = new Feld[8][8];
-	private boolean werAmZug;
+	private boolean weissAmZug=true;
+	private Position posVon;
+	private ArrayList<Position> positionListe;
 
 	public void ausgabe() 
-	{/*
+	{
 		boolean schonVergeben=false;
 		for (int i = 0; i <= 7; i++) 
 		{
@@ -46,7 +50,8 @@ public class Spielfeld
 					System.out.println();
 			}
 			schonVergeben=false;
-		}*/
+		}
+		System.out.println(mat[0][0]);
 	}
 
 
@@ -226,15 +231,23 @@ public class Spielfeld
 		
 		return schach;
 	}
-	public void spielzug(String zug) 
-	{
-		if (Integer.parseInt(zug) / 2 == 0) 
-		{
-			werAmZug = true;
-		} else 
-		{
-			werAmZug = false;
-		}
+//	public void spielzug(String zug) 
+//	{
+//		if (Integer.parseInt(zug) / 2 == 0) 
+//		{
+//			werAmZug = true;
+//		} else 
+//		{
+//			werAmZug = false;
+//		}
+//	}
+	
+	
+	public void setWeissAmZug(boolean weissAmZug){
+		this.weissAmZug=weissAmZug;
+	}
+	public boolean getWeissAmZug(){
+		return weissAmZug;
 	}
 
 	public Position schach2koordinate(String schach) 
@@ -249,13 +262,12 @@ public class Spielfeld
 	
 	public Figur getFigur(int x, int y) 
 	{
-		Figur figur;
-		return figur=(Figur) mat[y][x];
+		return (Figur) mat[x][y];
 	}
 	
 	public Feld getFeld(int x, int y){
-		Feld feld;
-		return feld= mat[y][x];
+		
+		return  mat[x][y];
 	}
 
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur)
@@ -268,4 +280,18 @@ public class Spielfeld
 	public void figurenSetzen(Position pos, Feld f){
 		mat[pos.getX()][pos.getY()] = f;
 	}
+	
+	public void setAktuellePositionFigur(Position pos){
+		posVon=pos;
+	}
+	public Position getAktuellePositionFigur(){
+		return posVon;
+	}
+	public void setAktuellePositionListe(ArrayList<Position> positionListe){
+		this.positionListe=positionListe;
+	}
+	public ArrayList<Position>  getAktuellePositionListe(){
+		return this.positionListe;
+	}
+	
 }

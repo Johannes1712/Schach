@@ -2,10 +2,8 @@ package org.htl.chess.model;
 
 public class Springer extends Figur
 {
-	
-
-	public Springer(boolean farbeW) {
-		super(farbeW);
+	public Springer(boolean farbe, boolean bewegt) {
+		super(farbe,bewegt);
 	}
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)

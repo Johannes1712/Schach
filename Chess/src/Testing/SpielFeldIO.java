@@ -20,12 +20,12 @@ public class SpielFeldIO
 		
 		switch(typ)
 		{
-			case 'T' : return new Turm(farbeW);
-			case 'S' : return new Springer(farbeW);
-			case 'L' : return new Laeufer(farbeW);
-			case 'K' : return new Koenig(farbeW);
-			case 'D' : return new Dame(farbeW);
-			case 'B' : return new Bauer(farbeW);
+			case 'T' : return new Turm(farbeW,false);
+			case 'S' : return new Springer(farbeW, false);
+			case 'L' : return new Laeufer(farbeW,false);
+			case 'K' : return new Koenig(farbeW,false);
+			case 'D' : return new Dame(farbeW,false);
+			case 'B' : return new Bauer(farbeW,false);
 			default: return new Feld();
 		}
 	}
@@ -45,7 +45,7 @@ public class SpielFeldIO
 				Feld f = leseFeld(figs[spalte]); 
 				position.setX(zeile);
 				position.setY(spalte);
-				feld.figurenSetzen(position,  f); //setze die aktuelle Figur auf das Spielfeld
+				feld.figurenSetzen(position,f); //setze die aktuelle Figur auf das Spielfeld
 			}
 			zeile++;
 		}
