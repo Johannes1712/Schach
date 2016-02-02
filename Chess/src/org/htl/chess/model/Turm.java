@@ -9,11 +9,13 @@ public class Turm extends Figur
 	{
 		return super.spielZug(sp, von, nach);
 	}
+	@SuppressWarnings("unused")
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{	
 		int bewegenX = nach.getY() - von.getY();
 		int bewegenY = nach.getX() - von.getX();
-		int zaehler;
+		int zaehler=1;
+		Position pos=new Position(0,0);
 		
 		Figur figurVon = sp.getFigur(von.getX(), von.getY()); 
 		Feld figurNach=sp.getFeld(nach.getX(), nach.getY());
@@ -23,41 +25,49 @@ public class Turm extends Figur
 			if(!figurVon.dieselbeFigur((Figur)figurNach, figurVon)) return false;
 		}
 		
-		
-		if(nach.getX()==von.getX())
+		//Bei links unten fuer hinauf fahren und für Rechts oben zum hinunter fahren?
+		if(von.getY()==nach.getY())
 		{
-			for(zaehler=0;zaehler<=8;zaehler++)
-			{
-				Feld figur1=sp.getFeld(von.getY(), von.getX()-zaehler);
-				if(!(figur1 instanceof Figur))
+			for(zaehler=0;zaehler<8;zaehler++)
+			{				
+				Feld figur1=sp.getFeld(von.getY()+zaehler,von.getX());
+				if(!figurVon.dieselbeFigur((Figur)figur1, figurVon))
 				{
-					if(!figurVon.dieselbeFigur((Figur)figur1, figurVon)) 
-					{
+					return false;
+				}
+				else
+				{
+					if(figur1 instanceof Figur)
+					{						
 						return true;
 					}
 					
 				}
+			}		
+		}
+		
+		//geht nicht ??
+		if(von.getY()==nach.getY())
+		{
+			for(zaehler=7;zaehler>0;zaehler--)
+			{
+				Feld figur1=sp.getFeld(von.getY()+zaehler, von.getX());
+				if(!figurVon.dieselbeFigur((Figur)figur1, figurVon))
+				{
+					return false;
+				}
 				else
 				{
-					return true;
+					if(figur1 instanceof Figur)
+					{						
+						return true;
+					}
 				}
 			}
-			
-			if(zaehler==bewegenY)
-			{
-				return true;
-			}
 		}
-		return false;
-			
 		
-//		if(figur instanceof Figur)
-//		{			
-//			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-//			if(istGleichesTeam)return false;
-//		}
-		
-		/*if(nach.getX()>von.getX()||nach.getX()<von.getX())
+		//fuer links unten nach rechts fahren
+		if(von.getX()==nach.getX())
 		{
 			for(int i=1;i<=8;i++)
 			{
@@ -72,40 +82,52 @@ public class Turm extends Figur
 			}
 		}
 		
-		if((nach.getY()<von.getY()))
+		/*if((nach.getY()<von.getY()))
 		{	
 			for(zaehler=-1;zaehler>(nach.getY()-von.getY());zaehler--)
 			{	
 				Feld figur1=sp.getFeld(von.getX(), von.getY()+zaehler);
 			
 				if(figur1 instanceof Figur)
+			for(zaehler=0;zaehler<8;zaehler++)
+			{				
+				Feld figur2=sp.getFeld(von.getY(),von.getX()+zaehler);
+				if(!figurVon.dieselbeFigur((Figur)figur2, figurVon))
 				{
 					
-					if((nach.getY()== von.getY()+zaehler))
-					{
-						if((Figur)figur1 instanceof Figur)
-						{
-							if(((Figur) figur1).dieselbeFigur((Figur)figur1,(Figur) figur))
-							{
-								return true;
-							}
-						}
-						
-					}
-					else
-					{
-						return false;
+					return false;
+				}
+				else
+				{
+					if(figur1 instanceof Figur)
+					{						
+						return true;
+					}					
+				}
+			}		
+		}
+		
+		//für rechst oben nach links fahren warum nicht rechts unten auch??
+		if(von.getX()==nach.getX())
+		{
+			for(zaehler=7;zaehler>0;zaehler--)
+			{
+				Feld figur1=sp.getFeld(von.getY(), von.getX()+zaehler);
+				if(!figurVon.dieselbeFigur((Figur)figur1, figurVon))
+				{
+					return false;
+				}
+				else
+				{
+					if(figur1 instanceof Figur)
+					{						
+						return true;
 					}
 				}
-				
-				
 			}
-			if(zaehler==(nach.getY()-von.getY()))
-			{
-				return true;
-			}
-		}
+		}*/
 		return false;
-	*/
+
+	
 	}
 }
