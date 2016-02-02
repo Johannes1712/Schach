@@ -42,7 +42,7 @@ public class FeldListener implements MouseListener{
 		positionListe= new ArrayList<Position>();
 		zugBeendet=false;
 		
-		if(spielfeld.schachMatt()){
+		//if(spielfeld.schachMatt()){
 			if(figurPlatzieren && !figurWaehlen) figurPlatzieren();
 			else{
 				figurPlatzieren=false;positionListe.clear(); spielfeld.setAktuellePositionListe(positionListe);
@@ -54,10 +54,10 @@ public class FeldListener implements MouseListener{
 					if((figurWaehlen || !figurPlatzieren) && !zugBeendet) figurWaehlen();
 				}
 			}
-		}
-		else{
-			System.exit(0);
-		}
+		//}
+//		else{
+//			System.exit(0);
+//		}
 		
 		
 
