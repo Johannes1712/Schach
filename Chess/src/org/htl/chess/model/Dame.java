@@ -15,9 +15,11 @@ public class Dame extends Figur
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{	
 		
+		System.out.println("hallo");		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
-				
-		Feld figur= sp.getFeld(nach.getX(),nach.getY());
+		
+		Feld figur= sp.getFeld(nach.getX(),nach.getY());	
+		
 		
 		for(int i=1;i<=8;i++)
 		{
