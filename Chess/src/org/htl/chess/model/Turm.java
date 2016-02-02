@@ -12,54 +12,47 @@ public class Turm extends Figur
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{	
 		int bewegenX = nach.getY() - von.getY();
-		int bewegenY = nach.getY() - von.getY();
+		int bewegenY = nach.getX() - von.getX();
 		int zaehler;
-		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		
-		Feld figur= sp.getFeld(nach.getX(),nach.getY());	
-		if(figur instanceof Figur)
-		{			
-			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-			if(istGleichesTeam == this.getFarbeW())return false;
+		Figur figurVon = sp.getFigur(von.getX(), von.getY()); 
+		Feld figurNach=sp.getFeld(nach.getX(), nach.getY());
+		
+		if(figurVon instanceof Figur && figurNach instanceof Figur)
+		{
+			if(!figurVon.dieselbeFigur((Figur)figurNach, figurVon)) return false;
 		}
 		
-		if((nach.getY()>von.getY()))
+		
+		if(nach.getX()==von.getX())
 		{
-			for(zaehler=1;zaehler<=bewegenY;zaehler++)
+			for(zaehler=0;zaehler<=8;zaehler++)
 			{
-				Feld figur1=sp.getFeld(von.getX(), von.getY()+zaehler);
-			
-				if(figur1 instanceof Figur)
+				Feld figur1=sp.getFeld(von.getY(), von.getX()-zaehler);
+				if(!(figur1 instanceof Figur))
 				{
-					
-					if((nach.getY()== von.getY()+zaehler))
+					if(!figurVon.dieselbeFigur((Figur)figur1, figurVon)) 
 					{
-						if((Figur)figur1 instanceof Figur)
-						{
-							if(((Figur) figur1).dieselbeFigur((Figur)figur1,(Figur) figur))
-							{
-								return true;
-							}
-						}
-						else
-						{
-							return true;
-						}
+						return true;
 					}
 					else
 					{
 						return false;
 					}
 				}
-				
-				
+				else
+				{
+					return true;
+				}
 			}
+			
 			if(zaehler==bewegenY)
 			{
 				return true;
 			}
-			
 		}
+		return false;
+			
 		
 //		if(figur instanceof Figur)
 //		{			
@@ -81,7 +74,7 @@ public class Turm extends Figur
 				}
 			}
 		}*/
-		
+		/*
 		if((nach.getY()<von.getY()))
 		{	
 			for(zaehler=-1;zaehler>(nach.getY()-von.getY());zaehler--)
@@ -116,6 +109,6 @@ public class Turm extends Figur
 			}
 		}
 		return false;
-		
+	*/	
 	}
 }

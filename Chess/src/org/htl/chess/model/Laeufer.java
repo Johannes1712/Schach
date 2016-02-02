@@ -38,73 +38,73 @@ public class Laeufer extends Figur
 		}
 		if(bewegenY==bewegenX)
 		{
-		if(bewegenY>0)
-		{
-			
-			for(zaehler=1;zaehler<bewegenY;zaehler++)
+			if(bewegenY>0)
 			{
-				pos.setX(von.getX()+zaehler);
-				pos.setY(von.getY()+zaehler);
-				
-				Feld figur1=sp.getFeld(pos.getX(), pos.getY());
-				
-				if(figur1 instanceof Figur)
+			
+				for(zaehler=1;zaehler<bewegenY;zaehler++)
 				{
-					if(pos.getY()==nach.getY()&&pos.getX()==nach.getX())
+					pos.setX(von.getX()+zaehler);
+					pos.setY(von.getY()+zaehler);
+					
+					Feld figur1=sp.getFeld(pos.getX(), pos.getY());
+				
+					if(figur1 instanceof Figur)
 					{
-						if((Figur)figur1 instanceof Figur)
+						if(pos.getY()==nach.getY()&&pos.getX()==nach.getX())
 						{
-							if(((Figur) figur1).dieselbeFigur((Figur)figur1,(Figur) figurNach))
+							if((Figur)figur1 instanceof Figur)
+							{
+								if(((Figur) figur1).dieselbeFigur((Figur)figur1,(Figur) figurNach))
+								{
+									return true;
+								}
+							}
+							else
 							{
 								return true;
 							}
-						}
+
+						}					
 						else
 						{
-							return true;
+							return false;
 						}
-
-					}					
-					else
-					{
-						return false;
 					}
 				}
-			}
-			if(zaehler==bewegenY)
-			{
-				return true;
-			}
-		}
-		if(bewegenY<0)
-		{
-			for(zaehler=-1;zaehler>bewegenY;zaehler--)
-			{					
-				pos.setX(von.getX()+zaehler);
-				pos.setY(von.getY()+zaehler);
-				Feld figur=sp.getFeld(pos.getX(), pos.getY());
-				if(figur instanceof Figur)
+				if(zaehler==bewegenY)
 				{
-
-					if(pos.getY()==nach.getY()&&pos.getX()==nach.getX())
-					{
-						if(((Figur) figur).dieselbeFigur((Figur)figur,(Figur) figurNach))
-						{
-							return true;
-						}
-					}					
-					else
-					{
-						return false;
-					}
-				}				
+					return true;
+				}
 			}
-			
-			if(zaehler==bewegenY)
+			if(bewegenY<0)
 			{
-				return true;
+				for(zaehler=-1;zaehler>bewegenY;zaehler--)
+				{					
+					pos.setX(von.getX()+zaehler);
+					pos.setY(von.getY()+zaehler);
+					Feld figur=sp.getFeld(pos.getX(), pos.getY());
+					if(figur instanceof Figur)
+					{
+
+						if(pos.getY()==nach.getY()&&pos.getX()==nach.getX())
+						{
+							if(((Figur) figur).dieselbeFigur((Figur)figur,(Figur) figurNach))
+							{
+								return true;
+							}
+						}					
+						else
+						{
+							return false;
+						}
+					}				
+				}
+				
+				if(zaehler==bewegenY)
+				{
+					return true;
+				}
 			}
-		}
 		}
 		return false;
 	}		

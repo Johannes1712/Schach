@@ -61,8 +61,7 @@ public class Bauer extends Figur
 						{
 							return true;
 						}
-					}
-					
+					}					
 					if(bewegenY==2)
 					{
 						Feld figur=sp.getFeld(nach.getX()-1, nach.getY());
