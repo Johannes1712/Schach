@@ -24,6 +24,8 @@ public class FeldListener implements MouseListener{
 	static boolean figurWaehlen= true;
 	static boolean figurPlatzieren= false;
 	static boolean zugBeendet=false;
+	static int zugZaehler=0;
+	static boolean istWeissAmZug=true;
 	
 	public FeldListener(Position pos, Spielfeld spielfeld, JFrame jframe, Frame frame, Feld feld){
 		
@@ -42,10 +44,14 @@ public class FeldListener implements MouseListener{
 		
 		if(figurPlatzieren && !figurWaehlen) figurPlatzieren();
 		else figurPlatzieren=false;
-		if((figurWaehlen || !figurPlatzieren) && !zugBeendet) figurWaehlen();
 		
-		
-		
+		if(spielfeld.getFeld(posAktuell.getX(), posAktuell.getY()) instanceof Figur){
+			if(istWeissAmZug==spielfeld.getFigur(posAktuell.getX(), posAktuell.getY()).getFarbeW()){
+				
+				if((figurWaehlen || !figurPlatzieren) && !zugBeendet) figurWaehlen();
+			}
+		}
+
 	}
 	
 	public void figurWaehlen(){
@@ -93,10 +99,12 @@ public class FeldListener implements MouseListener{
 			
 			positionListe.clear();
 			spielfeld.setAktuellePositionListe(positionListe);
+			istWeissAmZug=!istWeissAmZug;
 			zugBeendet=true;
 		}
 		figurWaehlen=true;
 		figurPlatzieren=false;
+		
 	}
 
 	@Override

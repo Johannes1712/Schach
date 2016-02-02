@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Spielfeld 
 {
 	public Feld[][] mat = new Feld[8][8];
-	private boolean werAmZug;
+	private boolean weissAmZug=true;
 	private Position posVon;
 	private ArrayList<Position> positionListe;
 
@@ -231,15 +231,23 @@ public class Spielfeld
 		
 		return schach;
 	}
-	public void spielzug(String zug) 
-	{
-		if (Integer.parseInt(zug) / 2 == 0) 
-		{
-			werAmZug = true;
-		} else 
-		{
-			werAmZug = false;
-		}
+//	public void spielzug(String zug) 
+//	{
+//		if (Integer.parseInt(zug) / 2 == 0) 
+//		{
+//			werAmZug = true;
+//		} else 
+//		{
+//			werAmZug = false;
+//		}
+//	}
+	
+	
+	public void setWeissAmZug(boolean weissAmZug){
+		this.weissAmZug=weissAmZug;
+	}
+	public boolean getWeissAmZug(){
+		return weissAmZug;
 	}
 
 	public Position schach2koordinate(String schach) 
