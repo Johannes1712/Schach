@@ -6,31 +6,31 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import org.htl.chess.model.Bauer;
-import org.htl.chess.model.Dame;
 import org.htl.chess.model.Feld;
 import org.htl.chess.model.Figur;
-import org.htl.chess.model.Koenig;
-import org.htl.chess.model.Laeufer;
 import org.htl.chess.model.Position;
 import org.htl.chess.model.Spielfeld;
-import org.htl.chess.model.Springer;
-import org.htl.chess.model.Turm;
-
 import view.Frame;
 
 public class FeldListener implements MouseListener{
 	
 	Feld feld;
-	Position posVon;
+	Position posAktuell;
 	Spielfeld spielfeld;
 	JFrame jframe;
 	Frame frame;
 	
+	ArrayList<Position> positionListe;
+	static boolean figurWaehlen= true;
+	static boolean figurPlatzieren= false;
+	static boolean zugBeendet=false;
+	static int zugZaehler=0;
+	static boolean istWeissAmZug=true;
+	
 	public FeldListener(Position pos, Spielfeld spielfeld, JFrame jframe, Frame frame, Feld feld){
 		
 		this.feld=feld;
-		this.posVon=pos;
+		this.posAktuell=pos;
 		this.spielfeld=spielfeld;
 		this.jframe= jframe;
 		this.frame= frame;
@@ -38,34 +38,81 @@ public class FeldListener implements MouseListener{
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		
+		positionListe= new ArrayList<Position>();
+		zugBeendet=false;
+		
+		if(spielfeld.schachMatt()){
+			if(figurPlatzieren && !figurWaehlen) figurPlatzieren();
+			else{
+				figurPlatzieren=false;positionListe.clear(); spielfeld.setAktuellePositionListe(positionListe);
+			}
+		
+			if(spielfeld.getFeld(posAktuell.getX(), posAktuell.getY()) instanceof Figur){
+				if(istWeissAmZug==spielfeld.getFigur(posAktuell.getX(), posAktuell.getY()).getFarbeW()){
+				
+					if((figurWaehlen || !figurPlatzieren) && !zugBeendet) figurWaehlen();
+				}
+			}
+		}
+		else{
+			System.exit(0);
+		}
+		
+		
+
+	}
 	
-		@SuppressWarnings("unused")
-		boolean figurAusgewaehlt=false;
+	public void figurWaehlen(){
 		
-		ArrayList<Position> positionListe= new ArrayList<Position>();
-		
-		if(feld instanceof Figur ){
+		if(feld instanceof Figur){
 			
 			Figur figur= (Figur)feld;
-			figurAusgewaehlt=true;
+			figurWaehlen=false;
+			figurPlatzieren=true;
+			
+			spielfeld.setAktuellePositionFigur(posAktuell);
 			
 			for(int x=0; x<=7;x++){
 				for(int y=0;y<=7;y++){
 					
 					Position posNach= new Position(x,y);
-					if(figur.spielzugMoeglich(spielfeld,posVon, posNach)){
+					if(figur.spielzugMoeglich(spielfeld,posAktuell, posNach)){
 						positionListe.add(posNach);
+						spielfeld.setAktuellePositionListe(positionListe);
 					}
 				}
 			}
-			System.out.println("Listener");
-			System.out.println(positionListe.get(0));
 			frame.felderAnfaerben(positionListe);
 		}
-		if(figurAusgewaehlt){
-			
-			
+	}
+	
+	public void figurPlatzieren(){
+		
+		positionListe=spielfeld.getAktuellePositionListe();
+		positionListe.add(spielfeld.getAktuellePositionFigur());
+		boolean istGleich=false;
+		for(Position pos: positionListe){
+			if(pos.getX()==posAktuell.getX() && pos.getY()==posAktuell.getY())istGleich=true;
 		}
+		if(istGleich){
+
+			Position figurPosition=spielfeld.getAktuellePositionFigur();
+			int xFigur=figurPosition.getX();
+			int yFigur=figurPosition.getY();
+			System.out.println(xFigur+"-"+ yFigur);
+			
+			spielfeld.spielzugAusfuehren(figurPosition, posAktuell, spielfeld.getFigur(xFigur,yFigur));
+			frame.spielfeldAufbauen();
+			
+			istWeissAmZug=!istWeissAmZug;
+			zugBeendet=true;
+		}
+		positionListe.clear();
+		spielfeld.setAktuellePositionListe(positionListe);
+		
+		figurWaehlen=true;
+		figurPlatzieren=false;
 		
 	}
 

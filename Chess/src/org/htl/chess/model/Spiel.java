@@ -8,7 +8,8 @@ public class Spiel {
 	
 	public static void main(String[] args) throws FileNotFoundException
 	{
-		Spielfeld sf = SpielFeldIO.einlesen("SchachRNM.txt");
+//		Spielfeld sf = SpielFeldIO.einlesen("SchachRNM.txt");
+		Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
 		sf.ausgabe();
 		
 		Frame frame=new Frame(sf);

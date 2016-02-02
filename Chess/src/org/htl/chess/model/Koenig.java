@@ -2,12 +2,10 @@ package org.htl.chess.model;
 
 public class Koenig extends Figur
 {
-
-	public Koenig(boolean farbe) {
-		super(farbe);
-		// TODO Auto-generated constructor stub
+	public Koenig(boolean farbe, boolean bewegt) {
+	super(farbe,bewegt);
 	}
-
+	
 	public boolean spielzug(Spielfeld sp,Position von,Position nach)
 	{
 		return super.spielZug(sp, von, nach);
@@ -69,8 +67,8 @@ public class Koenig extends Figur
 		{ 
 			rw = true;
 			
-			Feld turm1 = sp.getFeld(0,7);
-			sp.figurenSetzen(new Position(2,7), turm1);
+			Feld turm2 = sp.getFeld(0,7);
+			sp.figurenSetzen(new Position(2,7), turm2);
 		}
 		
 		
@@ -87,8 +85,8 @@ public class Koenig extends Figur
 		{ 
 			rw = true;
 			
-			Feld turm1 = sp.getFeld(7,0);
-			sp.figurenSetzen(new Position(4,0), turm1);
+			Feld turm3 = sp.getFeld(7,0);
+			sp.figurenSetzen(new Position(4,0), turm3);
 		}
 		
 																//kleine Rochade Schwarz
@@ -101,12 +99,12 @@ public class Koenig extends Figur
 		{
 			rw = true;
 			
-			Feld turm1 = sp.getFeld(0,0);
-			sp.figurenSetzen(new Position(2,0), turm1);
+			Feld turm4 = sp.getFeld(0,0);
+			sp.figurenSetzen(new Position(2,0), turm4);
 		}
 		
 		//Verhindern, dass sich Koenig selbst ins Schach setzt:
-		
+		/*
 		Feld spFigur =  sp.getFeld(nach.getX(),nach.getY());
 		sp.spielzugAusfuehren(von, nach, this);
 		
@@ -119,10 +117,8 @@ public class Koenig extends Figur
 		{
 			rw = false;
 			sp.figurenSetzen(new Position(nach.getX(), nach.getY()), spFigur);
-			//spFigur=sp.getFeld(nach.getX(), nach.getY());
-			//spielfeld [nach.getX()][nach.getY()] = spFigur;
 		}
-		
+		*/
 		return rw;		
 	}
 }

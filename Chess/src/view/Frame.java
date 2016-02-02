@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import org.htl.chess.model.Feld;
 import org.htl.chess.model.Position;
 import org.htl.chess.model.Spielfeld;
 import control.FeldListener;
@@ -53,7 +51,6 @@ public class Frame{
 		figuren.figurenLaden();
 		
 		spielfeldAufbauen();
-		aktualisieren();
 		
 		frame.add(jpanelrechts, BorderLayout.WEST);
 		frame.add(jpanellinks, BorderLayout.EAST);
@@ -62,14 +59,6 @@ public class Frame{
 	
 	}
 	
-	public void aktualisieren(){
-		
-		this.felderAktualisieren();
-		frame.setVisible(true);
-		
-	}
-	
-	
 	public void spielfeldAufbauen(){
 		
 		jpanel.removeAll();
@@ -77,8 +66,8 @@ public class Frame{
 		boolean schonAusgewaehlt=false;
 		Position pos;
 		
-		for(int x=0;x<=7;x++){
-			
+		for(int x=0;x<=7;x++)
+		{
 			for(int y=0;y<=7;y++){
 				
 				pos= new Position(x,y);
@@ -109,26 +98,19 @@ public class Frame{
 					schonAusgewaehlt=true;
 				}
 				
-				panels[x][y]=feld;
+				System.out.print(spielfeld.getFeld(x, y).getClass().getSimpleName());
 				
+				panels[x][y]=feld;
 				feld.setBounds(0, 0, 20,20);
+				
+				jpanel.add(panels[x][y]);
 				schonAusgewaehlt=false;
 				
 			}
-		}
-	}
-	
-	public void felderAktualisieren(){
-		
-		jpanel.removeAll();
-		
-		for(int x=0; x<=7; x++){
-			for(int y=0; y<=7; y++){
-				
-				jpanel.add(panels[x][y]);
-			}
+			System.out.println();
 		}
 		jpanel.repaint();
+		frame.setVisible(true);
 	}
 	
 	public void felderAnfaerben(ArrayList<Position> liste){
@@ -148,7 +130,6 @@ public class Frame{
 			
 		}
 		frame.repaint();
-		
 	}
 
 }

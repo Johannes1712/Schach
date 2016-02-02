@@ -1,18 +1,15 @@
 package org.htl.chess.model;
 
-import Testing.SpielFeldIO;
-
 public class Bauer extends Figur 
 {
-	public Bauer(boolean farbe) {
-		super(farbe);
+	public Bauer(boolean farbe, boolean bewegt) {
+		super(farbe,bewegt);
 	}
 
 	// Spalten sind Buchstaben
 	// Zeilen sind Zahlen
 	// 0/0 ist links unten auf a1
 	// somit die linkeste Spalte 0 und die unterste Zeile 0
-	private Feld[][] spielfeld;
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach) 
 	{
@@ -22,7 +19,7 @@ public class Bauer extends Figur
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach) 
 	{
 		if (!super.spielzugMoeglich(sp, von, nach))return false;
-	
+
 		boolean farbeSchwarz=false;
 		int bewegenX = nach.getY() - von.getY();
 		int bewegenY= nach.getX() - von.getX();
@@ -30,7 +27,7 @@ public class Bauer extends Figur
 		Figur figurVon = sp.getFigur(von.getX(), von.getY()); 
 		Feld figurNach=sp.getFeld(nach.getX(), nach.getY());
 		
-		if(figurVon instanceof Figur && figurNach instanceof Figur)
+		if(figurNach instanceof Figur)
 		{
 			if(!figurVon.dieselbeFigur((Figur)figurNach, figurVon)) return false;
 		}
@@ -44,7 +41,9 @@ public class Bauer extends Figur
 		{
 			farbeSchwarz	= false;
 		}
-		
+		if(!figurVon.getFarbeW())farbeSchwarz= true;
+		else farbeSchwarz= false;
+
 		if(!farbeSchwarz)
 		{
 			//Fuer Farbe Weiss
@@ -115,10 +114,9 @@ public class Bauer extends Figur
 			{			
 				if(bewegenX==0)
 				{
-					//Warum -1???
-					Feld figur=sp.getFeld(von.getX(), von.getY()-1);
 					if(bewegenY==2)
 					{
+						Feld figur=sp.getFeld(von.getX(), von.getY()+1);
 						if(!(figur instanceof Figur))
 						{
 							return false;
@@ -130,7 +128,7 @@ public class Bauer extends Figur
 					}				
 					if(bewegenY==1)
 					{
-						
+						Feld figur=sp.getFeld(von.getX(), von.getY()+1);
 						if(!(figur instanceof Figur))
 						{
 							return false;
@@ -166,14 +164,8 @@ public class Bauer extends Figur
 						return false;
 					}
 				}
-			}		
-		}		
-		
-		/*
-		 * if(nach.getY()==7){
-		 * 
-		 * }
-		 */
-		return false;
+			}	
+		}
+		return farbeSchwarz;
 	}
 }

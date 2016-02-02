@@ -2,9 +2,8 @@ package org.htl.chess.model;
 
 public class Turm extends Figur
 {
-	public Turm(boolean farbe) {
-		super(farbe);
-		// TODO Auto-generated constructor stub
+	public Turm(boolean farbe, boolean bewegt) {
+		super(farbe,bewegt);
 	}
 	public boolean spielzug(Spielfeld sp, Position von, Position nach)
 	{
@@ -17,11 +16,11 @@ public class Turm extends Figur
 		
 		Feld figur= sp.getFeld(nach.getX(),nach.getY());
 		
-		if(figur instanceof Figur)
-		{			
-			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-			if(istGleichesTeam)return false;
-		}
+//		if(figur instanceof Figur)
+//		{			
+//			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
+//			if(istGleichesTeam)return false;
+//		}
 		
 		if(nach.getX()>von.getX()||nach.getX()<von.getX())
 		{
