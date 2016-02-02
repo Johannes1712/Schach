@@ -8,7 +8,7 @@ public class Spiel {
 	
 	public static void main(String[] args) throws FileNotFoundException
 	{
-		Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+		Spielfeld sf = SpielFeldIO.einlesen("Bauer");
 		sf.ausgabe();
 		
 		Frame frame=new Frame(sf);

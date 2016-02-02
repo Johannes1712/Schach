@@ -35,10 +35,7 @@ public class Turm extends Figur
 					{
 						return true;
 					}
-					else
-					{
-						return false;
-					}
+					
 				}
 				else
 				{
@@ -73,8 +70,8 @@ public class Turm extends Figur
 					if(!super.spielzugMoeglich(sp, von, nach))return false;
 				}
 			}
-		}*/
-		/*
+		}
+		
 		if((nach.getY()<von.getY()))
 		{	
 			for(zaehler=-1;zaehler>(nach.getY()-von.getY());zaehler--)
@@ -109,6 +106,6 @@ public class Turm extends Figur
 			}
 		}
 		return false;
-	*/	
+	*/
 	}
 }
