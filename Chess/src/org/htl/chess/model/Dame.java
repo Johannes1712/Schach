@@ -71,6 +71,7 @@ public class Dame extends Figur
 		}*/
 		if((nach.getY()>von.getY())||(nach.getY()<von.getY()))
 		{
+			System.out.println("hallo");
 			for(int i=1;i<=8;i++)
 			{
 				if((nach.getY()== von.getY()+i)||(nach.getY()==von.getY()-i))
@@ -88,6 +89,7 @@ public class Dame extends Figur
 		}
 		if(nach.getX()>von.getX()||nach.getX()<von.getX())
 		{
+			System.out.println("hallo");
 			for(int i=1;i<=8;i++)
 			{
 				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))

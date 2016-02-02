@@ -11,7 +11,6 @@ public class Turm extends Figur
 	}
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{	
-		
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		Feld figur= sp.getFeld(nach.getX(),nach.getY());
 		if(figur instanceof Figur)
@@ -26,6 +25,7 @@ public class Turm extends Figur
 				System.out.println(i);
 				if((nach.getY()== von.getY()+i)||(nach.getY()==von.getY()-i))
 				{
+					System.out.println("hallo");
 					return true;
 				}
 				else
