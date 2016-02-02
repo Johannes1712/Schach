@@ -53,7 +53,14 @@ public class Bauer extends Figur
 				{
 					if(bewegenY==1)
 					{
-						return true;
+						if(figurNach instanceof Figur)
+						{
+							return false;
+						}
+						else
+						{
+							return true;
+						}
 					}
 					
 					if(bewegenY==2)
@@ -76,13 +83,32 @@ public class Bauer extends Figur
 				{
 					if(bewegenY==1)
 					{
+						if(figurNach instanceof Figur)
+						{
+							return false;
+						}
+						else
+						{
+							return true;
+						}
+					}
+				}
+				if((bewegenX==1||bewegenX==-1) && bewegenY==1)
+				{
+					if(figurNach instanceof Figur)
+					{
 						return true;
+					}
+					else
+					{
+						return false;
 					}
 				}
 			}
 
 		}
-		/*
+		
+		
 		if(!farbeSchwarz)
 		{
 			if(von.getX()==6)
@@ -91,21 +117,26 @@ public class Bauer extends Figur
 				{
 					if(bewegenY==-1)
 					{
-						return true;
+						if(figurNach instanceof Figur)
+						{
+							return false;
+						}
+						else
+						{
+							return true;
+						}
 					}
 					
 					if(bewegenY==-2)
 					{
-						if(figurNach instanceof Figur)
+						Feld figur=sp.getFeld(nach.getX()+1, nach.getY());
+						if(figur instanceof Figur)
 						{
-							if(!figurVon.dieselbeFigur((Figur)figurNach, figurVon))
-							{
-								return true;
-							}	
-							else
-							{
-								return false;
-							}
+							return false;
+						}
+						else
+						{
+							return true;
 						}
 					}
 				}
@@ -116,30 +147,6 @@ public class Bauer extends Figur
 				{
 					if(bewegenY==-1)
 					{
-						return true;
-					}
-				}
-			}
-		}*/
-		
-		/*
-		//Für Farbe weiß
-		if(farbeSchwarz)
-		{ 
-			// Abfrage ob erste Spielzug der Farbe weiß
-			if(((Figur) figurVon).getBewegt())
-			{
-				if((bewegenX==1||bewegenX==-1||bewegenX==0) && bewegenY==1)
-				{
-					if(figurNach instanceof Figur)
-					{
-						return true;
-					}					
-				}
-				else
-				{
-					if(bewegenX==0 && bewegenY==1)
-					{
 						if(figurNach instanceof Figur)
 						{
 							return false;
@@ -149,122 +156,21 @@ public class Bauer extends Figur
 							return true;
 						}
 					}
-					else
-					{
-						return false;						
-					}					
-				}				
-			}
-			else
-			{
-				if(bewegenX==1||bewegenX==-1)
-				{
-					if(bewegenY==2||bewegenY==1)
-					{
-						if(figurNach instanceof Figur)
-						{
-							((Figur) figurVon).setBewegt(true);
-							return true;
-						}
-					
-					}
 				}
-				else
-				{
-					if(bewegenX==0)
-					{
-						if(bewegenY==2||bewegenY==1)
-						{
-
-							if(figurNach instanceof Figur)
-							{
-								return false;
-							}
-							else
-							{
-								((Figur) figurVon).setBewegt(true);
-								return true;
-							}
-						}
-					}
-					else
-					{
-						return false;
-					}
-				}
-			}
-		}
-		
-		//Für Farbe schwarz 
-		if(!farbeSchwarz)
-		{
-			// Abfrage ob erste Spielzug der Farbe schwarz
-			if(((Figur) figurVon).getBewegt())
-			{			
 				if((bewegenX==1||bewegenX==-1) && bewegenY==-1)
 				{
 					if(figurNach instanceof Figur)
 					{
 						return true;
 					}
-				}
-				else
-				{
-					if(bewegenX==0 && bewegenY==-1)
-					{
-						if(figurNach instanceof Figur)
-						{
-							return false;
-						}
-						else
-						{
-							return true;
-						}
-					}
 					else
 					{
 						return false;
 					}
 				}
 			}
-			else
-			{
-				if(bewegenX==1||bewegenX==-1)
-				{
-					if(bewegenY==-2||bewegenY==-1)
-					{
-						if(figurNach instanceof Figur)
-						{
-							((Figur) figurVon).setBewegt(true);
-							return true;	
-						}
-					}
-				}
-				else
-				{
-					if(bewegenX==0)
-					{
-						if(bewegenY==-2||bewegenY==-1)
-						{
-							if(figurNach instanceof Figur)
-							{
-								return false;
-							}
-							else
-							{
-								((Figur) figurVon).setBewegt(true);
-								return true;
-							}				
-						}
-					}
-					else
-					{
-						return false;
-					}
-				}
-			}
+
 		}
-		*/
 		
 		/*
 		 * if(nach.getY()==7){
