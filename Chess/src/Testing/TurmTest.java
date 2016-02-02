@@ -52,22 +52,13 @@ public class TurmTest {
 			Assert.assertFalse(beobachtet);
 				
 
-			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,5));
-			Assert.assertTrue(beobachtet);
+			/*beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,3));
+			Assert.assertTrue(beobachtet);*/
 			
-
+			/*beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(3,0));
+			Assert.assertTrue(beobachtet);*/
+			
 			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,2));
-			Assert.assertFalse(beobachtet);
-			
-			Bauer b = (Bauer) sf.getFigur(1,1);
-			beobachtet=b.spielzugMoeglich(sf, new Position(1,1), new Position(1,3));
-			Assert.assertTrue(beobachtet);
-			
-			Laeufer lf = (Laeufer) sf.getFigur(2,0);
-			beobachtet=lf.spielzugMoeglich(sf, new Position(2,0), new Position(0,2));
-			Assert.assertTrue(beobachtet);
-			
-			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,5));
 			Assert.assertFalse(beobachtet);
 			
 			

@@ -41,7 +41,7 @@ public class DameTest
 	{
 	}
 
-	private Feld[ ] [ ] spielfeld;
+
 	
 	public void testSpielZug() 
 	{
@@ -53,7 +53,7 @@ public class DameTest
 	{
 		try
 		{
-			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
+			Spielfeld sf = SpielFeldIO.einlesen("Turm");
 			Dame d = (Dame) sf.getFigur(4,0);	
 			
 			boolean beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(4,1));
@@ -63,20 +63,17 @@ public class DameTest
 			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(9,9));
 			Assert.assertFalse(beobachtet);
 			
-<<<<<<< HEAD
-			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(4,5));
-=======
-			beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(4,2));
->>>>>>> branch 'master' of https://github.com/Johannes1712/Schach.git
+			
+			beobachtet=d.spielzugMoeglich(sf, new Position(4,0), new Position(4,5));
 			Assert.assertFalse(beobachtet);
 			
 			Bauer b = (Bauer) sf.getFigur(4,1);
 			beobachtet=b.spielzugMoeglich(sf, new Position(4,1), new Position(4,3));
 			Assert.assertTrue(beobachtet);
+			beobachtet=d.spielzugMoeglich(sf, new Position(4,0), new Position(4,2));
+			Assert.assertFalse(beobachtet);
 			
 			beobachtet=b.spielzugMoeglich(sf, new Position(4,0), new Position(5,2));
-			Assert.assertTrue(beobachtet);
-			beobachtet=d.spielzugMoeglich(sf, new Position(4,0), new Position(4,2));
 			Assert.assertTrue(beobachtet);
 			
 			Bauer b1=new Bauer(true);

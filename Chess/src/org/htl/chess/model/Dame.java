@@ -31,7 +31,7 @@ public class Dame extends Figur
 				}
 			}
 		}
-		if(nach.getX()>von.getX()||nach.getX()<von.getX())
+		/*if(nach.getX()>von.getX()||nach.getX()<von.getX())
 		{
 			for(int i=1;i<=8;i++)
 			{
@@ -47,7 +47,57 @@ public class Dame extends Figur
 			{
 				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
 				{
+					Feld figurVon=sp.getFeld(von.getX(), von.getY()+i);
+					if((Figur)figur instanceof Figur)
+					{
+						if(((Figur) figur).dieselbeFigur((Figur)figurVon,(Figur) figur))
+						{
+							return true;
+							
+						}
+
+					}
+					else
+					{
+						return true;
+					}
+
+				}
+				else
+				{
+					System.out.println("hallo");
+					return false;
+				}
+			}
+		}*/
+		if((nach.getY()>von.getY())||(nach.getY()<von.getY()))
+		{
+			for(int i=1;i<=8;i++)
+			{
+				if((nach.getY()== von.getY()+i)||(nach.getY()==von.getY()-i))
+				{
 					return true;
+				}
+				else
+				{
+					
+					if(!super.spielzugMoeglich(sp, von, nach))return false;
+					
+				}
+			}
+			
+		}
+		if(nach.getX()>von.getX()||nach.getX()<von.getX())
+		{
+			for(int i=1;i<=8;i++)
+			{
+				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
+				{
+					return true;
+				}
+				else
+				{
+					if(!super.spielzugMoeglich(sp, von, nach))return false;
 				}
 			}
 		}
