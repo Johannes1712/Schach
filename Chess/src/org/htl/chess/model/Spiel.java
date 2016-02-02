@@ -9,7 +9,7 @@ public class Spiel {
 	public static void main(String[] args) throws FileNotFoundException
 	{
 		Spielfeld sf = SpielFeldIO.einlesen("SchachRNM.txt");
-		//sf.ausgabe();
+		sf.ausgabe();
 		
 		Frame frame=new Frame(sf);
 		frame.initialize();

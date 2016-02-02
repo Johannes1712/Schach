@@ -43,11 +43,12 @@ public class BauerTest
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			Bauer b = (Bauer) sf.getFigur(1,1);
+			Bauer b = (Bauer) sf.getFigur(3,1);
 			boolean beobachtet;
 			
-			beobachtet = b.spielZug(sf, new Position(2,1),new Position(2,3));
-			Assert.assertTrue(beobachtet);
+			System.out.println(b.getFarbeW());
+			beobachtet = b.spielzugMoeglich(sf, new Position(3,1),new Position(3,2));
+			Assert.assertFalse(beobachtet);
 
 			beobachtet = b.spielZug(sf, new Position(1,1),new Position(0,3));
 			Assert.assertFalse(beobachtet);
@@ -68,30 +69,19 @@ public class BauerTest
 		try
 		{
 			boolean beobachtet;
-			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			Bauer b = (Bauer) sf.getFigur(1,1);
-			
-			beobachtet = b.spielzugMoeglich(sf, new Position(1,1),new Position(1, 4));
+			Spielfeld sf = SpielFeldIO.einlesen("SchachRNM.txt");
+			Bauer b = (Bauer) sf.getFigur(5,1);
+
+			beobachtet = b.spielzugMoeglich(sf, new Position(5,1),new Position(5, 2));
 			Assert.assertFalse(beobachtet);
 			
 			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(2, 6));
-			Assert.assertFalse(beobachtet);
-			
-			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(0, 6));
-			Assert.assertFalse(beobachtet);
-			
-			beobachtet = b.spielzugMoeglich(sf, new Position(1,1),new Position(2, 5));
-			Assert.assertFalse(beobachtet);	
-
-			b = (Bauer) sf.getFigur(1,6);
-			
-			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(1, 5));
 			Assert.assertTrue(beobachtet);
 			
 			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(1,2));
 			Assert.assertFalse(beobachtet);
 			
-			beobachtet = b.spielzugMoeglich(sf, new Position(7,6),new Position(6, 5));
+			beobachtet = b.spielzugMoeglich(sf, new Position(1,6),new Position(6, 5));
 			Assert.assertFalse(beobachtet);
 
 		} catch (FileNotFoundException e)
