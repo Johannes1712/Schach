@@ -15,20 +15,20 @@ public class Laeufer extends Figur
 
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{
-		int bewegenX = nach.getY() - von.getY();
-		int bewegenY = nach.getX() - von.getX();
+		int bewegenl = 7-von.getY();
+		int bewegenr = 0+von.getY();
+		int bewegenu = 0+von.getX();
+		int bewegeno = 7-von.getX();
+		
+		int bewegenX= nach.getY()-von.getY();
+		int bewegenY= nach.getX()-von.getX();
+		
 		int zaehler;
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
 		Position pos=new Position(0,0);
 		
 		Figur figurVon = sp.getFigur(von.getX(),von.getY());
-		Feld figurNach=sp.getFeld(nach.getX(),nach.getY());
-		
-		if(bewegenX==0||bewegenY==0)
-		{
-			return false;
-		}				
-		
+		Feld figurNach = sp.getFeld(nach.getX(),nach.getY());
 		if(figurNach instanceof Figur)
 		{
 			if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
@@ -36,76 +36,54 @@ public class Laeufer extends Figur
 				return false;
 			}	
 		}
-		if(bewegenY==bewegenX)
+		if(bewegenX==bewegenY)
 		{
-			if(bewegenY>0)
+			if(bewegeno!=0 && bewegenr!=0)
 			{
-			
-				for(zaehler=1;zaehler<bewegenY;zaehler++)
-				{
-					pos.setX(von.getX()+zaehler);
-					pos.setY(von.getY()+zaehler);
-					
-					Feld figur1=sp.getFeld(pos.getX(), pos.getY());
-				
-					if(figur1 instanceof Figur)
+				int i=0;
+				i++;	
+				Feld figur=sp.getFeld(von.getX(),von.getY()+1);
+				if(figur instanceof Figur)
+				{					
+					if(figur.equals(figurVon))
 					{
-						if(pos.getY()==nach.getY()&&pos.getX()==nach.getX())
-						{
-							if((Figur)figur1 instanceof Figur)
-							{
-								if(((Figur) figur1).dieselbeFigur((Figur)figur1,(Figur) figurNach))
-								{
-									return true;
-								}
-							}
-							else
-							{
-								return true;
-							}
-
-						}					
-						else
-						{
-							return false;
-						}
+						return false;
+					}
+					else
+					{
+						return true;
 					}
 				}
-				if(zaehler==bewegenY)
+				else
 				{
 					return true;
 				}
 			}
-			if(bewegenY<0)
+			
+			if(bewegenl!=0 && bewegeno!=0)
 			{
-				for(zaehler=-1;zaehler>bewegenY;zaehler--)
+				int zaehlerWerte=(bewegeno/bewegenl)%2;
+				int i=0;
+				i++;
+				Feld figur=sp.getFeld(von.getX(),von.getY()+bewegenl);
+				if(figur instanceof Figur)
 				{					
-					pos.setX(von.getX()+zaehler);
-					pos.setY(von.getY()+zaehler);
-					Feld figur=sp.getFeld(pos.getX(), pos.getY());
-					if(figur instanceof Figur)
+					if(figur.equals(figurVon))
 					{
-
-						if(pos.getY()==nach.getY()&&pos.getX()==nach.getX())
-						{
-							if(((Figur) figur).dieselbeFigur((Figur)figur,(Figur) figurNach))
-							{
-								return true;
-							}
-						}					
-						else
-						{
-							return false;
-						}
-					}				
+						return false;
+					}
+					else
+					{
+						return true;
+					}
 				}
-				
-				if(zaehler==bewegenY)
+				else
 				{
 					return true;
 				}
 			}
 		}
+
 		return false;
 	}		
 }
