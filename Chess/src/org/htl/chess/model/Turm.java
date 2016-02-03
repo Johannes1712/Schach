@@ -26,16 +26,15 @@ public class Turm extends Figur
 		
 		for(int i=1;i<=8;i++)
 		{
-			/*Feld figur= sp.getFeld(von.getY(),von.getX()+i);
+			Feld figur= sp.getFeld(von.getY(),von.getX()+i);
 			if(figur instanceof Figur)
 			{
 				if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
 				{
-					return false;
+					break;
 				}
-				else return true;
 				
-			}*/
+			}
 			if((nach.getX()== von.getX()-i))
 			{
 				if((nach.getY()== von.getY()))
@@ -50,7 +49,10 @@ public class Turm extends Figur
 			Feld figur= sp.getFeld(von.getY(),von.getX()+i);
 			if(figur instanceof Figur)
 			{
-				return false;
+				if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
+				{
+					break;
+				}
 			}
 			if((nach.getX()== von.getX()+i))
 			{
@@ -68,6 +70,12 @@ public class Turm extends Figur
 		//nach rechts fahren
 		for(int i=1;i<=8;i++)
 		{
+			Feld figur= sp.getFeld(von.getY()+1,von.getX());
+			if(figur instanceof Figur)
+			{			
+				boolean istGleichesTeam = ((Figur) figur).getFarbeW();
+				if(istGleichesTeam == this.getFarbeW())break;
+			}
 			if((nach.getX()== von.getX()))
 			{
 				if((nach.getY()== von.getY()+i))
@@ -80,6 +88,12 @@ public class Turm extends Figur
 		//nach links fahren
 		for(int i=1;i<=8;i++)
 		{
+			Feld figur= sp.getFeld(von.getY()-1,von.getX());
+			if(figur instanceof Figur)
+			{			
+				boolean istGleichesTeam = ((Figur) figur).getFarbeW();
+				if(istGleichesTeam == this.getFarbeW())break;
+			}
 			if((nach.getX()== von.getX()))
 			{
 				if((nach.getY()== von.getY()-i))
