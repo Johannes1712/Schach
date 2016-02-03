@@ -4,13 +4,16 @@ public class Laeufer extends Figur
 {
 	public Laeufer(boolean farbe, boolean bewegt) {
 		super(farbe,bewegt);
+		i=0;
 	}
 
 	private Feld[][] spielfeld;
+	private int i;
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
 		return super.spielZug(sp, von, nach);
+		
 	}
 
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
@@ -38,7 +41,7 @@ public class Laeufer extends Figur
 		}
 		if(bewegenX==bewegenY)
 		{
-			/*if(bewegeno!=0 && bewegenr!=0)
+			if(bewegeno!=0 && bewegenr!=0)
 			{
 				int i=0;
 				i++;	
@@ -58,14 +61,14 @@ public class Laeufer extends Figur
 				{
 					return true;
 				}
-			}*/
+			}
 			
 			if(bewegenl!=0 && bewegeno!=0)
 			{
 				//int zaehlerWerte=(bewegeno/bewegenl)%2;
-				int i=0;
+				//int i=0;
 				i++;
-				Feld figur=sp.getFeld(von.getX(),von.getY()-1);
+				Feld figur=sp.getFeld(nach.getX(),nach.getY()-1);
 				if(figur instanceof Figur)
 				{					
 					if(figur.equals(figurVon))
