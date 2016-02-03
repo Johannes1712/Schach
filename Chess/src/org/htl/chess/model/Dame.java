@@ -21,90 +21,104 @@ public class Dame extends Figur
 		Feld figur= sp.getFeld(nach.getX(),nach.getY());	
 		
 		
+		//runterfahren
 		for(int i=1;i<=8;i++)
-		{
-			if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
+		{	
+			if((nach.getX()== von.getX()+i))
 			{
+				if(nach.getY()==von.getY())
+				{
+					return true;
+				}
 				
-				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
-				{
-					return true;
-				}
-			}
-		}
-		/*if(nach.getX()>von.getX()||nach.getX()<von.getX())
-		{
-			for(int i=1;i<=8;i++)
-			{
-				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
-				{
-					return true;
-				}
-			}
-		}
-		if(nach.getY()>von.getY()||nach.getY()<von.getY())
-		{
-			for(int i=1;i<=8;i++)
-			{
-				if((nach.getY()== von.getY()+i)||(nach.getY()== von.getY()-i))
-				{
-					Feld figurVon=sp.getFeld(von.getX(), von.getY()+i);
-					if((Figur)figur instanceof Figur)
-					{
-						if(((Figur) figur).dieselbeFigur((Figur)figurVon,(Figur) figur))
-						{
-							return true;
-							
-						}
-
-					}
-					else
-					{
-						return true;
-					}
-
-				}
-				else
-				{
-					System.out.println("hallo");
-					return false;
-				}
-			}
-		}*/
-		if((nach.getY()>von.getY())||(nach.getY()<von.getY()))
-		{
-			System.out.println("hallo");
-			for(int i=1;i<=8;i++)
-			{
-				if((nach.getY()== von.getY()+i)||(nach.getY()==von.getY()-i))
-				{
-					return true;
-				}
-				else
-				{
-					
-					if(!super.spielzugMoeglich(sp, von, nach))return false;
-					
-				}
-			}
-			
-		}
-		if(nach.getX()>von.getX()||nach.getX()<von.getX())
-		{
-			System.out.println("hallo");
-			for(int i=1;i<=8;i++)
-			{
-				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
-				{
-					return true;
-				}
-				else
-				{
-					if(!super.spielzugMoeglich(sp, von, nach))return false;
-				}
 			}
 		}
 		
+		//rauffahren
+		for(int i=1;i<=8;i++)
+		{
+			if((nach.getX()== von.getX()-i))
+			{
+				
+				//Feld figur1=sp.getFeld(von.getY(),von.getX()-i);
+				if((nach.getY()== von.getY()))
+				{
+					return true;
+				}
+			}
+		}
+		//nach rechts fahren
+		for(int i=1;i<=8;i++)
+		{
+			if((nach.getX()== von.getX()))
+			{
+				//Feld figur1=sp.getFeld(von.getY()+i,von.getX());
+				if((nach.getY()== von.getY()+i))
+				{
+					return true;
+				}
+				
+			}
+		}
+		//nach links fahren
+		for(int i=1;i<=8;i++)
+		{
+			if((nach.getX()== von.getX()))
+			{
+				if((nach.getY()== von.getY()-i))
+				{
+					return true;
+				}
+			}
+		}
+		//rechts unten fahren
+		for(int i=1;i<=8;i++)
+		{
+			if((nach.getX()== von.getX()+i))
+			{
+				if((nach.getY()== von.getY()+i))
+				{
+					return true;
+				}	
+				
+			}
+		}
+		//rechts oben fahren
+		for(int i=1;i<=8;i++)
+		{
+			if((nach.getX()== von.getX()-i))
+			{
+				
+				if((nach.getY()== von.getY()+i))
+				{
+					return true;
+				}
+			}
+		}
+		//links oben fahren
+		for(int i=1;i<=8;i++)
+		{
+			if((nach.getX()== von.getX()-i))
+			{
+				
+				if((nach.getY()== von.getY()-i))
+				{
+					return true;
+				}
+			}
+		}
+		//links unten fahren
+		for(int i=1;i<=8;i++)
+		{
+			if((nach.getX()== von.getX()+i))
+			{
+				
+				if((nach.getY()== von.getY()-i))
+				{
+					return true;
+				}
+			}
+		}				
 		return false;
 	}
 }
