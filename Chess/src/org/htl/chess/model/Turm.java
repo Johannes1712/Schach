@@ -26,16 +26,16 @@ public class Turm extends Figur
 		
 		for(int i=1;i<=8;i++)
 		{
-			/*Feld figur= sp.getFeld(von.getY(),von.getX()+i);
+			Feld figur= sp.getFeld(von.getY(),von.getX()+i);
 			if(figur instanceof Figur)
 			{
 				if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
 				{
-					return false;
+					break;
 				}
 				else return true;
 				
-			}*/
+			}
 			if((nach.getX()== von.getX()-i))
 			{
 				if((nach.getY()== von.getY()))
@@ -44,23 +44,22 @@ public class Turm extends Figur
 				}
 			}
 		}
+		
 		//runterfahren
 		for(int i=1;i<=8;i++)
 		{	
 			Feld figur= sp.getFeld(von.getY(),von.getX()+i);
 			if(figur instanceof Figur)
 			{
-				return false;
+				break;
 			}
 			if((nach.getX()== von.getX()+i))
 			{
 				if(nach.getY()==von.getY())
 				{
 					return true;
-				}
-				
-			}
-			
+				}	
+			}			
 		}
 		
 		//rauffahren
