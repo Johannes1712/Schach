@@ -17,9 +17,6 @@ public class Turm extends Figur
 		Figur figurVon = sp.getFigur(von.getX(), von.getY());
 		
 		boolean beobachtet=true;
-		
-		
-		
 		//runterfahren
 		if(von.getX()<7)
 		{
@@ -34,6 +31,7 @@ public class Turm extends Figur
 					}
 					
 				}
+				
 				if((nach.getX()== von.getX()+i))
 				{
 					if(nach.getY()==von.getY())
@@ -43,12 +41,13 @@ public class Turm extends Figur
 				}			
 			}
 		}
+		
 		//rauffahren
 		if(von.getX()>0)
 		{
 			for(int i=1;i<=8;i++)
 			{
-				Feld figur= sp.getFeld(von.getX(),von.getY()-i);
+				/*Feld figur= sp.getFeld(von.getX()-i,von.getY());
 				if(figur instanceof Figur)
 				{
 					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
@@ -56,7 +55,7 @@ public class Turm extends Figur
 						break;
 					}
 					
-				}
+				}*/
 				if((nach.getX()== von.getX()-i))
 				{
 					if((nach.getY()== von.getY()))
@@ -65,10 +64,7 @@ public class Turm extends Figur
 					}
 				}
 			}
-			
 		}
-		
-		
 		//nach rechts fahren
 		if(von.getY()<7)
 		{
@@ -93,7 +89,9 @@ public class Turm extends Figur
 				}
 			}
 		}
+		
 		//nach links fahren
+		
 		if(von.getY()>0)
 		{
 			for(int i=1;i<=8;i++)
@@ -116,6 +114,10 @@ public class Turm extends Figur
 				}
 			}
 		}
+		
+		
+
+
 		return false;
 
 	

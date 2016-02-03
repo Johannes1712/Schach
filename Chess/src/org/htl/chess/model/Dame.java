@@ -20,35 +20,11 @@ public class Dame extends Figur
 		
 		
 		//runterfahren
-		/*if(von.getY()<7)
-		{
-			for(int i=1;i<=8;i++)
-			{	
-				Feld figur= sp.getFeld(von.getX(),von.getY()+i);
-				if(figur instanceof Figur)
-				{
-					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
-					{
-						break;
-					}
-				}
-
-				if((nach.getX()== von.getX()+i))
-				{
-					if(nach.getY()==von.getY())
-					{
-						return true;
-					}	
-				}			
-			}
-		}*/
-		
-		//rauffahren
-		if(von.getX()>0)
+		if(von.getX()<7)
 		{
 			for(int i=1;i<=8;i++)
 			{
-				Feld figur= sp.getFeld(von.getX(),von.getY()+i);
+				Feld figur= sp.getFeld(von.getX()+i,von.getY());
 				if(figur instanceof Figur)
 				{
 					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
@@ -57,6 +33,31 @@ public class Dame extends Figur
 					}
 					
 				}
+				
+				if((nach.getX()== von.getX()+i))
+				{
+					if(nach.getY()==von.getY())
+					{
+						return true;
+					}	
+				}			
+			}
+		}
+		
+		//rauffahren
+		if(von.getX()>0)
+		{
+			for(int i=1;i<=8;i++)
+			{
+				/*Feld figur= sp.getFeld(von.getX()-i,von.getY());
+				if(figur instanceof Figur)
+				{
+					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
+					{
+						break;
+					}
+					
+				}*/
 				if((nach.getX()== von.getX()-i))
 				{
 					if((nach.getY()== von.getY()))
@@ -140,12 +141,12 @@ public class Dame extends Figur
 			}
 			
 		}
-		/*//rechts oben fahren
-		if((von.getY()>0)&&(von.getX()<7))
+		//rechts oben fahren
+		if((von.getX()>0)&&(von.getY()<7))
 		{
 			for(int i=1;i<=8;i++)
 			{
-				Feld figur= sp.getFeld(von.getX()-i,von.getY()+i);
+				/*Feld figur= sp.getFeld(von.getX()-i,von.getY()+i);
 				if(figur instanceof Figur)
 				{
 					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
@@ -153,7 +154,7 @@ public class Dame extends Figur
 						break;
 					}
 					
-				}
+				}*/
 				if((nach.getX()== von.getX()-i))
 				{
 					if((nach.getY()== von.getY()+i))
@@ -163,13 +164,13 @@ public class Dame extends Figur
 				}
 			}
 		}
-		*/
+	
 		//links oben fahren
-		/*if((von.getX()>1)&&(von.getY()>1))
+		if((von.getX()>0)&&(von.getY()>0))
 		{
-			for(int i=1;i<=7;i++)
+			for(int i=1;i<=8;i++)
 			{
-				Feld figur= sp.getFeld(von.getX()-i,von.getY()-i);
+				/*Feld figur= sp.getFeld(von.getX()-i,von.getY()-i);
 				if(figur instanceof Figur)
 				{
 					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
@@ -177,7 +178,7 @@ public class Dame extends Figur
 						break;
 					}
 					
-				}
+				}*/
 				if((nach.getX()== von.getX()-i))
 				{
 					
@@ -187,13 +188,13 @@ public class Dame extends Figur
 					}
 				}
 			}
-		}*/
+		}
 		//links unten fahren
-		/*if((von.getX()<7)&&(von.getY()>0))
+		if((von.getX()<7)&&(von.getY()>0))
 		{
 			for(int i=1;i<=8;i++)
 			{
-				Feld figur= sp.getFeld(von.getX()-i,von.getY()+i);
+				Feld figur= sp.getFeld(von.getX()+i,von.getY()-i);
 				if(figur instanceof Figur)
 				{
 					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
@@ -202,16 +203,16 @@ public class Dame extends Figur
 					}
 					
 				}
-				if((nach.getX()== von.getX()-i))
+				if((nach.getX()== von.getX()+i))
 				{
 					
-					if((nach.getY()== von.getY()+i))
+					if((nach.getY()== von.getY()-i))
 					{
 						return true;
 					}
 				}
 			}	
-		}*/		
+		}	
 		return false;
 	}
 }
