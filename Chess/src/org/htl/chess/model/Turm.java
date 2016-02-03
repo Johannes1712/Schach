@@ -43,6 +43,7 @@ public class Turm extends Figur
 				}
 			}
 		}
+		
 		//runterfahren
 		for(int i=1;i<=8;i++)
 		{	
@@ -59,10 +60,8 @@ public class Turm extends Figur
 				if(nach.getY()==von.getY())
 				{
 					return true;
-				}
-				
-			}
-			
+				}	
+			}			
 		}
 		
 		//rauffahren

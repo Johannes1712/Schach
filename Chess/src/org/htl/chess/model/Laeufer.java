@@ -29,84 +29,30 @@ public class Laeufer extends Figur
 			}	
 		}
 
-		//rechts unten fahren
-		for(int i=1;i<8;i++)
-		{
-			if((nach.getX()== von.getX()+i))
-			{
-				if((nach.getY()== von.getY()+i))
-				{
-					Feld figur = sp.getFeld(von.getX()+i,von.getY()+i);
-					if(figur instanceof Figur)
-					{
-						return true;
-					}
-					else
-					{
-						return true;
-					}
-				}					
-			}
-		}
-				
 		//rechts oben fahren
-		for(int i=1;i<8;i++)
+		for(int i=1;i<=8;i++)
 		{
-			if((nach.getX()== von.getX()-i))
+			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()+i))
 			{
-				if((nach.getY()== von.getY()+i))
-				{
-					Feld figur = sp.getFeld(von.getX()-i,von.getY()+i);
-					if(figur instanceof Figur)
-					{
-						return true;
-					}
-					else
-					{
-						return true;
-					}
-				}
+				return true;
 			}
 		}
 		
 		//links oben fahren
-		for(int i=1;i<8;i++)
+		for(int i=1;i<=8;i++)
 		{
-			if((nach.getX()== von.getX()-i))
-			{						
-				if((nach.getY()== von.getY()-i))
-				{
-					Feld figur = sp.getFeld(von.getX()-i,von.getY()-i);
-					if(figur instanceof Figur)
-					{
-						spielzug=false;
-						return true;
-					}
-					else
-					{
-						return true;
-					}
-				}
+			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()-i))
+			{
+				return true;
 			}
 		}
+		
 		//links unten fahren
-		for(int i=1;i<8;i++)
+		for(int i=1;i<=8;i++)
 		{
-			if((nach.getX()== von.getX()+i))
+			if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()-i))
 			{
-						
-				if((nach.getY()== von.getY()-i))
-				{
-					Feld figur = sp.getFeld(von.getX()+i,von.getY()-i);
-					if(figur instanceof Figur)
-					{
-						return true;
-					}
-					else
-					{
-						return true;
-					}
-				}
+				return true;
 			}
 		}	
 
