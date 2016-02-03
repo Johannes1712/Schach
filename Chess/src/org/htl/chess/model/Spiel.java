@@ -8,6 +8,7 @@ public class Spiel {
 	
 	public static void main(String[] args) throws FileNotFoundException
 	{
+
 		Spielfeld sf = SpielFeldIO.einlesen("SchachLaeufer");
 		sf.ausgabe();
 		

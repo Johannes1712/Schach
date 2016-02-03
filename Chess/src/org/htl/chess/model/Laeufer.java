@@ -38,7 +38,7 @@ public class Laeufer extends Figur
 		}
 		if(bewegenX==bewegenY)
 		{
-			if(bewegeno!=0 && bewegenr!=0)
+			/*if(bewegeno!=0 && bewegenr!=0)
 			{
 				int i=0;
 				i++;	
@@ -58,14 +58,14 @@ public class Laeufer extends Figur
 				{
 					return true;
 				}
-			}
+			}*/
 			
 			if(bewegenl!=0 && bewegeno!=0)
 			{
-				int zaehlerWerte=(bewegeno/bewegenl)%2;
+				//int zaehlerWerte=(bewegeno/bewegenl)%2;
 				int i=0;
 				i++;
-				Feld figur=sp.getFeld(von.getX(),von.getY()+bewegenl);
+				Feld figur=sp.getFeld(von.getX(),von.getY()-1);
 				if(figur instanceof Figur)
 				{					
 					if(figur.equals(figurVon))

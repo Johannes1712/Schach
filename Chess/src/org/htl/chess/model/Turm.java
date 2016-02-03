@@ -41,6 +41,7 @@ public class Turm extends Figur
 					{						
 						return true;
 					}
+					
 				}
 			}		
 		}
@@ -68,10 +69,30 @@ public class Turm extends Figur
 		//fuer links unten nach rechts fahren
 		if(von.getX()==nach.getX())
 		{
+			for(int i=1;i<=8;i++)
+			{
+				if((nach.getX()== von.getX()+i)||(nach.getX()== von.getX()-i))
+				{
+					return true;
+				}
+				else
+				{
+					if(!super.spielzugMoeglich(sp, von, nach))return false;
+				}
+			}
+		}
+		
+		/*if((nach.getY()<von.getY()))
+		{	
+			for(zaehler=-1;zaehler>(nach.getY()-von.getY());zaehler--)
+			{	
+				Feld figur1=sp.getFeld(von.getX(), von.getY()+zaehler);
+			
+				if(figur1 instanceof Figur)
 			for(zaehler=0;zaehler<8;zaehler++)
 			{				
-				Feld figur1=sp.getFeld(von.getY(),von.getX()+zaehler);
-				if(!figurVon.dieselbeFigur((Figur)figur1, figurVon))
+				Feld figur2=sp.getFeld(von.getY(),von.getX()+zaehler);
+				if(!figurVon.dieselbeFigur((Figur)figur2, figurVon))
 				{
 					
 					return false;
@@ -104,7 +125,9 @@ public class Turm extends Figur
 					}
 				}
 			}
-		}
+		}*/
 		return false;
+
+	
 	}
 }
