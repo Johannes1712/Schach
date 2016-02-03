@@ -54,7 +54,7 @@ public class DameTest
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-			Dame d = (Dame) sf.getFigur(4,0);	
+			Dame d = (Dame) sf.getFigur(0,4);	
 			
 			boolean beobachtet=d.spielzugMoeglich(sf,new Position(4,0),new Position(0,0));
 			Assert.assertFalse(beobachtet);
