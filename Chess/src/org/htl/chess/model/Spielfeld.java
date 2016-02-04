@@ -255,8 +255,7 @@ public class Spielfeld
 	}
 	
 	public Feld getFeld(int x, int y){
-		
-		return  mat[x][y];
+			return  mat[x][y];		
 	}
 
 	public void spielzugAusfuehren(Position von, Position nach, Figur figur)
