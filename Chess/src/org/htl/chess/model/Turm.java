@@ -16,12 +16,12 @@ public class Turm extends Figur
 		
 		Figur figurVon = sp.getFigur(von.getX(), von.getY());
 		
-		/*Feld figur= sp.getFeld(nach.getX(),nach.getY());	
-		if(figur instanceof Figur)
+		Feld figurNach= sp.getFeld(nach.getX(),nach.getY());	
+		if(figurNach instanceof Figur)
 		{			
-			boolean istGleichesTeam = ((Figur) figur).getFarbeW();
+			boolean istGleichesTeam = ((Figur) figurNach).getFarbeW();
 			if(istGleichesTeam == this.getFarbeW())return false;
-		}*/
+		}
 		boolean beobachtet=true;
 		
 		for(int i=1;i<=8;i++)
@@ -69,12 +69,6 @@ public class Turm extends Figur
 		//nach rechts fahren
 		for(int i=1;i<=8;i++)
 		{
-			Feld figur= sp.getFeld(von.getY()+1,von.getX());
-			if(figur instanceof Figur)
-			{			
-				boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-				if(istGleichesTeam == this.getFarbeW())break;
-			}
 			if((nach.getX()== von.getX()))
 			{
 				if((nach.getY()== von.getY()+i))
@@ -87,12 +81,6 @@ public class Turm extends Figur
 		//nach links fahren
 		for(int i=1;i<=8;i++)
 		{
-			Feld figur= sp.getFeld(von.getY()-1,von.getX());
-			if(figur instanceof Figur)
-			{			
-				boolean istGleichesTeam = ((Figur) figur).getFarbeW();
-				if(istGleichesTeam == this.getFarbeW())break;
-			}
 			if((nach.getX()== von.getX()))
 			{
 				if((nach.getY()== von.getY()-i))
@@ -101,8 +89,6 @@ public class Turm extends Figur
 				}
 			}
 		}
-		return false;
-
-	
+		return false;	
 	}
 }

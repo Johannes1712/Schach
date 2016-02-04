@@ -28,33 +28,80 @@ public class Laeufer extends Figur
 				return false;
 			}	
 		}
+		
 
-		//rechts oben fahren
-		for(int i=1;i<=8;i++)
-		{
-			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()+i))
+			//rechts unten fahren
+			for(int i=1;i<=8;i++)
 			{
-				return true;
+				if(figurNach instanceof Figur)
+				{
+					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					{
+						break;
+					}
+				}
+				if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()+i))
+				{
+					return true;			
+				}
 			}
-		}
+
+		
+				
+		//rechts oben fahren
+
+			for(int i=1;i<=8;i++)
+			{
+				if(figurNach instanceof Figur)
+				{
+					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					{
+						break;
+					}
+				}
+				if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()+i))
+				{
+					return true;
+				}
+			}
+
 		
 		//links oben fahren
-		for(int i=1;i<=8;i++)
-		{
-			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()-i))
+
+			
+			for(int i=1;i<=8;i++)
 			{
-				return true;
+				if(figurNach instanceof Figur)
+				{
+					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					{
+						break;
+					}
+				}
+				if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()-i))
+				{						
+					return true;
+				}
 			}
-		}
+
+		
 		
 		//links unten fahren
-		for(int i=1;i<=8;i++)
-		{
-			if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()-i))
+			for(int i=1;i<=8;i++)
 			{
-				return true;
-			}
-		}	
+				if(figurNach instanceof Figur)
+				{
+					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					{
+						break;
+					}
+				}
+				if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()-i))
+				{
+					return true;
+				}
+			}		
+		
 
 		return false;
 	}		
