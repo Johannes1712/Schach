@@ -69,6 +69,18 @@ public class Bauer extends Figur
 						{
 							return false;
 						}
+						
+						if((bewegenX==1||bewegenX==-1)&&bewegenY-1==1)
+						{
+							if(figurNach instanceof Figur)
+							{
+								return true;
+							}
+							else
+							{
+								return false;
+							}
+						}
 						else
 						{
 							return true;
@@ -132,6 +144,18 @@ public class Bauer extends Figur
 						if(figur instanceof Figur)
 						{
 							return false;
+						}
+						
+						if((bewegenX==1||bewegenX==-1)&&bewegenY+1==-1)
+						{
+							if(figurNach instanceof Figur)
+							{
+								return true;
+							}
+							else
+							{
+								return false;
+							}
 						}
 						else
 						{

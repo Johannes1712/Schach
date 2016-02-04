@@ -36,18 +36,17 @@ public class TurmTest
 		try
 		{
 			Spielfeld sf = SpielFeldIO.einlesen("Turm");
-			Turm t = (Turm) sf.getFigur(0,0);
+			Turm t = (Turm) sf.getFigur(0,7);
 			boolean beobachtet;				
 			
-			beobachtet=t.spielzugMoeglich(sf,new Position(0,0),new Position(9,9));
+			beobachtet=t.spielzugMoeglich(sf,new Position(0,7),new Position(9,9));
 			Assert.assertFalse(beobachtet);
 			
-			/*
-			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(3,0));
+			beobachtet=t.spielzugMoeglich(sf, new Position(0,7), new Position(0,4));
 			Assert.assertTrue(beobachtet);
 			
 			beobachtet=t.spielzugMoeglich(sf, new Position(0,0), new Position(0,2));
-			Assert.assertFalse(beobachtet);*/			
+			Assert.assertTrue(beobachtet);			
 		}
 		catch(FileNotFoundException e)
 		{

@@ -10,7 +10,6 @@ public class Spiel {
 	{
 
 		Spielfeld sf = SpielFeldIO.einlesen("Spielfeld-Startposition.txt");
-		//Spielfeld sf = SpielFeldIO.einlesen("SchachRNM.txt");
 		sf.ausgabe();
 		
 		Frame frame=new Frame(sf);
