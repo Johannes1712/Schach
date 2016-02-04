@@ -78,16 +78,15 @@ public class Dame extends Figur
 				if((nach.getY()== von.getY()+i))
 				{
 					return true;
-				}	
-				
+				}					
 			}
 		}
+		
 		//rechts oben fahren
 		for(int i=1;i<=8;i++)
 		{
 			if((nach.getX()== von.getX()-i))
 			{
-				
 				if((nach.getY()== von.getY()+i))
 				{
 					return true;
@@ -117,7 +116,7 @@ public class Dame extends Figur
 					return true;
 				}
 			}
-		}				
+		}			
 		return false;
 	}
 }

@@ -4,32 +4,21 @@ public class Laeufer extends Figur
 {
 	public Laeufer(boolean farbe, boolean bewegt) {
 		super(farbe,bewegt);
-		i=0;
 	}
 
 	private Feld[][] spielfeld;
-	private int i;
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
 		return super.spielZug(sp, von, nach);
-		
 	}
 
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{
-		int bewegenl = 7-von.getY();
-		int bewegenr = 0+von.getY();
-		int bewegenu = 0+von.getX();
-		int bewegeno = 7-von.getX();
+		boolean spielzug=true;
 		
-		int bewegenX= nach.getY()-von.getY();
-		int bewegenY= nach.getX()-von.getX();
-		
-		int zaehler;
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
-		Position pos=new Position(0,0);
-		
+
 		Figur figurVon = sp.getFigur(von.getX(),von.getY());
 		Feld figurNach = sp.getFeld(nach.getX(),nach.getY());
 		if(figurNach instanceof Figur)
@@ -39,53 +28,77 @@ public class Laeufer extends Figur
 				return false;
 			}	
 		}
-		if(bewegenX==bewegenY)
+		
+
+		//rechts unten fahren
+		for(int i=1;i<=8;i++)
 		{
-			if(bewegeno!=0 && bewegenr!=0)
-			{
-				int i=0;
-				i++;	
-				Feld figur=sp.getFeld(von.getX(),von.getY()+1);
-				if(figur instanceof Figur)
-				{					
-					if(figur.equals(figurVon))
-					{
-						return false;
-					}
-					else
-					{
-						return true;
-					}
-				}
-				else
-				{
-					return true;
-				}
-			}
 			
-			if(bewegenl!=0 && bewegeno!=0)
+			if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()+i))
 			{
-				//int zaehlerWerte=(bewegeno/bewegenl)%2;
-				//int i=0;
-				i++;
-				Feld figur=sp.getFeld(nach.getX(),nach.getY()-1);
-				if(figur instanceof Figur)
-				{					
-					if(figur.equals(figurVon))
-					{
-						return false;
-					}
-					else
-					{
-						return true;
-					}
-				}
-				else
+				if(figurNach instanceof Figur)
 				{
-					return true;
-				}
+					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					{
+						break;
+					}
+				}	
+				return true;
+			}
+		}		
+				
+		//rechts oben fahren
+		for(int i=1;i<=8;i++)
+		{
+			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()+i))
+			{
+				if(figurNach instanceof Figur)
+				{
+					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					{
+						break;
+					}
+				}	
+				return true;
 			}
 		}
+		
+		//links oben fahren	
+		for(int i=1;i<=8;i++)
+		{
+			
+			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()-i))
+			{						
+				if(figurNach instanceof Figur)
+				{
+					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					{
+						break;
+					}
+				}
+				return true;
+			}
+		}
+
+		
+		//links unten fahren
+		for(int i=1;i<=8;i++)
+		{
+			
+			if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()-i))
+			{
+				if(figurNach instanceof Figur)
+				{
+					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					{
+						break;
+					}
+				}			
+				
+				return true;
+			}
+		}		
+		
 
 		return false;
 	}		
