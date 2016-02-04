@@ -22,73 +22,105 @@ public class Turm extends Figur
 			boolean istGleichesTeam = ((Figur) figurNach).getFarbeW();
 			if(istGleichesTeam == this.getFarbeW())return false;
 		}
+
 		boolean beobachtet=true;
-		
-		for(int i=1;i<=8;i++)
+		//runterfahren
+		if(von.getX()<7)
 		{
-			Feld figur= sp.getFeld(von.getY(),von.getX()+i);
-			if(figur instanceof Figur)
+			for(int i=1;i<=8;i++)
 			{
-				if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
+				Feld figur= sp.getFeld(von.getX()+i,von.getY());
+				if(figur instanceof Figur)
 				{
-					break;
+					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
+					{
+						break;
+					}
+					
 				}
 				
-			}
-			if((nach.getX()== von.getX()-i))
-			{
-				if((nach.getY()== von.getY()))
+				if((nach.getX()== von.getX()+i))
 				{
-					return true;
-				}
+					if(nach.getY()==von.getY())
+					{
+						return true;
+					}	
+				}			
 			}
-		}
-		
-		//runterfahren
-		for(int i=1;i<=8;i++)
-		{	
-			Feld figur= sp.getFeld(von.getY(),von.getX()+i);
-			if(figur instanceof Figur)
-			{
-				if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
-				{
-					break;
-				}
-			}
-			if((nach.getX()== von.getX()+i))
-			{
-				if(nach.getY()==von.getY())
-				{
-					return true;
-				}	
-			}			
 		}
 		
 		//rauffahren
-		
+		if(von.getX()>0)
+		{
+			for(int i=1;i<=8;i++)
+			{
+				/*Feld figur= sp.getFeld(von.getX()-i,von.getY());
+				if(figur instanceof Figur)
+				{
+					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
+					{
+						break;
+					}
+					
+				}*/
+				if((nach.getX()== von.getX()-i))
+				{
+					if((nach.getY()== von.getY()))
+					{
+						return true;
+					}
+				}
+			}
+		}
 		//nach rechts fahren
-		for(int i=1;i<=8;i++)
+		if(von.getY()<7)
 		{
-			if((nach.getX()== von.getX()))
+			for(int i=1;i<=8;i++)
 			{
-				if((nach.getY()== von.getY()+i))
+				Feld figur= sp.getFeld(von.getX(),von.getY()+i);
+				if(figur instanceof Figur)
 				{
-					return true;
+					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
+					{
+						break;
+					}
+					
 				}
-				
+				if((nach.getX()== von.getX()))
+				{
+					if((nach.getY()== von.getY()+i))
+					{
+						return true;
+					}
+					
+				}
 			}
 		}
+		
 		//nach links fahren
-		for(int i=1;i<=8;i++)
+		
+		if(von.getY()>0)
 		{
-			if((nach.getX()== von.getX()))
+			for(int i=1;i<=8;i++)
 			{
-				if((nach.getY()== von.getY()-i))
+				Feld figur= sp.getFeld(von.getX(),von.getY()-i);
+				if(figur instanceof Figur)
 				{
-					return true;
+					if(!figurVon.dieselbeFigur((Figur)figurVon, (Figur)figur))
+					{
+						break;
+					}
+					
+				}
+				if((nach.getX()== von.getX()))
+				{
+					if((nach.getY()== von.getY()-i))
+					{
+						return true;
+					}
 				}
 			}
-		}
-		return false;	
+		}	
+		return false;
 	}
 }

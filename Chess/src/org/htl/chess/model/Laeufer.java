@@ -30,8 +30,11 @@ public class Laeufer extends Figur
 		}
 		
 
-			//rechts unten fahren
-			for(int i=1;i<=8;i++)
+		//rechts unten fahren
+		for(int i=1;i<=8;i++)
+		{
+			
+			if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()+i))
 			{
 				if(figurNach instanceof Figur)
 				{
@@ -39,18 +42,22 @@ public class Laeufer extends Figur
 					{
 						break;
 					}
-				}
-				if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()+i))
+					else
+					{
+						return true;
+					}
+				}	
+				else
 				{
-					return true;			
+					return true;
 				}
 			}
-
-		
+		}		
 				
 		//rechts oben fahren
-
-			for(int i=1;i<=8;i++)
+		for(int i=1;i<=8;i++)
+		{
+			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()+i))
 			{
 				if(figurNach instanceof Figur)
 				{
@@ -58,36 +65,48 @@ public class Laeufer extends Figur
 					{
 						break;
 					}
+					else
+					{
+						return true;
+					}
 				}
-				if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()+i))
+				else
 				{
 					return true;
 				}
 			}
-
+		}
 		
-		//links oben fahren
-
+		//links oben fahren	
+		for(int i=1;i<=8;i++)
+		{
 			
-			for(int i=1;i<=8;i++)
-			{
+			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()-i))
+			{						
 				if(figurNach instanceof Figur)
 				{
 					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
 					{
 						break;
 					}
+					else
+					{
+						return true;
+					}
 				}
-				if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()-i))
-				{						
+				else
+				{
 					return true;
 				}
 			}
+		}
 
-		
 		
 		//links unten fahren
-			for(int i=1;i<=8;i++)
+		for(int i=1;i<=8;i++)
+		{
+			
+			if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()-i))
 			{
 				if(figurNach instanceof Figur)
 				{
@@ -95,12 +114,17 @@ public class Laeufer extends Figur
 					{
 						break;
 					}
+					else
+					{
+						return true;
+					}
 				}
-				if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()-i))
+				else
 				{
 					return true;
 				}
-			}		
+			}
+		}		
 		
 
 		return false;
