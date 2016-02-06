@@ -57,19 +57,19 @@ public class Koenig extends Figur
 		}
 		
 																//kleine Rochade Weiﬂ
-		if (getFarbeW() && ((nach.getX() == 1) && nach.getY() == 7) 
-
-				&& (getBewegt() == false) 
-				&& (sp.schach() == false)
-				&& (((spielfeld [0][7] instanceof Turm)
-				&& !(spielfeld [1][7] instanceof Figur) 
-				&& !(spielfeld [2][7] instanceof Figur)))) 
-		{ 
-			rw = true;
-			
-			Feld turm2 = sp.getFeld(0,7);
-			sp.figurenSetzen(new Position(2,7), turm2);
-		}
+//		if (getFarbeW() && ((nach.getX() == 1) && nach.getY() == 7) 
+//
+////				&& (getBewegt() == false) 
+////				&& (sp.schach() == false)
+////				&& (((spielfeld [0][7] instanceof Turm)
+////				&& !(spielfeld [1][7] instanceof Figur) 
+////				&& !(spielfeld [2][7] instanceof Figur)))) 
+//		{ 
+//			rw = true;
+//			
+//			Feld turm2 = sp.getFeld(0,7);
+//			sp.figurenSetzen(new Position(2,7), turm2);
+//		}
 		
 		
 		//Rochaden Schwarz:

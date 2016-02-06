@@ -33,16 +33,26 @@ public class Laeufer extends Figur
 		//rechts unten fahren
 		for(int i=1;i<=8;i++)
 		{
-			
-			if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()+i))
+		
+			if(von.getX()+i>=8||von.getY()+i>=8 || von.getX()+i<0 || von.getY()+i<0)
 			{
-				if(figurNach instanceof Figur)
+				continue;
+			}
+			else
+			{
+				Feld figur=sp.getFeld(von.getX()+i,von.getY()+i);
+				if(figur instanceof Figur)
 				{
-					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					if(!figur.equals(figurNach))
 					{
 						break;
 					}
-				}	
+					return true;
+				}				
+			}
+			
+			if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()+i))
+			{	
 				return true;
 			}
 		}		
@@ -50,15 +60,25 @@ public class Laeufer extends Figur
 		//rechts oben fahren
 		for(int i=1;i<=8;i++)
 		{
-			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()+i))
+			if(von.getX()-i>=8||von.getY()+i>=8 || von.getX()-i<0 || von.getY()+i<0)
 			{
-				if(figurNach instanceof Figur)
+				continue;
+			}
+			else
+			{
+				Feld figur=sp.getFeld(von.getX()-i,von.getY()+i);
+				if(figur instanceof Figur)
 				{
-					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					if(!figur.equals(figurNach))
 					{
 						break;
 					}
+					return true;
 				}	
+			}			
+			
+			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()+i))
+			{					
 				return true;
 			}
 		}
@@ -66,16 +86,25 @@ public class Laeufer extends Figur
 		//links oben fahren	
 		for(int i=1;i<=8;i++)
 		{
-			
-			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()-i))
-			{						
-				if(figurNach instanceof Figur)
+			if(von.getX()-i>=8||von.getY()-i>=8 || von.getX()-i<0 || von.getY()-i<0)
+			{
+				continue;
+			}
+			else
+			{
+				Feld figur=sp.getFeld(von.getX()-i,von.getY()-i);
+				if(figur instanceof Figur)
 				{
-					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					if(!figur.equals(figurNach))
 					{
 						break;
 					}
-				}
+					return true;
+				}	
+			}	
+			
+			if((nach.getX()== von.getX()-i)&&(nach.getY()== von.getY()-i))
+			{						
 				return true;
 			}
 		}
@@ -84,20 +113,27 @@ public class Laeufer extends Figur
 		//links unten fahren
 		for(int i=1;i<=8;i++)
 		{
-			
-			if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()-i))
+			if(von.getX()+i>=8||von.getY()-i>=8 || von.getX()+i<0 || von.getY()-i<0)
 			{
-				if(figurNach instanceof Figur)
+				continue;
+			}
+			else
+			{
+				Feld figur=sp.getFeld(von.getX()+i,von.getY()-i);
+				if(figur instanceof Figur)
 				{
-					if(!((Figur) figurNach).dieselbeFigur(figurVon,(Figur) figurNach))
+					if(!figur.equals(figurNach))
 					{
 						break;
 					}
-				}			
-				
+					return true;
+				}				
+			}			
+			if((nach.getX()== von.getX()+i)&&(nach.getY()== von.getY()-i))
+			{
 				return true;
 			}
-		}		
+		}	
 		
 
 		return false;

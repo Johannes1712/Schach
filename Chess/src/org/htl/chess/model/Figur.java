@@ -30,7 +30,7 @@ public class Figur extends Feld
 	{
 		Figur figurVon = sp.getFigur(von.getX(),von.getY());
 		Figur figurNach = null;
-		if(nach.getX()>8 || nach.getY()>8)return false;
+		if(nach.getX()>=8 || nach.getY()>=8)return false;
 		
 		if(sp.getFeld(von.getX(),von.getY()) instanceof Figur && sp.getFeld(nach.getX(),nach.getY()) instanceof Figur)
 		{			
