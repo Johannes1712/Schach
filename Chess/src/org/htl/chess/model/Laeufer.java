@@ -6,8 +6,6 @@ public class Laeufer extends Figur
 		super(farbe,bewegt);
 	}
 
-	private Feld[][] spielfeld;
-
 	public boolean spielZug(Spielfeld sp, Position von, Position nach)
 	{
 		return super.spielZug(sp, von, nach);
@@ -15,7 +13,6 @@ public class Laeufer extends Figur
 
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{
-		boolean spielzug=true;
 		
 		if (!super.spielzugMoeglich(sp, von, nach))	return false;
 

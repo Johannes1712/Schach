@@ -1,7 +1,5 @@
 package org.htl.chess.model;
 
-import Testing.SpielFeldIO;
-
 public class Bauer extends Figur 
 {
 	public Bauer(boolean farbe, boolean bewegt) {
@@ -12,7 +10,6 @@ public class Bauer extends Figur
 	// Zeilen sind Zahlen
 	// 0/0 ist links unten auf a1
 	// somit die linkeste Spalte 0 und die unterste Zeile 0
-	private Feld[][] spielfeld;
 
 	public boolean spielZug(Spielfeld sp, Position von, Position nach) 
 	{

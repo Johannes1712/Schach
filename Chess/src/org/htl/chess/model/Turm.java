@@ -9,7 +9,7 @@ public class Turm extends Figur
 	{
 		return super.spielZug(sp, von, nach);
 	}
-	@SuppressWarnings("unused")
+	
 	public boolean spielzugMoeglich(Spielfeld sp, Position von, Position nach)
 	{	
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
