@@ -16,13 +16,36 @@ public class Koenig extends Figur
 			
 		if(!super.spielzugMoeglich(sp, von, nach))return false;
 		
-		if  ((von.getX() > nach.getX() +1)						//Koenig darf nicht mehr als 1 Feld in X-Richtung gehen						
+		//Verhindern, dass sich Koenig selbst ins Schach setzt:
+		Feld spFigur =  sp.getFeld(nach.getX(),nach.getY());
+		
+				
+//		if (spFigur instanceof Figur)
+//		{
+//			spFigur = (Figur)spFigur;
+//			sp.spielzugAusfuehren(von, nach, this);
+//		}
+//				
+//		if (sp.schach())
+//		{
+//			//sp.figurenSetzen(new Position(nach.getX(), nach.getY()), spFigur);
+//			sp.figurenSetzen(nach, spFigur);
+//			sp.figurenSetzen(von, this);
+//			return false;
+//		}
+		
+	
+		
+		
+		//Koenig darf nicht mehr als 1 Feld in X-Richtung gehen
+		if  ((von.getX() > nach.getX() +1)						
 				|| (von.getX() < nach.getX() - 1))						
 		{
 			return false;
 		}
 		
-		if ((von.getY() > nach.getY() + 1) 						//Koenig kann immer nur 1 oder 0 Felder vor oder zurück gehen
+		//Koenig kann immer nur 1 oder 0 Felder vor oder zurück gehen
+		if ((von.getY() > nach.getY() + 1) 
 				|| (von.getY() < nach.getY() - 1))		
 		{
 			return false;
@@ -96,21 +119,6 @@ public class Koenig extends Figur
 			sp.figurenSetzen(new Position(2,0), turm4);
 			return true;
 		}
-		
-//		//Verhindern, dass sich Koenig selbst ins Schach setzt:
-//		Feld spFigur =  sp.getFeld(nach.getX(),nach.getY());
-//		sp.spielzugAusfuehren(von, nach, this);
-//		
-//		if (spFigur instanceof Figur)
-//		{
-//			spFigur = (Figur)spFigur;
-//		}
-//		
-//		if (sp.schach())
-//		{
-//			sp.figurenSetzen(new Position(nach.getX(), nach.getY()), spFigur);
-//			return false;
-//		}
 		
 		return true;		
 	}

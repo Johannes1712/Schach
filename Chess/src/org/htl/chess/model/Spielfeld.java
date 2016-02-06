@@ -90,7 +90,7 @@ public class Spielfeld
 		{
 			for (int b = 0; b <= 7; b++) 
 			{
-				System.out.println(i + "," + b);
+				//System.out.println(i + "," + b);
 				Feld figur=  getFeld(i,b);
 				if (figur instanceof Figur) 
 				{
